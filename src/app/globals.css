@@ -24,4 +24,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} 
+
+.ant-otp { 
+  display: flex; 
+  align-items: unset;
+ }

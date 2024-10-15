@@ -7,13 +7,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "20px",
+      screens: {
+        "2xl": "1440px",
+      }
+    },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+        primary: "#007BA5",
+        secondary: "#54A7C3",
+        base: "#5C5C5C"
+      }
     },
-  },
+  }, 
   plugins: [],
 };
 export default config;

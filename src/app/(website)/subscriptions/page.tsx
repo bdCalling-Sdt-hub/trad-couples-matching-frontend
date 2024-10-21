@@ -1,5 +1,5 @@
 import React from 'react';
-import SubscriptionsClient from './SubscriptionsClient';
+import SubscriptionsClient from '../../../components/ui/website/Subscriptions/SubscriptionsClient';
 
 const page = () => {
     return (

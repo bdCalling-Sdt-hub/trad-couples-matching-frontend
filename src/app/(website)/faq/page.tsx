@@ -1,5 +1,5 @@
 import React from 'react';
-import FAQ from "./FAQ"
+import FAQ from "../../../components/ui/website/FAQ/FAQ"
 const page = () => {
     return (
         <div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Blogs from './Blogs';
+import Blogs from '../../../components/ui/website/Blogs/Blogs';
 
 const page = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import SafetyPolicy from './SafetyPolicy';
+import SafetyPolicy from '../../../components/ui/website/SafetyPolicy/SafetyPolicy';
 
 const page = () => {
     return (

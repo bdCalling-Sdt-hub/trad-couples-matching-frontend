@@ -5,7 +5,7 @@ const NotFound = () => {
     return ( 
         <div className=" h-[calc(100vh)] w-full "
         style={{ 
-            backgroundImage: `url('/Banner.png')`, 
+            backgroundImage: `url('/Banner.svg')`, 
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",

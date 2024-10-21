@@ -1,5 +1,5 @@
 import React from 'react';
-import Support from './Support';
+import Support from '../../../components/ui/website/Support/Support';
 
 const page = () => {
     return (

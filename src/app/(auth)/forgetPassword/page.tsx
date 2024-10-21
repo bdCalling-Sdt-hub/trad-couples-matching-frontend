@@ -1,5 +1,5 @@
 import React from 'react';
-import ForgetPassClient from './ForgetPassClient';
+import ForgetPassClient from '../../../components/ui/auth/ForgetPassword/ForgetPassClient';
 
 const page = () => { 
 

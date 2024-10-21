@@ -1,5 +1,6 @@
+import Questions from '@/components/ui/auth/Questions/Questions';
 import React from 'react';
-import Questions from './Questions';
+
 
 const page = () => {
     return (

@@ -1,25 +1,42 @@
-import { Button } from 'antd';
-import Image from 'next/image'; 
-import facebook from "@/assets/facebook.png";
-import instagram from "@/assets/insta.png";
-import twitter from "@/assets/twiter.png";
-import youtube  from "@/assets/youtube.png"; 
-import logo from "@/assets/logoIcon.png";
+
 import Link from 'next/link';
 import React from 'react';
+import { RiFacebookCircleLine } from 'react-icons/ri';
+import { FiInstagram } from 'react-icons/fi';
+import { AiOutlineYoutube } from 'react-icons/ai';
+import { BsTwitterX } from 'react-icons/bs'; 
+import { Montserrat } from 'next/font/google';
 
-const Footer = () => { 
+const montserrat = Montserrat({ weight: ['400', '500', '600', '700'], subsets: ['latin'] }); 
+
+const Footer = () => {
     const item = [
         {
-            label: "Blogs",
-            path: "/blogs"
+            label: "Press",
+            path: "/"
+        },
+        {
+            label: "Affiliate Program",
+            path: "/"
         },
         {
             label: "Support",
             path: "/support"
         },
         {
-            label: "Safety Policy",
+            label: "Blogs",
+            path: "/blogs"
+        },
+        {
+            label: "Terms",
+            path: "/terms"
+        },
+        {
+            label: "Privacy Policy",
+            path: "/privacy"
+        },
+        {
+            label: "Safety Tips",
             path: "/safety-policy"
         },
         {
@@ -27,104 +44,76 @@ const Footer = () => {
             path: "/cookie-policy-web"
         },
         {
-            label: "Privacy",
-            path: "/privacy"
-        },
-        {
-            label: "Terms",
-            path: "/terms"
+            label: "Site Map",
+            path: "/"
         },
     ]
 
- 
+
     return (
-        <div 
-        className='bg-[#222222]'
-      
-        
-    >
-        <div className='container grid grid-cols-12  items-center justify-between h-[165px]'>
-          
-            <div className='col-span-4 justify-self-start '>
+        <div
+            className='bg-[#222222]'        >
+
+            <div className='lg:h-[185px] h-full lg:py-3 py-5 container flex flex-col lg:items-start items-center justify-center gap-5 '>
                 <div className='flex flex-col    '>
-                    <p className=' font-[500] text-[#EEEEEE]  text-[23px] leading-none tracking-wider'>TradCouples</p>
+                    <p className={` font-[500] text-[#EEEEEE]  text-[23px] leading-none tracking-wider ${montserrat.className}`}>TradCouples</p>
                     <p className=' text-[13px] leading-none text-[#EEEEEE] font-sans tracking-wider '>Matchmaking Services</p>
                 </div>
-           
-            </div>
+
+                <div className=' grid grid-cols-12 justify-items-stretch gap-8   '>
 
 
-   
+                    <div className='lg:col-span-9 col-span-12  '>
+                        <div className='flex flex-wrap items-center lg:items-start justify-center  lg:gap-10 gap-3 '>
+                            {
+                                item.map((menu, index) => {
+                                    return (
+                                        <Link
+                                            key={index}
+                                            className={`text-secondary  `}
+                                            href={`${menu.path}`}
+                                        >
+                                            {menu.label}
+                                        </Link>
+                                    )
+                                })
+                            }
 
-            <div className='col-span-8 justify-self-end '>  
+                        </div>
+                    </div>
 
-                <div className=' flex  gap-8 items-center'>
+                    <div className='lg:col-span-3 col-span-12 lg:justify-self-end justify-self-center '>
+                        <div className='flex items-center gap-6  '>
+                            <a href="https://www.facebook.com/" target='_blank'>
+                                <p className='text-white '><RiFacebookCircleLine size={34} /></p>
+                            </a>
 
-            <div className='flex  gap-10 '>
-                {
-                    item.map((menu, index) => {
-                        return(
-                            <Link 
-                                key={index} 
-                                className={`text-white  `} 
-                                href={`${menu.path}`}
-                            >
-                                {menu.label}
-                            </Link>
-                        )
-                    })
-                }
+                            <a href='https://www.instagram.com/' target='_blank'>
+                                <p className='text-white '> <FiInstagram
+                                    size={30} /></p>
+                            </a>
 
-                </div> 
- <p className='border-r-2 border-white h-10'></p>
-            
-                <div className='flex items-center gap-6 '>
-                    <a href="https://www.facebook.com/" target='_blank'>
-                        <Image
-                            alt='social-link'
-                            src={facebook}
-                            width={30}
-                            height={30}
-                        />
-                    </a>
+                            <a href='https://www.linkedin.com/' target='_blank'>
+                                <p className='text-white '><AiOutlineYoutube size={34} /></p>
+                            </a>
 
-                    <a href='https://www.instagram.com/' target='_blank'>
-                        <Image
-                            alt='social-link'
-                            src={instagram}
-                            width={30}
-                            height={30}
-                        />
-                    </a>
+                            <a href='https://www.twitter.com/' target='_blank'>
+                                <p className='text-white '><BsTwitterX size={27} /></p>
+                            </a>
+                        </div>
+                    </div>
 
-                    <a href='https://www.linkedin.com/' target='_blank'>
-                        <Image
-                            alt='social-link'
-                            src={youtube}
-                            width={30}
-                            height={30}
-                            />
-                        </a>
 
-                    <a href='https://www.twitter.com/' target='_blank'>
-                        <Image
-                            alt='social-link'
-                            src={twitter}
-                            width={30}
-                            height={30}
-                        />
-                    </a>
-                </div> 
+
+
                 </div>
+            </div>
 
 
+            <div className='bg-[#6B6B6B] py-3'>
+                <p className='text-center text-[#ffffff]'>© Copyright UX/UI 2204 Team Md. Asadujjaman Mahfuz</p>
             </div>
         </div>
-
-        <div className='bg-[#6B6B6B] py-3'>
-            <p className='text-center text-[#ffffff]'>© Copyright UX/UI 2204 Team Md. Asadujjaman Mahfuz</p>
-        </div>
-    </div>
     );
 };
 

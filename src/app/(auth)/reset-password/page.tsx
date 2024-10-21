@@ -1,5 +1,5 @@
 import React from 'react';
-import ResetPasswordClient from './ResetPasswordClient';
+import ResetPasswordClient from '../../../components/ui/auth/ResetPassword/ResetPasswordClient';
 
 const page = () => {
     return (

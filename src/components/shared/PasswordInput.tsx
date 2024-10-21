@@ -13,7 +13,7 @@ const PasswordInput = ({name , label , placeholder}:propsType) => {
 
     useEffect(()=>{ 
         form.setFieldsValue({name:"default"})
-    },[])
+    },[form])
     return (
         <Form.Item name={name}  
         rules={[{ required: true, message: `Please input your ${label}!` }]}> 

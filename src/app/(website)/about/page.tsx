@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutClient from './AboutClient';
+import AboutClient from '../../../components/ui/website/About/AboutClient';
 
 const page = () => {
     return (

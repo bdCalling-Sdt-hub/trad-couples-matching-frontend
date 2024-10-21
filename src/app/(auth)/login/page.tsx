@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginClient from './LoginClient';
+import LoginClient from '../../../components/ui/auth/Login/LoginClient';
 
 const page = () => {
     return (

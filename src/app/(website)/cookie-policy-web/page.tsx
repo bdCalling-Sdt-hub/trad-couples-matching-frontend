@@ -1,5 +1,5 @@
 import React from 'react';
-import CookiePolicy from './CookiePolicy';
+import CookiePolicy from '../../../components/ui/website/CookiePolicy/CookiePolicy';
 
 const page = () => {
     return (

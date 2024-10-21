@@ -6,7 +6,7 @@ const TextInput = ({name , label , placeholder }:{name:string , label:string  , 
     const form = Form.useFormInstance() 
 
     useEffect(()=>{ 
-        form.setFieldsValue({name: ""}) 
+        // form.setFieldsValue({name: ""}) 
     },[form])
     return (
         <Form.Item name={name}  
@@ -22,7 +22,7 @@ const TextInput = ({name , label , placeholder }:{name:string , label:string  , 
             outline: "none",
             width: "100%",
             padding: "8px", 
-             marginBottom:"10px"
+            
           }} />     
         </Form.Item>
     );

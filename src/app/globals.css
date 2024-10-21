@@ -30,3 +30,38 @@ body {
   display: flex; 
   align-items: unset;
  }
+
+
+ ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #dfdfdf00;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+
+  /* background: #6b5ecc34;  */
+  background: #ffffff67;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6b5ecc34;
+} 
+
+.EditImage .form-field input{
+  color: #0a0a0a;
+} 
+.EditImage .form-field select{
+  color: #0a0a0a;
+} 
+
+.ant-drawer .ant-drawer-header {
+  border: 0px;
+}

@@ -1,5 +1,6 @@
+import PersonDetails from '@/components/ui/website/Details/PersonDetails';
 import React from 'react';
-import PersonDetails from '../PersonDetails';
+
 
 const page = () => {
     return (

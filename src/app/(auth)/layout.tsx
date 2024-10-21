@@ -1,22 +1,15 @@
 import Navbar from '@/components/shared/Navbar';
+import BackgroundWrapper from '@/components/ui/auth/BackgroundWrapper';
 import React from 'react';
 
 const layout = ({children}: {children: React.ReactNode}) => {
     return (
-        <div>
+        <div className='h-[calc(100vh)]'>
             <Navbar /> 
 
-            <div 
-             className=" h-[calc(100vh)] w-full "
-             style={{ 
-                 backgroundImage: `url('/Banner.png')`, 
-                 backgroundPosition: "center",
-                 backgroundRepeat: "no-repeat",
-                 backgroundSize: "cover",
-             }}> 
-
+            <BackgroundWrapper> 
                 {children}
-            </div>
+            </BackgroundWrapper>
         </div>
     );
 };

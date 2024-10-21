@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterClient from './RegisterClient';
+import RegisterClient from '../../../components/ui/auth/Register/RegisterClient';
 
 const page = () => {
     return (

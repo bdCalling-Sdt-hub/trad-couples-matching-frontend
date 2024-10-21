@@ -42,7 +42,7 @@ const Blogs = () => {
         },
     ] 
 
-    const handleBlog =(id:any)=>{
+    const handleBlog =(id:number|string)=>{
  router.push(`/blog/${id}`)
     } 
 

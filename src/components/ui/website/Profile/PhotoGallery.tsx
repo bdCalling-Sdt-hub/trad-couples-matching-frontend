@@ -32,7 +32,8 @@ const PhotoGallery = () => {
           return new File([u8arr], filename, { type: mime });
         }; 
   
-      const [imageSrc, setImageSrc] = useState<string | null | undefined>(''); 
+      const [imageSrc, setImageSrc] = useState<string | null | undefined>('');  
+      console.log(imageSrc);
       const initialImage = '';  
   
       const handleImageChange = (newDataUri: string) => {

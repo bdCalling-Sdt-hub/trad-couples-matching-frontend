@@ -268,12 +268,12 @@ const ChatClient = () => {
      
 
             <div className="absolute bottom-1 w-full py-1">
-              <div className="flex items-center justify-center gap-3 w-full px-3">
+              <div className="flex items-center justify-between gap-3 w-full px-3">
+                <textarea className="w-[85%] h-[45px] resize-none py-2 rounded-l-full px-4 rounded-r-full shadow-md" placeholder="Type your message" />
                 <div className="flex items-center gap-4">
                   <IoLinkOutline size={22} />
                   <IoImageOutline size={22} />
                 </div>
-                <textarea className="w-[75%] h-[40px] resize-none py-2 rounded-l-full px-4 rounded-r-full shadow-md" placeholder="Type your message" />
                 <button className="h-[40px] w-[40px] bg-primary text-white rounded-full flex justify-center items-center">
                   <IoSendSharp size={22} />
                 </button>

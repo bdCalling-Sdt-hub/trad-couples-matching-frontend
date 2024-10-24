@@ -195,12 +195,12 @@ const EditProfile1 = () => {
         <div className=''>
           
                 <div className='flex items-center container gap-2 '>
-                <Link href="/profile" className=' -ms-10 bg-gray-200 rounded-full px-[6px] py-[6px]'> 
+                <Link href="/profile" className=' lg:-ms-10 bg-gray-200 rounded-full px-[6px] py-[6px]'> 
                 <span><BsArrowLeft size={21} className='text-[#007BA5]' /></span> 
               
                  </Link> 
 
-                <h1 className='text-2xl font-medium text-[#007BA5] my-7'> Edit Your Profile  <span>1/2</span></h1>
+                <h1 className='lg:text-2xl text-xl font-medium text-[#007BA5] my-7'> Edit Your Profile  <span>1/2</span></h1>
 
                 </div> 
 

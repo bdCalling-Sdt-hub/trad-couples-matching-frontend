@@ -163,8 +163,10 @@ const Discover = () => {
                     )
                 }
               </div> 
-
-              <Pagination align="center" defaultCurrent={1} total={50} className='mt-5' />
+ 
+ <div className='mt-9'>
+              <Pagination align="center" defaultCurrent={1} total={50}  />
+ </div>
         </div>
     );
 };

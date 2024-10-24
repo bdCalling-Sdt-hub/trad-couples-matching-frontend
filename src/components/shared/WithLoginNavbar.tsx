@@ -121,7 +121,7 @@ const WithLoginNavbar = ({ onDrawerToggle }: { onDrawerToggle: (isOpen: boolean)
 
                         <button onClick={showDrawer} className={`${open === true ? "text-primary" : "text-black"}`}> <RxHamburgerMenu size={24} /> </button>
 
-                        <div className={`flex flex-col  ${montserrat.className}`}>
+                        <div className={`flex flex-col  ${montserrat.className}`} onClick={()=>router.push("/discover")}>
                             <p className='font-[540] text-[#222222] lg:text-[24px] text-[20px] leading-none tracking-wider'>TradCouples</p>
                             <p className='text-[13px] leading-none text-[#222222] font-sans tracking-wider'>Matchmaking Services</p>
                         </div>

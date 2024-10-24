@@ -12,7 +12,7 @@ import profile1 from "@/assets/profile12.svg"
 const ProfileDetails = () => {
 
     const [coverFile, setCoverFile] = useState<File | null>(null);
-    const [coverUrl, setCoverUrl] = useState<string>("/about.png");
+    const [coverUrl, setCoverUrl] = useState<string>("/about.svg");
 
     const [profileFile, setProfileFile] = useState<File | null>(null);
     const [profileUrl, setProfileUrl] = useState<string>(profile1);

@@ -6,7 +6,7 @@ const AboutClient = () => {
            <div className=' flex flex-col w-full'>
             <div className=" h-[calc(75vh)] w-full flex justify-center items-center "
              style={{ 
-                 backgroundImage: `url('/about.png')`, 
+                 backgroundImage: `url('/about.svg')`, 
                  backgroundPosition: "center",
                  backgroundRepeat: "no-repeat",
                  backgroundSize: "cover",

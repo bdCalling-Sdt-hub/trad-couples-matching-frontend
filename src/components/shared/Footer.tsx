@@ -111,7 +111,8 @@ const Footer = () => {
 
 
             <div className='bg-[#6B6B6B] py-3'>
-                <p className='text-center text-[#ffffff]'>© Copyright UX/UI 2204 Team Md. Asadujjaman Mahfuz</p>
+                <p className='text-center text-[#ffffff]'>© All right reserved by TradeCouples
+</p>
             </div>
         </div>
     );

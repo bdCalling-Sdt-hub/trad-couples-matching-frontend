@@ -40,7 +40,7 @@ const ProfileMyPhotos = () => {
 
     const [imageSrc, setImageSrc] = useState<string | null | undefined>('');  
     console.log(imageSrc);
-    const initialImage = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400';  
+    const initialImage = 'https://i.ibb.co.com/Vwm8kST/Rectangle-5307-2.png';  
 
     const handleImageChange = (newDataUri: string) => {
       setImageSrc(newDataUri); 

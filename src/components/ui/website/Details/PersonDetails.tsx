@@ -61,7 +61,7 @@ const PersonDetails = () => {
       <div className='relative'>
         {/* cover photo  */}
         <div>
-          <Image src="/about.png" alt="" height={200} width={1400} style={{ width: "100%", height: "210px", objectFit: "cover" }} />
+          <Image src="/about.svg" alt="" height={200} width={1400} style={{ width: "100%", height: "210px", objectFit: "cover" }} />
           <Link href="/discover" className='flex items-center gap-[2px] absolute top-3 left-2 text-white bg-black/90  rounded-lg  ' > <span> <BiLeftArrowAlt size={22} /> </span> <span>Back</span></Link>
         </div>
 

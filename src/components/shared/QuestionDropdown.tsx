@@ -18,7 +18,7 @@ const QuestionDropdown = ({name ,placeholder ,  options}:propsType) => {
     return <Form.Item
     name={name}  className=' lg:w-1/3 w-full '
   >
-    <Select placeholder={placeholder}   options={options} className='h-[45px]'/>
+    <Select placeholder={placeholder}   options={options} style={{height:45}}/>
       
   </Form.Item>
 };

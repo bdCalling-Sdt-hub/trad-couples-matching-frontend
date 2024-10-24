@@ -215,8 +215,8 @@ const Questions = () => {
  <DatePicker  className='lg:w-1/3 w-full h-[45px]   border border-[#BABABA]' placeholder='Date of Birth '/> 
              </Form.Item> 
 
-             <Form.Item name="age"> 
-<Input className='border border-[#BABABA]   h-[45px] lg:w-[12%] w-1/2'  placeholder='Age' />
+             <Form.Item name="age" className='lg:w-[11%] w-1/2'> 
+<Input className='  h-[45px]  border border-[#BABABA] '  placeholder='Age' />
              </Form.Item>
              </>
              },
@@ -409,7 +409,7 @@ const Questions = () => {
     ];
 
     const progressPercent = Math.round(((current + 1) / steps.length) * 100);
-    const progressColor = progressPercent <= 50 ? "#A0A0A0" : '#007BA5';
+    const progressColor =  '#007BA5'
 
     return (
         <div className={`bg-[#F7F7F7]  h-[calc(100vh-85px)] transition-all duration-1000 delay-500 ease-in-out opacity-100 translate-x-0 pt-[85px] ${poppins.className}`}>

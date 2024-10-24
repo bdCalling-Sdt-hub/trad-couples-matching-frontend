@@ -20,7 +20,8 @@ const ProfileMyPhotos = () => {
       width: '330px',
       height: '250px',
       objectFit: 'contain',
-      // aspectRatio: 4 / 3,
+      // aspectRatio: 4 / 3, 
+      hideDeleteBtn:true ,
       compressInitial: null,   
 
     }; 

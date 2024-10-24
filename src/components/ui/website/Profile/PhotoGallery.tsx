@@ -14,7 +14,8 @@ const PhotoGallery = () => {
     language: 'en',
     width: '330px',
     height: '250px',
-    objectFit: 'contain',
+    objectFit: 'contain', 
+    hideDeleteBtn:true ,
     compressInitial: null,
   };
 

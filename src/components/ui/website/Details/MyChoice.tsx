@@ -20,7 +20,7 @@ const MyChoice = () => {
              <div>
                 {
                     data?.map((value , index:number)=><div key={index} className='bg-[#EEEEEE] py-2 px-3 rounded-full mb-3'>  
-                    <p className='text-[#4E4E4E] flex items-center  gap-[2px] text-[15px]'> <span> <GoDotFill size={18} /> </span> <span>{value}</span> </p>
+                    <p className='text-[#4E4E4E] flex items-center  gap-[2px] text-[15px]'> <span> <GoDotFill size={14} /> </span> <span>{value}</span> </p>
                          </div>)
                 }
              </div>

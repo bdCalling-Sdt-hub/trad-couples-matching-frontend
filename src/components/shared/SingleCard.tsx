@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { AiOutlineMessage } from 'react-icons/ai';
@@ -12,9 +11,16 @@ const SingleCard = ({value}:any) => {
     const router = useRouter() 
     const handleDetails =(id:any) =>{
         router.push(`/details/${id}`)
-    }
+    } 
+
+    const handelWish = (e: React.MouseEvent) => { 
+        e.stopPropagation();
+        e.preventDefault();   
+        router.push("/chat")
+      }; 
+
     return (
-        <div  className='font-sans group' onClick={()=>handleDetails(value?.id)} >
+        <div  className='font-sans group cursor-pointer' onClick={()=>handleDetails(value?.id)} >
     <div className='relative  '> 
 
         <div className='  overflow-hidden rounded-lg z-0 hover:z-20 '> 
@@ -31,10 +37,10 @@ const SingleCard = ({value}:any) => {
             <div className=' flex gap-1'>  
 
             <p className='w-9 h-9 rounded-full bg-[#EEEEEE] text-[#FF7C70] flex justify-center items-center'><IoIosHeartEmpty size={22} /></p> 
+
+               
+            <p  onClick={handelWish} className='w-9 h-9 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center'><AiOutlineMessage size={22} /></p> 
             
-                <Link href="/chat">          
-            <p className='w-9 h-9 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center'><AiOutlineMessage size={22} /></p> 
-                </Link>
 
             </div>
         </div>

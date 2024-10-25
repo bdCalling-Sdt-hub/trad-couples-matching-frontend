@@ -1,6 +1,6 @@
 "use client"
-import { Form, Input } from 'antd';
-import React, { useEffect } from 'react';
+import { ConfigProvider, Form, Input } from 'antd';
+import React, { useEffect } from 'react'; 
 
 const TextInput = ({name , label , placeholder }:{name:string , label:string  , placeholder:string}) => { 
     const form = Form.useFormInstance() 
@@ -8,7 +8,15 @@ const TextInput = ({name , label , placeholder }:{name:string , label:string  , 
     useEffect(()=>{ 
         // form.setFieldsValue({name: ""}) 
     },[form])
-    return (
+    return ( 
+        <ConfigProvider
+        theme={{
+            token: {
+                fontFamily: 'Poppins, sans-serif',
+                colorTextPlaceholder: "#6B6B6B"
+            }
+        }}
+    >  
         <Form.Item name={name}  
         rules={[{ required: true, message: `Please input your ${label}!` }]}
         > 
@@ -16,15 +24,17 @@ const TextInput = ({name , label , placeholder }:{name:string , label:string  , 
         placeholder={placeholder}
         style={{
             border: "1px solid #BABABA",
-            height: "45px",
-            background: "white",
+            height: "56px",
             borderRadius: "8px",
             outline: "none",
             width: "100%",
-            padding: "8px", 
-            
-          }} />     
-        </Form.Item>
+            padding: "8px",  
+            background:"transparent"  ,   
+          }} 
+          className={` `}
+          />     
+        </Form.Item> 
+        </ConfigProvider>
     );
 };
 

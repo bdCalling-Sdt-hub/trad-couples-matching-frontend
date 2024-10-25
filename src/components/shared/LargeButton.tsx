@@ -5,7 +5,7 @@ interface ButtonType{
     className: string
 }
 const LargeButton = ({children , className} :ButtonType) => {
-  return  <button type='submit' className={`mt-6  h-[45px] w-full bg-[#007BA5] text-white rounded-lg  text-lg  font-semibold${className}` } >
+  return  <button type='submit' className={`mt-6  h-[56px] w-full bg-[#007BA5] text-white rounded-lg  text-lg  font-semibold${className}` } >
     {children}
  </button>
 

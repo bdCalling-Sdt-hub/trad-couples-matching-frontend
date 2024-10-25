@@ -257,7 +257,7 @@ const SearchClient = () => {
                     <Input prefix={<CiSearch size={24} />} placeholder='Search here' style={{ height: "45px", borderRadius: "10px", width: "100%", padding: "4px" }} />
                     <div className='flex items-center w-full gap-3 mt-4  '>
                         {/* filter   */}
-                        <div className=' bg-primary text-white font-medium  px-4 py-3 rounded-lg w-full flex  items-center justify-between' onClick={handleFilter}>
+                        <div className=' bg-primary text-white font-medium  px-4 py-3 rounded-lg w-full flex  items-center justify-between cursor-pointer' onClick={handleFilter}>
                             <p className=' flex items-center gap-1'><span> <IoFilterSharp size={22} /> </span> <span> Filter</span></p>
                             <p className='text-white '> <FaAngleDown className={`font-semibold rotate-icon`} style={{
                                 transform: `rotate(

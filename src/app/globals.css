@@ -62,6 +62,23 @@ body {
   color: #0a0a0a;
 } 
 
-.ant-drawer .ant-drawer-header {
-  border: 0px;
+
+.ant-input-outlined { 
+  background: transparent !important;
+  border-width: 1.5px !important;
+  border-style: solid;
+  border-color: #BABABA !important;
+  height: 60px;
+} 
+
+.ant-input-outlined:focus, .ant-input-outlined:focus-within  { 
+  
+  border-width: 1.5px !important;
+  border-style: solid;
+  border-color: #BABABA !important;
+  
+}  
+
+.image-caption{
+  display: none !important;
 }

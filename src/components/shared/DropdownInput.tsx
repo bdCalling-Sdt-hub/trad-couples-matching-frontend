@@ -20,7 +20,6 @@ const DropdownInput = ({name , label , defaultValue , options}:propsType) => {
 <Form.Item
         name={name} 
         label={ label === ""? "" : <div className='text-[#4E4E4E]  text-[15px] font-medium '>{label}</div> }
-        // rules={[{ required: true, message: `Please select ${label}!` }]}
       >
         <Select defaultValue={defaultValue}   options={options}
          style={{height:"45px" }} />

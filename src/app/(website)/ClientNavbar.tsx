@@ -1,6 +1,5 @@
 "use client"
 import { usePathname } from 'next/navigation'; 
-import Navbar from '@/components/shared/Navbar';
 import WithLoginNavbar from '@/components/shared/WithLoginNavbar'; 
 import React, { useState } from 'react';
 
@@ -18,10 +17,10 @@ const ClientNavbar = ({children}:{children:React.ReactNode}) => {
             isDrawerOpen ? "translate-x-64" : ""
           }`}>
             {
-                pathname === "/" ? <Navbar /> : <WithLoginNavbar onDrawerToggle={handleDrawerToggle}/>
+                pathname === "/" ? "" : <WithLoginNavbar onDrawerToggle={handleDrawerToggle}/>
             } 
 
-<div className={` pt-[2px] min-h-screen ${ pathname !== "/" && "pt-[85px]"} ${isDrawerOpen && "mt-0"}`}>
+<div className={`  min-h-screen ${ pathname !== "/" && "pt-[85px]"} ${isDrawerOpen && "mt-0"}`}>
                 {children}
             </div>  
             

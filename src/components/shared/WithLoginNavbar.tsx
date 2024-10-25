@@ -137,7 +137,7 @@ const WithLoginNavbar = ({ onDrawerToggle }: { onDrawerToggle: (isOpen: boolean)
                         ))}
  </div>
 
-                        <div className='w-10 h-10 rounded-full bg-primary text-white flex justify-center items-center font-semibold' onClick={() => { router.push("/search") }}><CiSearch size={22} /></div>
+                        <div className='w-10 h-10 rounded-full bg-primary text-white flex justify-center items-center font-semibold cursor-pointer' onClick={() => { router.push("/search") }}><CiSearch size={22} /></div>
 
                         <Link href="/subscriptions">
                             <button className=' lg:flex hidden lg:px-6 px-3 lg:py-3 py-3 bg-primary  text-white rounded-lg font-normal'>Subscription</button>
@@ -150,11 +150,11 @@ const WithLoginNavbar = ({ onDrawerToggle }: { onDrawerToggle: (isOpen: boolean)
                 </div>
             </div> 
         
-                <Drawer onClose={onClose} open={open} placement='left'  className=''  >
+                <Drawer  closable={false} onClose={onClose} open={open} placement='left'  className=''  >
                 <div className={`${poppins.className}`}>
-                    <div>
-                        <Image src={user?.image} alt='' height={90} width={150} className=' rounded-lg h-[70px] w-auto' />
-                        <p className='text-lg font-medium text-primary py-1'>{user?.name}</p>
+                    <div className='mt-5 mb-8'>
+                        <Image src={user?.image} alt='' height={60} width={120} className=' rounded-lg ' />
+                        <p className='text-lg font-medium text-primary py-1 mt-3'>{user?.name}</p>
                         <p className='text-[#6B6B6B]'>Age : {user?.age}</p>
                         <p className='py-1 text-[#6B6B6B]'>{user?.location}</p>
 

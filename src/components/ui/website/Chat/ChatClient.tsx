@@ -6,6 +6,7 @@ import { IoImageOutline, IoLinkOutline, IoSendSharp } from "react-icons/io5";
 import Image from "next/image";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 
 type TMessageList = {
@@ -45,7 +46,7 @@ const items = [
 const messageList = [
     {
     id: 1,
-    name: "Naziya Sultana", 
+    name: "Mariam Star", 
     address:"New York, USA",
     time: "10:00 AM",
     text: "Hello , How are you ?",
@@ -53,7 +54,7 @@ const messageList = [
   },
   {
     id: 2,
-    name: "Mithila",
+    name: "Courtney Henry",
     time: "10:00 AM", 
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -61,7 +62,7 @@ const messageList = [
   },
   {
     id: 3,
-    name: "Khushi Akter",
+    name: "Ana Rose",
     time: "10:00 AM", 
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -69,7 +70,7 @@ const messageList = [
   },
   {
     id: 4,
-    name: "Naziya Sultana",
+    name: "Mariam Star",
     time: "10:00 AM", 
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -77,7 +78,7 @@ const messageList = [
   },
   {
     id: 5,
-    name: "Naziya Sultana",
+    name: "Courtney Henry",
     time: "10:00 AM",
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -85,7 +86,7 @@ const messageList = [
   },
   {
     id: 6,
-    name: "Naziya Sultana",
+    name: "Ana Rose",
     time: "10:00 AM", 
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -93,7 +94,7 @@ const messageList = [
   },
   {
     id: 7,
-    name: "Naziya Sultana",
+    name: "Mariam Star",
     time: "10:00 AM",
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -101,7 +102,7 @@ const messageList = [
   }, 
   {
     id: 8,
-    name: "Naziya Sultana",
+    name: "Courtney Henry",
     time: "10:00 AM", 
     address:"New York, USA",
     text: "Hello , How are you ?",
@@ -178,40 +179,48 @@ const ChatClient = () => {
     image:"/user.png"
   });
   const [personId, setpersonId] = useState<number|null>(1);
-  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false); 
+  const router = useRouter()
 
   const handleMessage = (value: TMessageList) => {
     setPerson(value);
     setpersonId(value?.id);
-    setIsChatVisible(true);  
+    setIsChatVisible(true);   
+    router.push(`/chat?id=${value.id}`);
   };
   
   const handleBackToList = () => {
-    setIsChatVisible(false); 
+    setIsChatVisible(false);  
+    router.push("/chat");
   };
   
   return (
     <div className="container mt-4 ">
-    <div className="grid grid-cols-12 gap-4 h-[79vh]">
+    <div className="grid grid-cols-12  h-[79vh]  rounded-xl">
       {/* Message List */}
-      <div className={`lg:col-span-4 col-span-12 bg-[#F7F7F7] rounded-xl px-2 py-4 ${isChatVisible ? "hidden lg:block" : ""}`}>
+      <div className={`lg:col-span-4 col-span-12 bg-[#F7F7F7]   ${isChatVisible ? "hidden lg:block" : ""}`}> 
+        <div className="h-[66px] bg-primary rounded-tl-2xl lg:rounded-tr-none rounded-tr-2xl flex items-center justify-center">
+ <p className=" text-white font-medium text-[32px]  text-center">Message</p>
+        </div>
         {/* search  */}
-        <div
-            className="mx-auto"
+        <div 
+            className="mx-auto px-2 my-3"
             style={{
               width: "100%",
               height: "40px",
               borderRadius: "8px",
-              marginBottom: "10px",
+              marginBottom: "20px",
             }}
           >
             <Input
-              placeholder="Search..."
-              prefix={<FiSearch size={14} color="#868FA0" />}
+              placeholder="Search here..."
+              prefix={<FiSearch size={20} color="#868FA0" />}
               style={{
                 width: "100%",
-                height: "100%",
-                fontSize: "14px",
+                height: 45,
+                fontSize: "14px",  
+                background:"#E9E9E9"
+
               }}
               size="middle"
             />
@@ -233,9 +242,9 @@ const ChatClient = () => {
       </div>
   
       {/* Chat Section */}
-      <div className={`lg:col-span-8 col-span-12 bg-[#FCFCFC] rounded-xl p-2 ${isChatVisible ? "block" : "hidden lg:block"}`}>
+      <div className={`lg:col-span-8 col-span-12 bg-[#FCFCFC] ${isChatVisible ? "block" : "hidden lg:block"}`}>
         <div>
-          <div className="flex items-center justify-between gap-2 py-2 px-3 bg-primary rounded-tl-2xl rounded-tr-2xl">
+          <div className="flex items-center justify-between gap-2 h-[66px] px-4 bg-primary  rounded-tr-2xl lg:rounded-tl-none rounded-tl-2xl">
 
             <div className="flex items-center gap-2">  
 
@@ -253,7 +262,7 @@ const ChatClient = () => {
               <p className="text-white"><BsThreeDotsVertical size={22} /></p>
             </Dropdown>
           </div>
-          <div className="bg-[#F7F7F7] w-full h-[calc(73vh+54px)] rounded-lg relative">
+          <div className="bg-[#F7F7F7] w-full h-[calc(73vh+54px)] rounded-lg relative border-x-2 border-gray-100">
             {/* Chat messages */}
             <div className="py-6 lg:px-8 px-3 overflow-y-auto h-[72vh]">
               {messageContent.map((value, index) => (

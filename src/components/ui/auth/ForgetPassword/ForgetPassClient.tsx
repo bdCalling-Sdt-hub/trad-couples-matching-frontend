@@ -42,7 +42,7 @@ const ForgetPassClient = () => {
          ${poppins.className}   ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
             <div className='w-3/4'>
-                <Heading className='text-center pb-4'>Forgot Password ? </Heading>
+                <Heading className='text-center pb-4 font-semibold'>Forgot Password ? </Heading>
                 <p className="text-center text-[18px] pb-14 text-[#6B6B6B]">
                     Please enter your email and password to continue
                 </p>
@@ -57,7 +57,7 @@ const ForgetPassClient = () => {
 
                 </Form>
 
-                <p className='py-4 text-[#6B6B6B] text-center'>Don’t have an account? <Link href="/register" className='text-[#00445B] font-semibold '>Register now</Link></p>
+                <p className='py-8 text-[#6B6B6B] text-center'>Don’t have an account? <Link href="/register" className='text-[#00445B] font-semibold '>Register now</Link></p>
             </div>
 
 

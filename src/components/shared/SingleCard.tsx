@@ -2,22 +2,33 @@
 "use client"
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMessage } from 'react-icons/ai';
-import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
 
 
-const SingleCard = ({value}:any) => { 
+const SingleCard = ({value}:any) => {  
     const router = useRouter() 
+    const [isFavorite , setIsFavorite] = useState(false)  
+    const [userId , setUserId]= useState<number|string>()
+
+    
     const handleDetails =(id:any) =>{
         router.push(`/details/${id}`)
-    } 
+    }  
 
-    const handelWish = (e: React.MouseEvent) => { 
+    const handleFavorite =(e: React.MouseEvent , id:number|string)=>{  
+        e.stopPropagation();
+        e.preventDefault();   
+        setUserId(id)
+        setIsFavorite(!isFavorite)
+    }
+
+    const handelChat = (e: React.MouseEvent) => { 
         e.stopPropagation();
         e.preventDefault();   
         router.push("/chat")
-      }; 
+      };  
 
     return (
         <div  className='font-sans group cursor-pointer' onClick={()=>handleDetails(value?.id)} >
@@ -36,10 +47,17 @@ const SingleCard = ({value}:any) => {
             </div> 
             <div className=' flex gap-1'>  
 
-            <p className='w-9 h-9 rounded-full bg-[#EEEEEE] text-[#FF7C70] flex justify-center items-center'><IoIosHeartEmpty size={22} /></p> 
+            <p className='w-9 h-9 rounded-full bg-[#EEEEEE] text-[#FF7C70] flex justify-center items-center' onClick={(e)=>handleFavorite(e ,value?.id)}>  
+                {
+                    userId === value?.id ?
+                    (
+                    isFavorite ?  <IoIosHeart size={22} /> :<IoIosHeartEmpty size={22} />  ) :  <IoIosHeartEmpty size={22} />
+                }
+                
+                </p> 
 
                
-            <p  onClick={handelWish} className='w-9 h-9 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center'><AiOutlineMessage size={22} /></p> 
+            <p  onClick={handelChat} className='w-9 h-9 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center'><AiOutlineMessage size={22} /></p> 
             
 
             </div>

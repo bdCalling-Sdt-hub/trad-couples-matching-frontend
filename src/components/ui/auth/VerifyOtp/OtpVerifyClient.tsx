@@ -49,7 +49,7 @@ const OtpVerifyClient = () => {
           ${poppins.className}  ${show ? `opacity-100 ${userType === "registerUser" ? "-translate-x-0" : "translate-x-0" }` : `opacity-0   ${userType === "registerUser" ? " translate-x-12" : " -translate-x-12" } `}`}>
 
       <div className='w-3/4'>
-        <Heading className='text-center pb-4'>Verification code</Heading>
+        <Heading className='text-center pb-4 font-semibold'>Verification code</Heading>
         <p className="text-center text-[18px] pb-8 text-[#6B6B6B] " >
           We sent a reset link to {email ? email : ""} <br />  enter 5 digit code that is mentioned in the email    </p>
 
@@ -71,8 +71,8 @@ const OtpVerifyClient = () => {
               length={5}
               size="large"
               style={{
-                width: "100%",
-                height: 55,
+                // width: "100%", 
+                // height: 55, 
                 boxShadow: "none",
                 outline: "none",
                 background: "transparent",
@@ -88,7 +88,7 @@ const OtpVerifyClient = () => {
 
         </Form>
 
-        <p className='py-4 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResend} className='text-[#00445B] font-semibold '>Resend</span></p>
+        <p className='py-8 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResend} className='text-[#00445B] font-semibold '>Resend</span></p>
       </div>
 
 

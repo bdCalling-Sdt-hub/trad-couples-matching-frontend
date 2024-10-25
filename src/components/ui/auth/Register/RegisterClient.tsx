@@ -1,11 +1,10 @@
 "use client"
-import DropdownInput from '@/components/shared/DropdownInput';
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
 import PasswordInput from '@/components/shared/PasswordInput';
 import TextInput from '@/components/shared/TextInput';
 import { SetLocalStorage } from '@/util/LocalStroage';
-import { Checkbox, Form, Input } from 'antd';
+import { Checkbox, Form, Input, Select } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'; 
@@ -58,8 +57,17 @@ const RegisterClient = () => {
  
 
           <Form onFinish={onFinish} layout="vertical"  className=' w-full'>
- <TextInput name='userName' label='Name' placeholder="Your Name" />  
- <DropdownInput name='gender' label='' defaultValue='Male' options={option}  />  
+ <TextInput name='userName' label='Name' placeholder="Your Name" />   
+
+ <Form.Item name='gender' style={{background:"transparent"}} >
+        <Select defaultValue="Male"   options={option}
+          style={{
+            height: '56px',
+            background: 'transparent',
+          }} 
+       />
+   </Form.Item> 
+
  <TextInput name='email' label='Email' placeholder="Enter Your Email" /> 
             <PasswordInput name='password' label="Password" placeholder='Enter Your Password' />  
             
@@ -90,12 +98,12 @@ const RegisterClient = () => {
             className="placeholder:text-[#818181] placeholder:text-[16px] placeholder:font-normal placeholder:leading-6"
             style={{
               width: "100%",
-              height: 45,
+              height: 56,
               boxShadow: "none",
               outline: "none",
               border: "1px solid #BABABA",
               borderRadius: 6,
-              background: "#FEFEFE",
+              background: "transparent",
             }}
           />
         </Form.Item>  

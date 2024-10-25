@@ -26,7 +26,7 @@ const ResetPasswordClient = () => {
         ${poppins.className}    ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
       <div className='w-3/4'>
-        <Heading className='text-center pb-4'>Set a new password</Heading>
+        <Heading className='text-center pb-4 font-semibold'>Set a new password</Heading>
         <p className="text-center text-[18px] pb-14 text-[#6B6B6B]">
           Create a new password. Ensure it  differs from <br />
           previous ones for security
@@ -63,12 +63,12 @@ const ResetPasswordClient = () => {
               className="placeholder:text-[#818181] placeholder:text-[16px] placeholder:font-normal placeholder:leading-6"
               style={{
                 width: "100%",
-                height: 50,
+                height: 56,
                 boxShadow: "none",
                 outline: "none",
-                border: "1px solid #E0E0E0",
+                border: "1px solid #BABABA",
                 borderRadius: 6,
-                background: "#FEFEFE",
+                background: "transparent",
               }}
             />
           </Form.Item>

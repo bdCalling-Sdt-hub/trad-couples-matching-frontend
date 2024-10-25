@@ -47,7 +47,7 @@ const Blogs = () => {
     } 
 
     return (
-        <div className='container '>
+        <div className='container lg:my-12 my-6'>
             <Heading className='mb-3'> Blogs for you</Heading>  
 
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 mb-5">

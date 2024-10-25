@@ -99,9 +99,9 @@ const AboutMe = () => {
     ]
     return (
         <div className='mb-5'>
-           <p className=' bg-[#EEEEEE] p-2 text-[#4E4E4E] rounded-lg text-[16px] mb-4 font-sans text-justify'>fringilla felis, non Morbi placerat nulla, volutpat elementum laoreet Nam Quisque nulla, In at, facilisis porta Morbi non, maximus laoreet elit maximus Donec venenatis id venenatis ex. viverra ultrices Nam elementum volutpat leo. quis Ut sodales. dui lorem. ac at porta placerat consectetur amet, elementum vel In Ut Nullam enim. urna tincidunt non Praesent venenatis ipsum Praesent Ut efficitur. Lorem volutpat Nullam In felis, at lacus viverra vel eu Nullam Sed ex elementum </p>  
+           <p className=' bg-[#EEEEEE] p-5 text-[#4E4E4E] rounded-lg text-[16px] mb-4 font-sans text-justify'>fringilla felis, non Morbi placerat nulla, volutpat elementum laoreet Nam Quisque nulla, In at, facilisis porta Morbi non, maximus laoreet elit maximus Donec venenatis id venenatis ex. viverra ultrices Nam elementum volutpat leo. quis Ut sodales. dui lorem. ac at porta placerat consectetur amet, elementum vel In Ut Nullam enim. urna tincidunt non Praesent venenatis ipsum Praesent Ut efficitur. Lorem volutpat Nullam In felis, at lacus viverra vel eu Nullam Sed ex elementum </p>  
 
-           <div className=' grid lg:grid-cols-2 grid-cols-1 justify-items-center items-center bg-[#EEEEEE] py-4 rounded-lg lg:px-0 px-3'>
+           <div className=' grid lg:grid-cols-2 grid-cols-1  items-center bg-[#EEEEEE] py-4 rounded-lg lg:px-5 px-3'>
 {
     data?.map((value, index:number)=><div key={index} className='flex lg:w-2/3 w-full items-center   mb-4'> 
   <div className='flex items-center gap-2 lg:w-1/2 w-full text-start'>

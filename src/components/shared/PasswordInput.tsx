@@ -1,6 +1,7 @@
 "use client"
-import { Form, Input } from 'antd';
-import React, { useEffect } from 'react';
+import { ConfigProvider, Form, Input } from 'antd';
+import React, { useEffect } from 'react'; 
+
 
 interface propsType {
  name:string ,  
@@ -14,24 +15,37 @@ const PasswordInput = ({name , label , placeholder}:propsType) => {
     useEffect(()=>{ 
         form.setFieldsValue({name:"default"})
     },[form])
-    return (
+    return ( 
+        <ConfigProvider
+            theme={{
+                token: {
+                    fontFamily: 'Poppins, sans-serif',
+                    colorTextPlaceholder: "#6B6B6B"
+                }
+            }}
+        > 
+        
         <Form.Item name={name}  
         rules={[{ required: true, message: `Please input your ${label}!` }]}> 
-
+ 
         <Input.Password   
         placeholder={placeholder}
         style={{
             border: "1px solid #BABABA",
-            height: "45px",
-            background: "",
+            height: "56px",
+            background:"transparent"  ,
             borderRadius: "8px",
             outline: "none",
             width: "100%",
             padding: "8px",
-            marginBottom:"10px"
-        }}/>
+            marginBottom:"10px"  ,
+
+        }}
+        className={` placeholder:font-semibold`}
+        />
             
         </Form.Item>
+        </ConfigProvider>
     );
 };
 

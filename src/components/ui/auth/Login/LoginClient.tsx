@@ -32,7 +32,7 @@ const LoginClient = () => {
     <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-500 ease-in-out  pt-[85px] flex  items-center justify-center ${poppins.className}  ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
       <div className='w-3/4'>
-        <Heading className={`text-center pb-4 ${poppins.className}`}>Log in to your account </Heading>
+        <Heading className={`text-center pb-4 ${poppins.className} font-semibold`}>Log in to your account </Heading>
         <p className="text-center text-[18px] pb-14 text-[#6B6B6B]">
           Please enter your email and password to continue
         </p>
@@ -77,7 +77,7 @@ const LoginClient = () => {
 
         </Form>
 
-        <div className='py-4 text-[#6B6B6B] text-center'>Don’t have an account? <Link href="/register" className='text-[#00445B] font-semibold '>Register now</Link></div>
+        <div className='py-8 text-[#6B6B6B] text-center'>Don’t have an account? <Link href="/register" className='text-[#00445B] font-semibold '>Register now</Link></div>
       </div>
 
 

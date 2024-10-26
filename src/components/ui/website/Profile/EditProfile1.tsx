@@ -2,7 +2,7 @@
 import OutLineBtn from '@/components/shared/OutLineBtn';
 import ProfileEditDropdown from '@/components/shared/ProfileEditDropdown';
 import SmallButton from '@/components/shared/SmallButton';
-import { DatePicker, Form, Input } from 'antd';
+import { ConfigProvider, DatePicker, Form, Input } from 'antd';
 import Link from 'next/link';
 import React from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
@@ -193,33 +193,44 @@ const EditProfile1 = () => {
     ]
     return (
         <div className=''>
-          
-                <div className='flex items-center container gap-2 '>
-                <Link href="/profile" className=' lg:-ms-10 bg-gray-200 rounded-full px-[6px] py-[6px]'> 
-                <span><BsArrowLeft size={21} className='text-[#007BA5]' /></span> 
-              
-                 </Link> 
+
+            <div className='flex items-center container gap-2 '>
+                <Link href="/profile" className=' lg:-ms-10 bg-gray-200 rounded-full px-[6px] py-[6px]'>
+                    <span><BsArrowLeft size={21} className='text-[#007BA5]' /></span>
+
+                </Link>
 
                 <h1 className='lg:text-2xl text-xl font-medium text-[#007BA5] my-7'> Edit Your Profile  <span>1/2</span></h1>
 
-                </div> 
+            </div>
 
-                <div className='container'>  
+            <div className='container'>
                 <Form layout='vertical'>
                     <div className=' grid lg:grid-cols-2 grid-cols-1 gap-x-16 '>
                         <ProfileEditDropdown name='gender' label="Gender" defaultValue="Female" options={gender} icon={<IoPersonSharp />} />
                         <ProfileEditDropdown name='religion' label="Religion" defaultValue="Christian" options={religion} icon={<MdOutlineTempleHindu />} />
 
                         {/* date of birth  */}
-                        <Form.Item
-                            name="dob"
-                            label={<div className='flex items-center gap-2 text-start'>
-                                <div className=' flex justify-center items-center bg-primary h-7 w-7 rounded-full  '> <p className='text-white text-lg'><FaRegCalendarAlt /></p></div>
-                                <p className='text-[#4E4E4E]  text-[15px] font-medium '>Date of Birth</p>
-                            </div>}
+                        <ConfigProvider
+                            theme={{
+                                components: {
+                                    DatePicker: {
+                                        activeBorderColor: "#BABABA",
+                                        hoverBorderColor: "#BABABA"
+                                    },
+                                },
+                            }}
                         >
-                            <DatePicker style={{ height: "45px", width: "100%" }} />
-                        </Form.Item>
+                            <Form.Item
+                                name="dob"
+                                label={<div className='flex items-center gap-2 text-start'>
+                                    <div className=' flex justify-center items-center bg-primary h-7 w-7 rounded-full  '> <p className='text-white text-lg'><FaRegCalendarAlt /></p></div>
+                                    <p className='text-[#4E4E4E]  text-[15px] font-medium '>Date of Birth</p>
+                                </div>}
+                            >
+                                <DatePicker style={{ height: "45px", width: "100%" }} />
+                            </Form.Item>
+                        </ConfigProvider>
 
                         <ProfileEditDropdown name='martialStatus' label="Marital Status" defaultValue="Single" options={MaritalStatus} icon={<GoHeartFill />} />
 
@@ -273,11 +284,11 @@ const EditProfile1 = () => {
                     </Form.Item>
 
                     <div className='flex items-center gap-3 mb-5' >
-                        <SmallButton className=''>Save & Changes</SmallButton>  
+                        <SmallButton className=''>Save & Changes</SmallButton>
 
-                        <Link href="edit-profile-2">  
-                        <OutLineBtn className='flex items-center gap-[2px]'> <span> Next </span> <span> <BsArrowRight size={22} /></span></OutLineBtn>
-                        </Link> 
+                        <Link href="edit-profile-2">
+                            <OutLineBtn className='flex items-center gap-[2px]'> <span> Next </span> <span> <BsArrowRight size={22} /></span></OutLineBtn>
+                        </Link>
 
                     </div>
                 </Form>

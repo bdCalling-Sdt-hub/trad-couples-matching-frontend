@@ -38,12 +38,12 @@ const ForgetPassClient = () => {
     }
 
     return (
-        <div className={`lg:w-[40%] w-[100%] bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-300 ease-in-out  pt-[85px] flex  items-center justify-center
+        <div className={`lg:w-[40%] w-[100%] bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-300 ease-in-out   flex  items-center justify-center
          ${poppins.className}   ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
-            <div className='w-3/4'>
-                <Heading className='text-center pb-4 font-semibold'>Forgot Password ? </Heading>
-                <p className="text-center text-[18px] pb-14 text-[#6B6B6B]">
+            <div className='lg:w-3/4 w-full lg:px-0 px-5'>
+                <Heading className='text-center lg:pb-4 pb-2 font-semibold'>Forgot Password ? </Heading>
+                <p className="text-center lg:text-[18px] text-[14px] lg:pb-14 pb-10 text-[#6B6B6B]">
                     Please enter your email and password to continue
                 </p>
 

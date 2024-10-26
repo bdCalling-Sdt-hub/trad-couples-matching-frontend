@@ -82,19 +82,19 @@ const PersonDetails = () => {
             <div className=' flex gap-x-4 pt-3'>
               <div
                 onClick={handleMessage}
-                className={`flex items-center justify-center gap-1  font-medium h-[45px] w-[120px] rounded-lg ${isMessage ? "bg-[#EBEBEB] text-[#999999]" : "bg-[#007BA5] text-white"} `}
+                className={`flex items-center justify-center gap-1  font-medium h-[45px] w-[120px] rounded-lg cursor-pointer ${isMessage ? "bg-[#EBEBEB] text-[#999999]" : "bg-[#007BA5] text-white"} `}
               >
                 <FiSend size={21} />
                 <p>Message</p>
               </div>
 
-              <p className=' w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-red-500 rounded-full '><LuHeart size={20} /></p>
-              <p className=' w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-primary rounded-full '><IoMdKey size={20} /></p>
+              <p className=' w-10 h-10 bg-[#EBEBEB] cursor-pointer flex justify-center items-center text-red-500 rounded-full '><LuHeart size={20} /></p>
+              <p className=' w-10 h-10 bg-[#EBEBEB] cursor-pointer flex justify-center items-center text-primary rounded-full '><IoMdKey size={20} /></p>
 
               <Dropdown
     menu={{items}} className=''
   > 
-              <p className='w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-[#4E4E4E] rounded-full font-semibold '><HiOutlineDotsHorizontal size={22} /></p>
+              <p className='w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-[#4E4E4E] rounded-full font-semibold cursor-pointer'><HiOutlineDotsHorizontal size={22} /></p>
    </Dropdown>
             </div>
           </div>

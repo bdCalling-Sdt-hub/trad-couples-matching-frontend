@@ -1,65 +1,70 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 
-import welcome from "@/assets/welcome.svg"
+// import welcome from "@/assets/welcome.svg" 
 // import img1 from "@/assets/home1.png"
 // import img2 from "@/assets/home2.png"
 import img3 from "@/assets/home3.png"
-import img4 from "@/assets/home4.png"
-import img5 from "@/assets/home5.svg"
+import img4 from "@/assets/home4.jpg"
+// import img5 from "@/assets/home5.svg" 
 import Image from 'next/image';
-import Heading from '@/components/shared/Heading'; 
-
+import Heading from '@/components/shared/Heading';
+import { Inter } from 'next/font/google'
+const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 
 const Cards = () => {
     return (
-        <div className='container py-12'>
+        <div className={`${inter.className}`}>
 
             {/* 1st section   */}
+ <div className='bg-gray-100' >
 
-            <div className=' grid grid-cols-12  items-center'>
+            <div className=' container grid grid-cols-12  items-center gap-4 pt-24  '>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0 '>
-                    <Heading className='py-5 font-sans font-bold' > Welcome to Trad Couples </Heading>
+                    <Heading className='py-5 font-bold text-[22px]' > Welcome to Trad Couples </Heading>
 
-                    <p className=' text-[#6B6B6B] font-[400] text-[16px] leading-[24px]  font-sans'>Trad Couples is the premier matchmaking platform for singles who embrace the timeless beauty of traditional family roles. In a world where values often shift, we offer a space where you can find like-minded individuals who appreciate respect, commitment, and the art of building lasting relationships. Whether you seek a partner who shares your vision of a traditional home or want to connect with someone who honors the roles that create harmony in family life, Trad Couples is where your journey to genuine connection begins.</p>
+                    <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]  '>Trad Couples is the premier matchmaking platform for singles who embrace the timeless beauty of traditional family roles. In a world where values often shift, we offer a space where you can find like-minded individuals who appreciate respect, commitment, and the art of building lasting relationships. Whether you seek a partner who shares your vision of a traditional home or want to connect with someone who honors the roles that create harmony in family life, Trad Couples is where your journey to genuine connection begins.</p>
                 </div>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center'>
-                    <Image src={welcome} alt='' height={440} width={380} style={{ objectFit: "fill", height: "auto", width: "auto" }} quality={100} />
+                    <img src="/welcome.svg" alt='' height={500} width={500} style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }} className='rounded-t-4xl ' />
                 </div>
 
 
             </div>
+ </div>
 
+ <div className='container '>
 
             {/* 2nd  section   */}
-            <div className=' grid grid-cols-12 flex-col-reverse items-center pt-8 w-full'>
+            <div className=' grid grid-cols-12 flex-col-reverse items-center py-32 w-full gap-4'>
 
                 <div className='lg:col-span-6 col-span-12 lg:-order-1 order-1 justify-self-center'>
-                    <Image src={img3} alt='' height={250} width={480} style={{ width: "100%" }} />
+                    <Image src={img3} alt='' height={500} width={550} />
                 </div>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0'>
-                    <Heading className='py-5 font-sans font-bold'>Where Tradition Meets Connection
+                    <Heading className='py-5 font-bold text-[22px]'>Where Tradition Meets Connection
                     </Heading>
-                    <p className=' text-[#6B6B6B] font-[400] text-[16px] leading-[24px]  font-sans'>Our community is dedicated to those who believe in the value of complementary roles within relationships—where men take pride in providing, and women excel in nurturing the home. We cater to singles who wish to create a solid foundation for their future, grounded in shared values and mutual respect. At Trad Couples, you&apos;ll meet others who understand the strength found in traditional dynamics, and who are ready to build a meaningful, lasting partnership.</p>
+                    <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] '>Our community is dedicated to those who believe in the value of complementary roles within relationships—where men take pride in providing, and women excel in nurturing the home. We cater to singles who wish to create a solid foundation for their future, grounded in shared values and mutual respect. At Trad Couples, you&apos;ll meet others who understand the strength found in traditional dynamics, and who are ready to build a meaningful, lasting partnership.</p>
                 </div>
             </div>
 
 
 
             {/* 3rd section   */}
-            <div className=' grid grid-cols-12  items-center pt-8'>
+            <div className=' grid grid-cols-12  items-center pt-8 gap-4 '>
 
-                <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  '>
-                    <Heading className=' py-5 font-sans font-bold '>Your Safety, Our Priority
+                <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0 '>
+                    <Heading className=' text-[22px] py-5 font-bold '>Your Safety, Our Priority
                     </Heading>
-                    <p className=' text-[#6B6B6B] font-[400] text-[16px] leading-[24px]   font-sans'>We understand the importance of a safe and respectful environment when seeking a serious relationship. Trad Couples takes your privacy and security seriously, with stringent verification measures to ensure a trustworthy community. Our commitment is to protect your experience so that you can focus on what truly matters—finding someone who shares your values and dreams.</p>
+                    <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]  '>We understand the importance of a safe and respectful environment when seeking a serious relationship. Trad Couples takes your privacy and security seriously, with stringent verification measures to ensure a trustworthy community. Our commitment is to protect your experience so that you can focus on what truly matters—finding someone who shares your values and dreams.</p>
                 </div>
 
                 <div className='lg:col-span-6 col-span-12  justify-self-center'>
-                    <Image src={img4} alt='' height={250} width={480} style={{ width: "100%" }} />
+                    <Image src={img4} alt='' height={500} width={550} />
 
 
                 </div>
@@ -68,18 +73,19 @@ const Cards = () => {
             </div>
 
             {/* 4th section   */}
-            <div className=' grid grid-cols-12 items-center pt-8'>
+            <div className=' grid grid-cols-12 items-center py-32 gap-4'>
 
                 <div className='lg:col-span-6 col-span-12  lg:-order-1 order-1 justify-self-center'>
-                    <Image src={img5} alt='' height={250} width={480} style={{ width: "100%" }} quality={100} />
+                    <img src="/home5.svg" alt='' height={500} width={550} />
                 </div>
 
                 <div className='lg:col-span-6 col-span-12  justify-self-center  lg:w-[75%] w-[100%]  lg:mb-0 mb-3  '>
-                    <Heading className='py-5 font-sans font-bold'>Find Your Perfect Match
+                    <Heading className=' text-[22px] py-5 font-bold'>Find Your Perfect Match
                     </Heading>
-                    <p className=' text-[#6B6B6B] font-[400] text-[16px] leading-[24px] font-sans'>Discover the joy of meeting a partner who cherishes tradition as much as you do. At Trad Couples, we celebrate relationships that honor time-tested roles, creating a strong family and a brighter future together. Start your journey today and connect with singles who value the qualities that make love and family life truly fulfilling.</p>
+                    <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]'>Discover the joy of meeting a partner who cherishes tradition as much as you do. At Trad Couples, we celebrate relationships that honor time-tested roles, creating a strong family and a brighter future together. Start your journey today and connect with singles who value the qualities that make love and family life truly fulfilling.</p>
                 </div>
             </div>
+ </div>
         </div>
     );
 };

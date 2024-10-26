@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'; 
 import img1 from "@/assets/home3.png"
-import img2 from "@/assets/home4.png"
+import img2 from "@/assets/home2.png"
 import Heading from '@/components/shared/Heading';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';

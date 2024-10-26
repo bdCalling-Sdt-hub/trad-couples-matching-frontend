@@ -7,7 +7,9 @@ import { Collapse, theme } from 'antd';
 import { FaCircleChevronDown } from 'react-icons/fa6';
 
 import Link from 'next/link';
-import SmallButton from '@/components/shared/SmallButton';
+import SmallButton from '@/components/shared/SmallButton'; 
+import { Inter } from 'next/font/google'
+const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 const text = `
   A dog is a type of domesticated animal.
@@ -67,13 +69,13 @@ const FAQSection = () => {
     }; 
 
     return ( 
-        <div className=' bg-[#0E0E0E] font-sans'>
+        <div className={` bg-[#0E0E0E] font-sans  ${inter.className}`}>
 
         <div className='container py-[40px] pt-14 '> 
              
-             <div className='text-center pb-4 '>
-                <h1 className='text-white font-[400] text-[32px] leading-[40px] font-sans '>Popular Frequently Asked Questions</h1> 
-                <p className=' text-[#E6E6E6] py-3 mb-3'>we provide a secure and fastest ranting system Our mission is to make. Do you have a question regarding our service?</p>
+             <div className='lg:text-center pb-4 '>
+                <h1 className='text-white font-[400] lg:text-[32px] text-[20px] lg:leading-[40px]  font-sans text-center '>Popular Frequently Asked Questions</h1> 
+                <p className=' text-[#E6E6E6] py-3 mb-3 text-[12px]lg:text-[18px]'>we provide a secure and fastest ranting system Our mission is to make. Do you have a question regarding our service?</p>
              </div> 
 
              <div className=' w-full  flex justify-center items-center'>  

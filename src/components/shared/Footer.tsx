@@ -65,7 +65,7 @@ const Footer = () => {
 
 
                     <div className='lg:col-span-10 col-span-12 w-full  '>
-                        <div className='flex lg:flex flex-wrap   font-semibold  lg:gap-[16px] gap-3 '>
+                        <div className='flex lg:flex flex-wrap  lg:gap-[16px] gap-3 '>
                             {
                                 item.map((menu, index) => {
                                     return (
@@ -84,15 +84,15 @@ const Footer = () => {
                     </div>
 
                     <div className='lg:col-span-1 col-span-12 lg:justify-self-end justify-items-center  '>
-                        <div className='flex items-center gap-6 lg:justify-start justify-center  py-3 lg:py-0   '>
+                        <div className='flex items-center gap-6 lg:justify-start justify-center  py-3 lg:py-0   '> 
              
-                            <Image src={facebook} alt="" height={24} width={24} style={{height:"auto" , width:"auto"}} /> 
+                            <Image src={facebook} alt="" height={28} width={28} /> 
 
-                            <Image src={instagram} alt="" height={24} width={24} style={{height:"auto" , width:"auto"}} /> 
+                            <Image src={instagram} alt="" height={28} width={28} style={{height:"auto" , width:"auto"}} /> 
 
-                            <Image src={youtube} alt="" height={24} width={24} style={{height:"auto" , width:"auto"}} /> 
+                            <Image src={youtube} alt="" height={28} width={28} style={{height:"auto" , width:"auto"}} /> 
 
-                            <Image src={twitter} alt="" height={24} width={24} style={{height:"auto" , width:"auto"}} /> 
+                            <Image src={twitter} alt="" height={28} width={28} style={{height:"auto" , width:"auto"}} /> 
                         </div>
                     </div>
 

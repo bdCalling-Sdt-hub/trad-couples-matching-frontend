@@ -1,26 +1,43 @@
 "use client"
-import { Form, Select } from 'antd';
+import { ConfigProvider, Form, Select } from 'antd';
 import React, { useEffect } from 'react';
- 
+
 interface propsType {
-    name: string 
-    placeholder: string 
-    options: Array<{ value: string | number; label: string | number;}>;
+  name: string
+  placeholder: string
+  options: Array<{ value: string | number; label: string | number; }>;
 }
 
-const QuestionDropdown = ({name ,placeholder ,  options}:propsType) => {
-    const form = Form.useFormInstance() 
+const QuestionDropdown = ({ name, placeholder, options }: propsType) => {
+  const form = Form.useFormInstance()
 
-    useEffect(()=>{ 
-        form.setFieldsValue({name:"default"})
-    },[form])  
+  useEffect(() => {
+    form.setFieldsValue({ name: "default" })
+  }, [form])
 
-    return <Form.Item
-    name={name}  className=' lg:w-1/3 w-full '
-  >
-    <Select placeholder={placeholder}   options={options} style={{height:45}}/>
-      
-  </Form.Item>
+  return (
+
+    <ConfigProvider
+      theme={{
+        components: {
+          Select: {
+            activeBorderColor: "#BABABA",
+            hoverBorderColor: "#BABABA"
+          },
+        },
+      }}
+    >
+
+      <Form.Item
+        name={name} className=' lg:w-1/3 w-full '
+      >
+        <Select placeholder={placeholder} options={options} style={{ height: 45 }} />
+
+      </Form.Item>
+
+    </ConfigProvider>
+
+  )
 };
 
 export default QuestionDropdown;

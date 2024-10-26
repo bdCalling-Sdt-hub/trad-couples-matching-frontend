@@ -1,6 +1,6 @@
 
 "use client"
-import { Form, Select } from 'antd';
+import { ConfigProvider, Form, Select } from 'antd';
 import React, { useEffect } from 'react';
  
 interface propsType {
@@ -16,7 +16,17 @@ const DropdownInput = ({name , label , defaultValue , options}:propsType) => {
         form.setFieldsValue({name:"default"})
     },[form]) 
 
-    return (
+    return ( 
+        <ConfigProvider
+  theme={{
+    components: {
+      Select: {
+        activeBorderColor:"#BABABA" , 
+        hoverBorderColor:"#BABABA"
+      },
+    },
+  }}
+>
 <Form.Item
         name={name} 
         label={ label === ""? "" : <div className='text-[#4E4E4E]  text-[15px] font-medium '>{label}</div> }
@@ -25,6 +35,7 @@ const DropdownInput = ({name , label , defaultValue , options}:propsType) => {
          style={{height:"45px" }} />
           
       </Form.Item>
+</ConfigProvider>
     );
 };
 

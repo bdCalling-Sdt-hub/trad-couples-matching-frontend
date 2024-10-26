@@ -11,7 +11,7 @@ const Support = () => {
             <Heading className=" mb-3"> Support </Heading>
       
             <div
-                className=" text-[16px] text-black pb-2  tracking-wide text-justify "
+                className=" text-[16px] text-black pb-2  tracking-wide  "
                 dangerouslySetInnerHTML={{ __html: data }}  
             
               />

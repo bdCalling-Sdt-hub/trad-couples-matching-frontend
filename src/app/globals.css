@@ -64,7 +64,7 @@ body {
 
 
 .ant-input-outlined { 
-  background: transparent !important;
+  /* background: transparent !important;  */
   border-width: 1.5px !important;
   border-style: solid;
   border-color: #BABABA !important;

@@ -29,11 +29,11 @@ const LoginClient = () => {
     router.push("/discover")
   }
   return (
-    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-500 ease-in-out  pt-[85px] flex  items-center justify-center ${poppins.className}  ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
+    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-500 ease-in-out  flex  items-center justify-center ${poppins.className}  ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
-      <div className='w-3/4'>
-        <Heading className={`text-center pb-4 ${poppins.className} font-semibold`}>Log in to your account </Heading>
-        <p className="text-center text-[18px] pb-14 text-[#6B6B6B]">
+      <div className='lg:w-3/4 w-full lg:px-0 px-5'>
+        <Heading className={`text-center lg:pb-4 pb-2 ${poppins.className} font-semibold`}>Log in to your account </Heading>
+        <p className="text-center lg:text-[18px] text-[14px] lg:pb-14 pb-10 text-[#6B6B6B]">
           Please enter your email and password to continue
         </p>
 
@@ -44,33 +44,22 @@ const LoginClient = () => {
 
           <PasswordInput name='password' label="Password" placeholder='Enter Your Password' />
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Checkbox ><span style={{
-              color: "#6A6D7C",
-              fontWeight: 400,
-              fontSize: "18px",
-              marginBottom: "10px",
-            }}> Remember Password </span></Checkbox>
+          <div className=' flex items-center justify-between mb-[10px]' > 
+
+            <div>
+
+            <Checkbox ><span className='text-[#6A6D7C] font-[400] lg:text-[18px] text-[16px] ' > Remember Password </span></Checkbox>
+            </div>
 
             <Link
-              className=""
-              style={{
-                color: "#54A7C3",
-                fontWeight: 600,
-                fontSize: "18px",
-                marginBottom: "10px",
-              }}
+          className='text-primary font-[500] lg:text-[18px] text-[16px] '
               href="/forgetPassword"
             >
               Forgot password?
             </Link>
+
           </div>
+
           <LargeButton className="">
             Sign In
           </LargeButton>

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local"; 
 import "./globals.css";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { AntdRegistry } from "@ant-design/nextjs-registry"; 
+import { Montserrat } from 'next/font/google'
+
+
+const montserrat = Montserrat({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -27,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body 
-      className="" suppressHydrationWarning={true}
+      className={`${montserrat.className}`} suppressHydrationWarning={true}
       > 
        <AntdRegistry> 
         {children}

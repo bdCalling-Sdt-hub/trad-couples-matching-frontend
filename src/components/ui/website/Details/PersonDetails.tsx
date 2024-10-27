@@ -56,7 +56,7 @@ const PersonDetails = () => {
     setIsMessage(!isMessage)
   }
   return (
-    <div className='font-sans' >
+    <div className='' >
 
       <div className='relative'>
         {/* cover photo  */}

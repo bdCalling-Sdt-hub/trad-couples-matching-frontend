@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation'; 
 import WithLoginNavbar from '@/components/shared/WithLoginNavbar'; 
 import React, { useState } from 'react';
+import Footer from '@/components/shared/Footer';
 
 const ClientNavbar = ({children}:{children:React.ReactNode}) => { 
     const pathname = usePathname()   
@@ -22,7 +23,11 @@ const ClientNavbar = ({children}:{children:React.ReactNode}) => {
 
 <div className={`  min-h-screen ${ pathname !== "/" && "pt-[85px]"} ${isDrawerOpen && "mt-0"}`}>
                 {children}
-            </div>  
+            </div>   
+
+            {
+                pathname === "/" ? <Footer /> : ""
+            } 
             
         </div>
     );

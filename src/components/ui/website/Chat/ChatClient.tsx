@@ -196,7 +196,7 @@ const ChatClient = () => {
 
   const [person, setPerson] = useState<TMessageList | null>({
     id: 1,
-    name: "Naziya Sultana",
+    name: "Mariam Star",
     address: "New York, USA",
     time: "10:00 AM",
     text: "Hello , How are you ?",
@@ -224,7 +224,7 @@ const ChatClient = () => {
         {/* Message List */}
         <div className={`lg:col-span-4 col-span-12 bg-[#F7F7F7]    ${isChatVisible ? "hidden lg:block" : ""}`}>
           <div className="h-[66px] bg-primary rounded-tl-2xl lg:rounded-tr-none rounded-tr-2xl flex items-center justify-center">
-            <p className=" text-white font-medium text-[32px]  text-center">Message</p>
+            {/* <p className=" text-white font-medium text-[32px]  text-center">Message</p> */}
           </div>
 
 
@@ -308,17 +308,17 @@ const ChatClient = () => {
                 ))}
               </div>
 
-
+ {/* footer  */}
               <div className="absolute bottom-1 w-full py-1">
                 <div className="flex items-center justify-between gap-3 w-full px-3">
-                  <textarea className="w-[90%] h-[45px] resize-none py-2 rounded-l-full px-4 rounded-r-full shadow-md" placeholder="Type your message" />
+                  <textarea className="flex-1 h-[50px] resize-none py-2 rounded-l-full px-4 rounded-r-full shadow-md" placeholder="Type your message" />
                   <div className="flex items-center gap-4 cursor-pointer">
                   
                     <IoImageOutline size={22} />
-                  </div>
                   <button className="h-[40px] w-[40px] bg-primary text-white rounded-full flex justify-center items-center">
                     <IoSendSharp size={22} />
                   </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -4,11 +4,11 @@ import React from 'react';
 
 import type { CollapseProps } from 'antd';
 import { Collapse, theme } from 'antd';
-import { FaCircleChevronDown } from 'react-icons/fa6';
 
 import Link from 'next/link';
 import SmallButton from '@/components/shared/SmallButton'; 
 import { Inter } from 'next/font/google'
+import { Plus } from 'lucide-react';
 const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 const text = `
@@ -42,18 +42,7 @@ const getItems: (panelStyle: CSSProperties) => CollapseProps['items'] = (panelSt
     children: <p style={{ color: '#A0A0A0', fontSize: '16px' }}>{text}</p>,
     style: panelStyle,
   },
-  {
-    key: '5',
-    label: <p style={{ color: '#A0A0A0', fontSize: '19px' }}> This is panel header 5 </p> ,
-    children: <p style={{ color: '#A0A0A0', fontSize: '16px' }}>{text}</p>,
-    style: panelStyle,
-  },
-  {
-    key: '6',
-    label: <p style={{ color: '#A0A0A0', fontSize: '19px' }}> This is panel header 6 </p>,
-    children: <p style={{ color: '#A0A0A0', fontSize: '16px' }}>{text}</p>,
-    style: panelStyle,
-  },
+
 ]; 
 
 const FAQSection = () => {  
@@ -83,13 +72,13 @@ const FAQSection = () => {
 
              <Collapse
       bordered={false}
-      expandIcon={({ isActive }) => <FaCircleChevronDown  size={22} style={{ 
+      expandIcon={({ isActive }) => <Plus  size={22} style={{ 
         transform: `rotate(${isActive ? 0 : 270}deg)`,
         transition: 'transform 0.3s ease', 
-        color: '#00809E' 
+        color: 'white' 
       }}  />} 
      expandIconPosition="end"
-      style={{ background: "#0E0E0E"  , color: '#A0A0A0'}}
+      style={{ background: "#fffff"  , color: '#fffff'}}  
       items={getItems(panelStyle)}
     />
               </div>

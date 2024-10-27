@@ -81,4 +81,7 @@ body {
 
 .image-caption{
   display: none !important;
+} 
+ant-drawer-close:hover{
+ background: transparent;
 }

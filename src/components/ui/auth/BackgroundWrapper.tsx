@@ -14,14 +14,14 @@ const BackgroundWrapper = ({ children }: BackgroundWrapperProps) => {
     const userInfo = GetLocalStorage("userInfo");
     const userType = userInfo?.userType; 
 
-    let backgroundImage = "/Banner.svg";
+    let backgroundImage = "/Banner.jpg";
     if (pathname === "/register" || userType === "registerUser") {
-        backgroundImage = "/RegisterBanner.svg";
+        backgroundImage = "/Banner.jpg";
     }
 
     return (
         <div
-            className="lg:h-[90vh+20px]  w-full"
+            className="lg:h-[100vh]  w-full"
             style={{
                 backgroundImage: `url('${backgroundImage}')`,
                 backgroundPosition: "center",

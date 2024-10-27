@@ -22,7 +22,7 @@ const ResetPasswordClient = () => {
   }
 
   return (
-    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-300 ease-in-out  flex  items-center justify-center
+    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh)] transition-all duration-1000 delay-300 ease-in-out  flex  items-center justify-center
         ${poppins.className}    ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
       <div className='lg:w-3/4 w-full px-5 lg:px-0'>

@@ -45,7 +45,7 @@ const OtpVerifyClient = () => {
   return ( 
     <div className={`flex ${userType === "registerUser" ? " justify-end " : " justify-start"}`}>
 
-    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh-85px)] transition-all duration-1000 delay-300 ease-in-out  flex  items-center justify-center
+    <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh)] transition-all duration-1000 delay-300 ease-in-out  flex  items-center justify-center
           ${poppins.className}  ${show ? `opacity-100 ${userType === "registerUser" ? "-translate-x-0" : "translate-x-0" }` : `opacity-0   ${userType === "registerUser" ? " translate-x-12" : " -translate-x-12" } `}`}>
 
       <div className='lg:w-3/4 w-full lg:px-0 px-5'>

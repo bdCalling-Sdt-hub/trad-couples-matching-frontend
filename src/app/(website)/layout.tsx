@@ -1,4 +1,4 @@
-import Footer from '@/components/shared/Footer';
+
 import React from 'react';
 import ClientNavbar from './ClientNavbar';
 const layout = ({children}: {children: React.ReactNode}) => { 
@@ -9,7 +9,7 @@ const layout = ({children}: {children: React.ReactNode}) => {
          <ClientNavbar >
                 {children}
          </ClientNavbar>
-            <Footer/>
+          
         </div>
     );
 };

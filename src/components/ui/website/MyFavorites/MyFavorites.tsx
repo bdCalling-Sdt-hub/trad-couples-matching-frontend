@@ -102,7 +102,7 @@ const MyFavorites = () => {
         <div className='container  pb-7 font-sans'>
         <Heading className=' pb-2 pt-2'>My Favorites</Heading> 
         <p className='border-b-2 border-[#D1D1D1]  mb-5'></p>
-       <div className=' grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-5'>
+       <div className=' grid lg:grid-cols-4 grid-cols-1 lg:gap-10 gap-5'>
          {
              profiles?.map((value , index:number)=> <SingleCard key={index} value={value} />
              )

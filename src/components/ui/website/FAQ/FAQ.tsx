@@ -3,9 +3,10 @@ import type { CSSProperties } from 'react';
 import React from 'react';
 
 import type { CollapseProps } from 'antd';
-import { Collapse, Pagination, theme } from 'antd';
-import { FaCircleChevronDown } from 'react-icons/fa6';
+import { Collapse, theme } from 'antd';
+
 import Heading from '@/components/shared/Heading';
+import { Plus } from 'lucide-react';
 
 const text = `
   A dog is a type of domesticated animal.
@@ -87,7 +88,7 @@ const FAQ = () => {
              <Collapse
       bordered={false}
       defaultActiveKey={['1']}
-      expandIcon={({ isActive }) => <FaCircleChevronDown  size={22} style={{ 
+      expandIcon={({ isActive }) => <Plus  size={22} style={{ 
         transform: `rotate(${isActive ? 0 : 270}deg)`,
         transition: 'transform 0.3s ease', 
         color: '#00809E' 
@@ -98,7 +99,7 @@ const FAQ = () => {
     /> 
 
              </div>   
-<Pagination align="end" defaultCurrent={1} total={30} />
+
              </div>  
         </div>
     );

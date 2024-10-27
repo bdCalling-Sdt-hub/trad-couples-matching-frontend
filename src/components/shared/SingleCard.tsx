@@ -44,7 +44,7 @@ const SingleCard = ({value}:any) => {
  
 
 
-        <div className=' flex lg:flex flex-wrap justify-between items-center gap-3'>  
+        <div className=' flex lg:flex  justify-between items-center gap-3 whitespace-nowrap'>  
  <div>
  <p className={`text-black py-2 pb-2 font-medium  lg:text-xl  text-lg ${montserrat.className} `}>{value?.name}</p>     
 
@@ -56,7 +56,7 @@ const SingleCard = ({value}:any) => {
 
 
             <div className=' flex gap-1'>  
-            <p className='w-12 h-12 rounded-full bg-[#EEEEEE] text-[#FF7C70] flex justify-center items-center hover:border hover:border-[#FF7C70] ' onClick={(e)=>handleFavorite(e ,value?.id)}>  
+            <p className='w-11 h-11 rounded-full bg-[#EEEEEE] text-[#FF7C70] flex justify-center items-center hover:border hover:border-[#FF7C70] ' onClick={(e)=>handleFavorite(e ,value?.id)}>  
                 {
                     userId === value?.id ?
                     (
@@ -66,7 +66,7 @@ const SingleCard = ({value}:any) => {
                 </p> 
 
                
-            <p  onClick={handelChat} className='w-12 h-12 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center hover:border hover:border-secondary'><AiOutlineMessage size={26} /></p> 
+            <p  onClick={handelChat} className='w-11 h-11 rounded-full bg-[#EEEEEE] text-secondary flex justify-center items-center hover:border hover:border-secondary'><AiOutlineMessage size={26} /></p> 
             
             </div>
         </div>

@@ -1,75 +1,106 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
+import React  from "react";
+import { FaCheck } from "react-icons/fa6";
 
 const data = [
-    {
-        id: 1,
-        time: "30 Days",
-        type: "Premium Subscription",
-        price: "$109.99 USD/30",
-        description: "days $109.99 USD billed every 30 days. Price excludes applicable taxes."
-    },
-    {
-        id: 2,
-        time: "90 Days",
-        type: "Premium Subscription",
-        price: "$96.66 USD/30",
-        description: "days $289.99 USD billed every 90 days. Price excludes applicable taxes."
-    },
-    {
-        id: 3,
-        time: "30 Days",
-        type: "Diamond Subscription",
-        price: "$274.99  USD/30",
-        description: "days $274.99 USD billed every 30 days. Price excludes applicable taxes."
-    },
-]
+  {
+    type: "Elite",
+    perCredit: "33",
+    credits: 1000,
+    less: "52%",
+    description: [
+      "Start 111 conversations",
+      "Highlight your profile for 30 days FREE",
+    ],
+    price: "329.00",
+  },
+  {
+    type: "Classic",
+    perCredit: "40",
+    credits: 1000,
+    less: "52%",
+    description: [
+      "Start 111 conversations",
+      "Highlight your profile for 30 days FREE",
+    ],
+    price: "329.00",
+  },
+  {
+    type: "Basic",
+    perCredit: "69",
+    credits: 1000,
+    less: "52%",
+    description: [
+      "Start 111 conversations",
+      "Highlight your profile for 30 days FREE",
+    ],
+    price: "329.00",
+  },
+];
 
 const SubscriptionsClient = () => {
 
-    const [checkedState, setCheckedState] = useState(
-        new Array(data.length).fill(false)
-    );
 
-    const handleCheckboxChange = (index: number) => {
-        const updatedCheckedState = checkedState.map((item, i) =>
-            i === index ? !item : item
-        );
-        setCheckedState(updatedCheckedState);
-    };
 
-    return (
-        <div className='container flex items-center justify-center h-full lg:pt-0 pt-5'>
-            <div className='h-[80vh] w-full flex flex-col items-center justify-center gap-8'>
-                {data.map((value, index) => (
-                    <div
-                        key={value.id}
-                        className="flex items-center group lg:w-[60%] w-[100%] bg-gray-100 hover:bg-gray-50 p-5 rounded-lg border-[2px] border-[#dfdada] hover:border-gray-200 transition-transform transform-gpu hover:-translate-y-2 hover:scale-105 hover:shadow-lg duration-300 ease-out"
-                    >
-                        <input
-                            id={`checkbox-${index}`}
-                            type="checkbox"
-                            value=""
-                            className="w-7 h-7 rounded-full text-primary bg-gray-100 border-primary   "
-                            checked={checkedState[index]} 
-                            onChange={() => handleCheckboxChange(index)}
-                        />
 
-                        <div className='ps-3'>
-                            <p className='text-[#4E4E4E] text-xl font-medium'>
-                                <span>{value.time}</span>
-                                <span className='group-hover:text-primary'> {value.type}</span>
-                            </p>
-                            <p className='text-[#6B6B6B] text-[17px] py-3 lg:w-[85%] w-full'>
-                                <span className='group-hover:text-primary'>{value.price}</span> {value.description}
-                            </p>
-                        </div>
-                    </div>
-                ))}
+  return (
+    <div className="container flex items-center justify-center h-full lg:pt-0 pt-5 lg:px-32 px-10 mb-5">
+      <div className="h-[80vh] w-full  grid lg:grid-cols-3 grid-cols-1  items-center gap-8">
+        {data.map((value, index) => (
+          <div key={index} className={` border-2 border-gray-300 transition  hover:scale-105 duration-300 ${
+            index === 0
+              ? "hover:border-[#CC2B52]"
+              : index === 1
+              ? "hover:border-blue-700"
+              : "hover:border-primary"
+          } p-6 rounded-xl`}>
+            <p
+              className={` py-4 font-bold uppercase text-[20px] ${
+                index === 0
+                  ? "text-[#CC2B52]"
+                  : index === 1
+                  ? "text-blue-700"
+                  : "text-primary"
+              }`}
+            >
+          
+              {value?.type}
+            </p>
+            <p className="font-bold text-[16px] pb-3 ">
+      
+              <span className="text-4xl"> {value?.perCredit}$ </span>{" "}
+              <span>per month </span>
+            </p>
+            <div className=" border-t border-gray-500 py-4 ">
+              {value?.description?.map((value, index) => (
+                <div key={index} className="  flex items-center gap-3 pb-3">
+                  <p>
+                    <FaCheck size={22} />
+                  </p>
+                  <p> {value}</p>
+                </div>
+              ))}
             </div>
-        </div>
-    );
+
+            <div className=" flex items-end justify-end">
+              <button
+                className={` w-[130px] h-[55px] border-2  rounded-full font-bold text-[18px] mt-5  ${
+                  index === 0
+                    ? "border-[#CC2B52]"
+                    : index === 1
+                    ? "border-blue-700"
+                    : "border-primary"
+                } `}
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default SubscriptionsClient;

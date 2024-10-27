@@ -1,7 +1,6 @@
 "use client"
 import SingleCard from '@/components/shared/SingleCard';
-import { Pagination } from 'antd';
-import React, { useState } from 'react'; 
+import React from 'react'; 
 import profile2 from "@/assets/profile2.svg"
 import profile3 from "@/assets/profile3.svg"
 import profile4 from "@/assets/profile4.svg"
@@ -170,27 +169,31 @@ const profiles = [
 ];
 
 const Discover = () => { 
-    const [page , setPage] = useState(1) 
-    const pageSize = 16;
 
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-
-
-    const currentPageProfiles = profiles.slice(startIndex, endIndex); 
     return (
         <div className='container  pb-7 font-sans'>
                <Heading className=' pb-2 pt-2'>Discover</Heading> 
                <p className='border-b-2 border-[#D1D1D1]  mb-5'></p>
-              <div className=' grid lg:grid-cols-4 grid-cols-2  gap-6'>
+              <div className=' grid lg:grid-cols-4 grid-cols-1 gap-6'>
                 {
-                    currentPageProfiles?.map((value , index:number)=> <SingleCard key={index} value={value} />
+                    profiles?.map((value , index:number)=> <SingleCard key={index} value={value} />
                     )
                 }
               </div> 
  
- <div className='mt-9'>
-              <Pagination align="center" current={page}   total={profiles.length} onChange={(page)=>setPage(page)}   pageSize={pageSize} />
+ <div className='mt-9'> 
+ {/* <ConfigProvider
+  theme={{
+    token: {
+        colorPrimary:"#007ba5" , 
+        
+
+    },
+  }}
+>  
+
+              <Pagination align="center" current={page}   total={profiles.length} onChange={(page)=>setPage(page)}   pageSize={pageSize} /> 
+</ConfigProvider>  */}
  </div>
         </div>
     );

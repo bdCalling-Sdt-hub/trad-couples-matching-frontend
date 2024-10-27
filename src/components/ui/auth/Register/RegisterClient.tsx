@@ -46,7 +46,7 @@ const RegisterClient = () => {
   return (
     <div className=' flex justify-end items-center'>
 
-      <div className={`lg:w-[40%] w-full  bg-white/90 lg:h-[calc(100vh-85px)] h-[100vh] transition-all duration-1000 ease-in-out flex  items-center justify-center ${poppins.className}
+      <div className={`lg:w-[40%] w-full  bg-white/90 lg:h-[calc(100vh)] h-[100vh] transition-all duration-1000 ease-in-out flex  items-center justify-center ${poppins.className}
             ${show ? 'opacity-100 -translate-x-0' : 'opacity-0 translate-x-12'}`}>
 
         <div className='lg:w-3/4 w-full px-5 lg:px-0'>

@@ -62,7 +62,7 @@ const ProfileDetails = () => {
     ];
 
     return (
-        <div className="font-sans">
+        <div className="">
             {/* Cover photo */}
             <div className="lg:h-[200px] h-[250px] relative z-0">
                 <Image

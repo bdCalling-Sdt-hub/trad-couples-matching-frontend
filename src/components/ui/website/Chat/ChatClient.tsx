@@ -278,12 +278,7 @@ const ChatClient = () => {
                   }`}
                 >
                   <div className="flex items-center gap-1">
-                    <img
-                      src={value?.image}
-                      alt=""
-                      className="rounded-full"
-                      unoptimized
-                    />
+                    <img src={value?.image} alt="" className="rounded-full" />
                     <div className="flex-col gap-1">
                       <p className="text-[#12354E] font-medium text-[16px]">
                         {value?.name}

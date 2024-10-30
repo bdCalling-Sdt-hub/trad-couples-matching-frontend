@@ -1,9 +1,9 @@
-import HomeClient from "../../components/ui/website/Home/HomeClient";
+import ComingSoon from "@/components/ui/website/ComingSoon/ComingSoon";
 
 export default function Home() {
   return (
    <div>
-   <HomeClient/>
+<ComingSoon />
    </div>
   );
 }

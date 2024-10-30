@@ -77,7 +77,7 @@ const ProfileDetails = () => {
                         objectFit: "cover",
                     }}
                 />
-                <label
+                {/* <label
                     htmlFor="imageUploadBanner"
                     style={{
                         position: "absolute",
@@ -94,7 +94,7 @@ const ProfileDetails = () => {
                     }}
                 >
                     <CiEdit size={25} color="#929394" />
-                </label>
+                </label> */}
 
                 <input
                     id="imageUploadBanner"

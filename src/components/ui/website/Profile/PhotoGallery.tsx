@@ -34,8 +34,6 @@ const PhotoGallery = () => {
 
   const initialImages = [
     "https://i.ibb.co.com/NpbQt6G/Rectangle-5306.png",
-    "https://i.ibb.co.com/HFkkYh3/Rectangle-5305.png",
-    "https://i.ibb.co.com/8zKSXWF/Rectangle-5304.png",
     "https://i.ibb.co.com/0nJ0pVH/Rectangle-5307-3.png",
     "https://i.ibb.co.com/Vwm8kST/Rectangle-5307-2.png",
     null,

@@ -17,13 +17,15 @@ const ClientNavbar = ({children}:{children:React.ReactNode}) => {
         <div  className={`transition-transform duration-300 ${
             isDrawerOpen ? "translate-x-64" : ""
           }`}>
-            {
-                pathname === "/" || "/home" ?  "" : <WithLoginNavbar onDrawerToggle={handleDrawerToggle}/>
-            } 
+           { 
+    pathname !== "/" && pathname !== "/home" && (
+        <WithLoginNavbar onDrawerToggle={handleDrawerToggle} />
+    )
+}
 
-<div className={`min-h-screen ${!(pathname === "/" || pathname === "/home") && "pt-[85px]"} ${isDrawerOpen && "mt-0"}`}>
+<div className={`min-h-screen ${(pathname !== "/" && pathname !== "/home") && "pt-[85px]"} ${isDrawerOpen && "mt-0"}`}>
     {children}
-</div> 
+</div>
 
             {
                 pathname === "/home" ? <Footer /> : ""

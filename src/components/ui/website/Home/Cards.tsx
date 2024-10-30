@@ -9,12 +9,11 @@ const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] }
 
 
 const Cards = () => {
-    return (
-        <div className={`${inter.className}`}>
-
-            {/* 1st section   */}
- <div className='bg-gray-100' >
-
+  return (
+    <div className={`${inter.className}`}>
+      {/* 1st section   */}
+      <div className="bg-gray-100">
+    
             <div className=' container grid grid-cols-12  items-center gap-4 lg:pt-24 pt-10  '>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 -order-1 lg:text-start text-center '>
@@ -24,7 +23,7 @@ const Cards = () => {
                 </div>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center'>
-                    <img src="/welcome.svg" alt='' height={500} width={500} style={{boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"  }} className='rounded-t-[50px] ' />
+                    <img src="/welcome.png" alt='' height={500} width={500} style={{boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"  }} className='rounded-t-[50px] ' />
                 </div>
 
 
@@ -85,7 +84,8 @@ const Cards = () => {
             </div>
  </div>
         </div>
-    );
+   
+  );
 };
 
 export default Cards;

@@ -9,7 +9,7 @@ interface IButtonProps {
 }
 
 const SmallButton: React.FC<IButtonProps> = ({ children, className }) => {
-  return <button type="submit" className={`mt-6 px-6 py-3 bg-primary  text-white rounded-lg  text-[18px] ${inter.className} ${className}`} >
+  return <button type="submit" className={` px-6 py-3 bg-primary  text-white rounded-lg  text-[18px] ${inter.className} ${className}`} >
     {children}
   </button>
 

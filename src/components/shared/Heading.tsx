@@ -6,7 +6,7 @@ interface IHeadingProps {
     className: string;
   } 
 const Heading: React.FC<IHeadingProps>  = ({children , className }) => {
-    return <div className={`${className} text-[#222222] font-[400] lg:text-[36px] text-[28px] leading-[40px]  tracking-wide `}> {children}  </div>
+    return <div className={`${className} text-[#222222] font-[400] lg:text-[36px] text-[20px] leading-[40px]  tracking-wide `}> {children}  </div>
 };
 
 export default Heading;

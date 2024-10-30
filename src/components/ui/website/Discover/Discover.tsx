@@ -18,7 +18,7 @@ import profile14 from "@/assets/profile14.svg"
 import profile15 from "@/assets/profile15.svg"
 import profile16 from "@/assets/profile16.svg"
 import Heading from '@/components/shared/Heading';
-
+import "./style.css"    
 
 
 const profiles = [
@@ -174,7 +174,7 @@ const Discover = () => {
         <div className='container  pb-7 font-sans'>
                <Heading className=' pb-2 pt-2'>Discover</Heading> 
                <p className='border-b-2 border-[#D1D1D1]  mb-5'></p>
-              <div className=' grid lg:grid-cols-4 grid-cols-1 gap-6'>
+              <div className=' grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 lg:gap-6 gap-4 justify-self-center'>
                 {
                     profiles?.map((value , index:number)=> <SingleCard key={index} value={value} />
                     )

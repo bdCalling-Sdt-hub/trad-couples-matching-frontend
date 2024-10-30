@@ -379,7 +379,7 @@ const SearchClient = () => {
         </div>
 
         <div className="lg:col-span-9 col-span-12 mb-5 ">
-          <div className=" grid lg:grid-cols-3 grid-cols-1 gap-8 z-0 ">
+          <div className=" cards grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-8 gap-4 justify-self-center z-0 ">
             {currentPageProfiles?.map((value, index: number) => (
               <SingleCard key={index} value={value} />
             ))}

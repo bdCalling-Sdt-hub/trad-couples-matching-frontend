@@ -80,7 +80,7 @@ const Footer = () => {
                     </div>
 
                     <div className='lg:col-span-4 col-span-12 lg:justify-self-end justify-items-center  '>
-                    <p className='text-center text-gray-300'>© All right reserved by TradeCouples
+                    <p className='text-center text-gray-300 '>© All right reserved by TradeCouples
                     </p>
                     </div> 
 

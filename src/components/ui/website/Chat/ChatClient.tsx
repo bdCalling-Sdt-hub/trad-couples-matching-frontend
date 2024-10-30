@@ -50,7 +50,7 @@ const messageList = [
     address: "New York, USA",
     time: "10:00 AM",
     text: "Hello , How are you ?",
-    image: "/user.png"
+    image: "/user.svg"
   },
   {
     id: 2,
@@ -58,7 +58,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png"
+    image: "/person.svg"
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/user.png",
+    image: "/user.svg",
   },
   {
     id: 4,
@@ -74,7 +74,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png"
+    image: "/person.svg"
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/user.png"
+    image: "/user.svg"
   },
   {
     id: 6,
@@ -90,7 +90,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png"
+    image: "/person.svg"
   },
   {
     id: 7,
@@ -98,7 +98,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/user.png"
+    image: "/user.svg"
   },
   {
     id: 8,
@@ -106,7 +106,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png",
+    image: "/person.svg",
   },
   {
     id: 9,
@@ -114,7 +114,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png"
+    image: "/person.svg"
   },
   {
     id: 10,
@@ -122,7 +122,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/user.png"
+    image: "/user.svg"
   },
   {
     id: 11,
@@ -130,7 +130,7 @@ const messageList = [
     time: "10:00 AM",
     address: "New York, USA",
     text: "Hello , How are you ?",
-    image: "/person.png",
+    image: "/person.svg",
   },
 ];
 
@@ -200,7 +200,7 @@ const ChatClient = () => {
     address: "New York, USA",
     time: "10:00 AM",
     text: "Hello , How are you ?",
-    image: "/user.png"
+    image: "/user.svg"
   });
   const [personId, setpersonId] = useState<number | null>(1);
   const [isChatVisible, setIsChatVisible] = useState(false);

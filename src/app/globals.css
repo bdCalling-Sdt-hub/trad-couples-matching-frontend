@@ -84,4 +84,18 @@ body {
 } 
 ant-drawer-close:hover{
  background: transparent;
+} 
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, auto); 
+    width: fit-content;
+  }
 }
+
+@media (max-width: 450px) {
+  .cards {
+    grid-template-columns: auto; 
+    width: fit-content;
+  }
+} 

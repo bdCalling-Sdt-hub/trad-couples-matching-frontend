@@ -11,7 +11,7 @@ import profile9 from "@/assets/profile9.svg"
 import profile10 from "@/assets/profile10.svg"
 import profile16 from "@/assets/profile16.svg"
 import Heading from '@/components/shared/Heading';
-
+ 
 
 
 const profiles = [
@@ -102,7 +102,7 @@ const MyFavorites = () => {
         <div className='container  pb-7 font-sans'>
         <Heading className=' pb-2 pt-2'>My Favorites</Heading> 
         <p className='border-b-2 border-[#D1D1D1]  mb-5'></p>
-       <div className=' grid lg:grid-cols-4 grid-cols-1 lg:gap-10 gap-5'>
+       <div className=' cards grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 lg:gap-6 gap-4 justify-self-center'>
          {
              profiles?.map((value , index:number)=> <SingleCard key={index} value={value} />
              )

@@ -2,7 +2,7 @@
 import { Drawer } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineMessage } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
@@ -28,7 +28,8 @@ const WithLoginNavbar = ({
   onDrawerToggle: (isOpen: boolean) => void;
 }) => {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); 
+  const pathname = usePathname()
 
   const user = {
     image: profile1,
@@ -66,37 +67,26 @@ const WithLoginNavbar = ({
   const smallDeviceIcon = [
     {
       icon: (
-        <div className="w-9 h-9 rounded-full bg-[#EBEBEB] text-[#4E4E4E] flex justify-center items-center">
-          <CgProfile size={22} />
-        </div>
+          <CgProfile size={22} color="#4E4E4E" />
+     
       ),
       title: "Profile",
       path: "/profile",
     },
     {
       icon: (
-        <div className="w-9 h-9 rounded-full bg-[#EBEBEB] text-[#4E4E4E] flex justify-center items-center">
-          <SiDiscover size={22} />
-        </div>
+          <SiDiscover size={22} color="#4E4E4E" />
       ),
       title: "Discover",
       path: "/discover",
     },
     {
-      icon: (
-        <div className="w-9 h-9 rounded-full bg-[#EBEBEB] text-[#4E4E4E] flex justify-center items-center">
-          <MdOutlineSubscriptions size={22} />
-        </div>
-      ),
+      icon: ( <MdOutlineSubscriptions size={22} color="#4E4E4E" /> ),
       title: "Subscription",
       path: "/subscriptions",
     },
     {
-      icon: (
-        <div className="w-9 h-9 rounded-full bg-[#EBEBEB] text-[#4E4E4E] flex justify-center items-center">
-          <AiOutlineMessage size={22} />
-        </div>
-      ),
+      icon: (<AiOutlineMessage size={22} color="#4E4E4E" /> ),
       title: "Message",
       path: "/chat",
     },
@@ -163,7 +153,7 @@ const WithLoginNavbar = ({
           >
             <div className="lg:flex gap-12 items-center hidden uppercase">
               {items.map((value, index: number) => (
-                <Link key={index} href={value.path}>
+                <Link key={index} href={value.path} className={`${pathname === value.path ? "text-primary" : ""}`}>
                   <span className="text-[15px]">{value.name}</span>
                 </Link>
               ))}
@@ -179,7 +169,7 @@ const WithLoginNavbar = ({
             </div>
 
             <Link href="/subscriptions">
-              <button className=" lg:flex hidden lg:px-6 px-3 lg:py-3 py-3 bg-primary  text-white rounded-lg uppercase font-normal">
+              <button className=" lg:flex hidden lg:px-5 px-3 lg:py-3 py-3 bg-primary  text-white rounded-lg uppercase font-normal">
                 Subscription{" "}
               </button>
             </Link>
@@ -221,11 +211,12 @@ const WithLoginNavbar = ({
                   onClick={() => {
                     setOpen(false);
                     onDrawerToggle(false);
-                  }}
+                  }} 
+                  
                   className="flex items-center gap-3 "
                 >
-                  <div className={`${montserrat.className}`}>{value.icon}</div>
-                  <p className="text-[#4E4E4E] text-[18px] font-[400]">
+                  <div className={`${montserrat.className} `}>{value.icon}</div>
+                  <p className={`${pathname === value.path ? "text-primary" : "text-[#4E4E4E]"} text-[18px] font-[400]`} >
                     {value?.title}
                   </p>
                 </Link>
@@ -242,7 +233,7 @@ const WithLoginNavbar = ({
                 className="flex items-center gap-3 "
               >
                 <div className={`${montserrat.className}`}>{value.icon}</div>
-                <p className="text-[#4E4E4E] text-[18px] font-[400]">
+                <p className={`${pathname === value.path ? "text-primary" : "text-[#4E4E4E]"} text-[18px] font-[400]`}>
                   {value?.title}
                 </p>
               </Link>

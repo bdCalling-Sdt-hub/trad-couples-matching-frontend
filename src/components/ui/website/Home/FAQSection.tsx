@@ -64,7 +64,7 @@ const FAQSection = () => {
              
              <div className='lg:text-center pb-4 '>
                 <h1 className='text-white font-[400] lg:text-[32px] text-[20px] lg:leading-[40px]  font-sans text-center '>Popular Frequently Asked Questions</h1> 
-                <p className=' text-[#E6E6E6] py-3 mb-3 text-[12px]lg:text-[18px]'>we provide a secure and fastest ranting system Our mission is to make. Do you have a question regarding our service?</p>
+                <p className=' text-[#E6E6E6] lg:py-3 lg:px-0 px-8 mb-3 text-[13px] lg:text-[18px]'>we provide a secure and fastest ranting system Our mission is to make. Do you have a question regarding our service?</p>
              </div> 
 
              <div className=' w-full  flex justify-center items-center'>  

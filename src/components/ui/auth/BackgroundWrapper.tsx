@@ -1,18 +1,20 @@
 "use client"
 import { GetLocalStorage } from "@/util/LocalStroage";
 import { usePathname } from "next/navigation";
-
-
+import { useEffect, useState } from "react";
 
 interface BackgroundWrapperProps {
     children: React.ReactNode;
 }
 
 const BackgroundWrapper = ({ children }: BackgroundWrapperProps) => {
-   const pathname = usePathname()
+    const pathname = usePathname();
+    const [userType, setUserType] = useState<string | null>(null);
 
-    const userInfo = GetLocalStorage("userInfo");
-    const userType = userInfo?.userType; 
+    useEffect(() => {
+        const userInfo = GetLocalStorage("userInfo");
+        setUserType(userInfo?.userType || null);
+    }, []);
 
     let backgroundImage = "/Banner.jpg";
     if (pathname === "/register" || userType === "registerUser") {
@@ -21,7 +23,7 @@ const BackgroundWrapper = ({ children }: BackgroundWrapperProps) => {
 
     return (
         <div
-            className="lg:h-[100vh]  w-full"
+            className="lg:h-[100vh] w-full"
             style={{
                 backgroundImage: `url('${backgroundImage}')`,
                 backgroundPosition: "center",

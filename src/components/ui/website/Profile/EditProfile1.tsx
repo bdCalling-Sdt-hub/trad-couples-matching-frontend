@@ -284,7 +284,7 @@ const EditProfile1 = () => {
                     </Form.Item>
 
                     <div className='flex items-center gap-3 mb-5' >
-                        <SmallButton className=''>Save & Changes</SmallButton>
+                        <SmallButton className='mt-6'>Save & Changes</SmallButton>
 
                         <Link href="edit-profile-2">
                             <OutLineBtn className='flex items-center gap-[2px]'> <span> Next </span> <span> <BsArrowRight size={22} /></span></OutLineBtn>

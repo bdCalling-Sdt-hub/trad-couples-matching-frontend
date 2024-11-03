@@ -5,113 +5,9 @@ import { ConfigProvider, DatePicker, Form, Input, Progress } from 'antd';
 import SectionHeader from './SectionHeader';
 import StepsFooterBtn from './StepsFooterBtn';
 import QuestionDropdown from '@/components/shared/QuestionDropdown';
-import { Poppins } from 'next/font/google';
-const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
-
-const country = [
-    {
-        value: "BanglaDesh",
-        label: "Bangladesh"
-    },
-    {
-        value: "India",
-        label: "India"
-    },
-    {
-        value: "China",
-        label: "China"
-    },
-    {
-        value: "USA",
-        label: "USA"
-    },
-
-]
-
-const MaritalStatus = [
-    {
-        value: "Single",
-        label: "Single"
-    },
-    {
-        value: "Mingle",
-        label: "Mingle"
-    },
-    {
-        value: "Married",
-        label: "Married"
-    }
-]
-
-const children = [
-    {
-        value: 1,
-        label: 1
-    },
-    {
-        value: 2,
-        label: 2
-    },
-    {
-        value: 3,
-        label: 3
-    }
-]
-
-const height = [
-    {
-        value: "150cm",
-        label: "150cm"
-    },
-    {
-        value: "160cm",
-        label: "160cm"
-    },
-    {
-        value: "170cm",
-        label: "170cm"
-    }
-]
-
-const bodyShape = [
-    {
-        value: "Fit",
-        label: "Fit"
-    },
-    {
-        value: "Fat",
-        label: "Fat"
-    }
-]
-
-const hairColor = [
-    {
-        value: "Black",
-        label: "black"
-    },
-    {
-        value: "Brown",
-        label: "Brown"
-    }
-]
-
-const eyeColor = [
-    {
-        value: "Black",
-        label: "Black"
-    },
-    {
-        value: "Brown",
-        label: "Brown"
-    }
-]
-
-const education = [
-    {
-        value: "Graduate",
-        label: "Graduate"
-    }
-]
+import { Poppins } from 'next/font/google'; 
+import {height  , bodyShape , educationOn , ethnicity , country ,province ,hairColor ,eyeColor ,maritalStatus ,relocationWillingness ,livingEnvironment ,occupation ,homeOwnership , livingAlone ,beliefInChrist, childrenDesired ,mainProviderBelief , willingToFatherOthersChildren ,roleModelsForBoys ,standardForDaughters , interests ,preferredAgeRange , preferredEthnicity , preferredPhysique , preferredFitnessLevel} from "@/components/shared/Option"
+const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] }); 
 
 const university = [
     {
@@ -124,38 +20,6 @@ const university = [
     }
 ]
 
-const occupation = [
-    {
-        value: "Teacher",
-        label: "Teacher"
-    },
-    {
-        value: "Programmer",
-        label: "Programmer"
-    }
-]
-
-const province = [
-    {
-        value: "New York",
-        label: "New York"
-    },
-    {
-        value: "Dhaka",
-        label: "Dhaka"
-    }
-]
-
-const ethnicity = [
-    {
-        value: "American",
-        label: "American"
-    }, {
-        value: "Bengali",
-        label: "Bengali"
-    }
-]
-
 const option = [
     {
         value: "Yes",
@@ -165,43 +29,6 @@ const option = [
         value: "No",
         label: "No"
     }
-]
-
-const interest = [
-    {
-        value: "Nobel",
-        label: "Nobel"
-    },
-
-]
-
-const preferredAgeFirst = [
-    {
-        value: 20,
-        label: 20
-    },
-    {
-        value: 30,
-        label: 30
-    },
-    {
-        value: 40,
-        label: 40
-    },
-]
-const preferredAgeSecond = [
-    {
-        value: 30,
-        label: 30
-    },
-    {
-        value: 40,
-        label: 40
-    },
-    {
-        value: 50,
-        label: 50
-    },
 ]
 
 const Questions = () => {
@@ -244,7 +71,7 @@ const Questions = () => {
             title: "Your Educational Status.",
             content: <div className='flex flex-col gap-y-5  w-full '>
                 <QuestionDropdown name='educationOn' placeholder='Education on'
-                    options={education} />
+                    options={educationOn} />
                 <QuestionDropdown name='educationFrom' placeholder='Education From' options={university} />
             </div>
         },
@@ -287,7 +114,7 @@ const Questions = () => {
             title: "Share Your Marital Status",
             content: <div className='w-full '>
                 <QuestionDropdown name='MaritalStatus' placeholder='Single/Divorced/Widow/Widower'
-                    options={MaritalStatus} />
+                    options={maritalStatus} />
             </div>
         },
         {
@@ -301,14 +128,14 @@ const Questions = () => {
             title: "Are You Willing To Relocate For The Right Partner?",
             content: <div className='w-full '>
                 <QuestionDropdown name='partner' placeholder='Yes/No'
-                    options={option} />
+                    options={relocationWillingness} />
             </div>
         },
         {
             title: "Would You Like Rural/Homesteading/Urban Living/Either ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='rural ' placeholder='Yes/No'
-                    options={option} />
+                    options={livingEnvironment} />
             </div>
         },
         {
@@ -322,14 +149,14 @@ const Questions = () => {
             title: "Do You Have A Home?",
             content: <div className='w-full '>
                 <QuestionDropdown name='haveHome' placeholder='Yes/No'
-                    options={option} />
+                    options={homeOwnership} />
             </div>
         },
         {
             title: "Do You Live Alone?",
             content: <div className='w-full '>
                 <QuestionDropdown name='liveAlone' placeholder='Yes/No'
-                    options={option} />
+                    options={livingAlone} />
             </div>
         },
         {
@@ -343,79 +170,78 @@ const Questions = () => {
             title: "Do You Believe Jesse Christ Is The Head Of The House And Then The Man ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='isHead' placeholder='Yes/No'
-                    options={option} />
+                    options={beliefInChrist} />
             </div>
         },
         {
             title: "How Many Children Do You Want ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='howManyChildren' placeholder='Number of Children '
-                    options={children} />
+                    options={childrenDesired} />
             </div>
         },
         {
             title: "Do You Believe The Man Is The Main Provider And Protector Of The Household ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='believe' placeholder='Yes/No'
-                    options={option} />
+                    options={mainProviderBelief} />
             </div>
         },
         {
             title: "Are You Willing To Step Up and Father Another Man’s Children ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='willing' placeholder='Yes/No'
-                    options={option} />
+                    options={willingToFatherOthersChildren} />
             </div>
         },
         {
             title: "Do You Believe That Man Are Role Models For Little Boy ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='roleModal' placeholder='Yes/No'
-                    options={option} />
+                    options={roleModelsForBoys} />
             </div>
         },
         {
             title: "Do You Believe That Man Set The Standard For Daughters ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='standard' placeholder='Yes/No'
-                    options={option} />
+                    options={standardForDaughters} />
             </div>
         },
         {
             title: "What Are Your Interests /Shorts/Hobbies ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='interest' placeholder='interests /shorts/hobbies'
-                    options={interest} />
+                    options={interests} />
             </div>
         },
         {
             title: "What Is Your Preferred Age Range For A Partner ?",
-            content: <div className='flex items-center  lg:w-1/2 w-full gap-3 '>
+            content: <div className='flex items-center  lg:w-2/3 w-full gap-3 '>
                 <QuestionDropdown name='preferredAgeFirst' placeholder='20'
-                    options={preferredAgeFirst} />
-                <p className=' text-[19px] text-[#7F7F7F] pb-5 '>to</p>
-                <QuestionDropdown name='preferredAgeSecond' placeholder='30' options={preferredAgeSecond} />
+                    options={preferredAgeRange} />
+               
             </div>
         },
         {
             title: "What Is Your Preferred Ethnicity For Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='ethnicity' placeholder='Select'
-                    options={ethnicity} />
+                    options={preferredEthnicity} />
             </div>
         },
         {
             title: "What Is Your Preferred Physique In A Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='physique' placeholder='Select'
-                    options={bodyShape} />
+                    options={preferredPhysique} />
             </div>
         },
         {
             title: "What Is Your Preferred Fitness Level In A Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='fitness' placeholder='Select'
-                    options={bodyShape} />
+                    options={preferredFitnessLevel} />
             </div>
         },
     ];

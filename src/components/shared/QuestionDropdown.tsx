@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 interface propsType {
   name: string
   placeholder: string
-  options: Array<{ value: string | number; label: string | number; }>;
+  options: { value: string; label: string | JSX.Element }[];
 }
 
 const QuestionDropdown = ({ name, placeholder, options }: propsType) => {

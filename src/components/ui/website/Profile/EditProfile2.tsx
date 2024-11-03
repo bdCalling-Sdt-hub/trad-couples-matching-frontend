@@ -126,10 +126,10 @@ const EditProfile2 = () => {
   <div className='flex items-center gap-3 mb-5' > 
 
                         <Link href="edit-profile-1">  
-                        <OutLineBtn className='flex items-center gap-[2px]'>  <span> <BsArrowLeft size={22} /></span> <span> Previous </span> </OutLineBtn>
+                        <OutLineBtn className='flex items-center gap-[2px] mt-0'>  <span> <BsArrowLeft size={22} /></span> <span> Previous </span> </OutLineBtn>
                         </Link> 
 
-                        <SmallButton className=''>Save & Changes</SmallButton>  
+                        <SmallButton className='mt-6'>Save & Changes</SmallButton>  
 
                     </div> 
 

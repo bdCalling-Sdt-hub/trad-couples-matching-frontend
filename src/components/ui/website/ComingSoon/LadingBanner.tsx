@@ -24,17 +24,17 @@ const LadingBanner = () => {
         <div className="container relative z-10 flex flex-col  gap-0 justify-center items-start  text-white lg:-mt-20 pt-3 h-full ">
          
             <h1 className={`flex lg:text-[34px] lg:w-[700px] text-[25px] font-[500] uppercase ${inter.className}`}>
-            Connecting Singles Who Cherish  Traditional Family Roles 
+            Do You Long for the Days When Men Provided and Women Nurtured?
             </h1>
             
     
-            <p className={`my-5 px-0  lg:text-[20px] text-[16px] font-[400] ${inter.className} tracking-wide lg:text-start lg:w-[460px] text-white ` }>
-            Join now to find someone who shares your values and vision for family life
+            <p className={`my-5 px-0  lg:text-[20px] text-[16px] font-[400] ${inter.className} tracking-wide lg:text-start lg:w-[600px] text-white ` }>
+            Welcome to the online matchmaking site for traditional, marriage-minded individuals.
             </p> 
 
             <Link href="/home" className='' >
                 <SmallButton className={`  lg:h-[60px] h-[50px]  ${inter.className}`}>
-                Claim Your Free Month
+                Subscribe Now for Exclusive Early Access
                    
                 </SmallButton> 
             </Link> 

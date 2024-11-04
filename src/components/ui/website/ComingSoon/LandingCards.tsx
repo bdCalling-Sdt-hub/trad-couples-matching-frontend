@@ -21,10 +21,10 @@ const LandingCards = () => {
       
               <div className=' container grid grid-cols-12  items-center gap-4 lg:pt-24 pt-10  '>
   
-                  <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 -order-1 lg:text-start text-center '>
-                      <Heading className='py-5 font-bold text-[22px] ' > Welcome to Trad Couples </Heading>
+                  <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[80%] w-[100%] mb-3 lg:mb-0  lg:-order-1 -order-1 lg:text-start text-center '>
+                      <Heading className='py-5 font-bold text-[22px] ' > The Matchmaking Platform for Traditional Values </Heading>
   
-                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]  '>Trad Couples is the premier matchmaking platform for singles who embrace the timeless beauty of traditional family roles. Join a like-minded community that values respect, commitment, and lasting relationships</p> 
+                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]  '>Trad Couples is designed for those who seek a husband or wife with old-fashioned, time-tested values, without the influence of modern trends. Our precision matching system, based on conservative, traditional values, brings together like-minded singles who want genuine commitment</p> 
 
                       <Link href="/home" className='flex gap-1 items-center justify-center lg:justify-start' >
                     <SmallButton className={`mt-6 flex gap-1 items-center justify-center  lg:h-[65px] h-[50px]  ${inter.className}`}>
@@ -52,19 +52,24 @@ const LandingCards = () => {
                       <Image src={img3} alt='' height={500} width={550} />
                   </div>
   
-                  <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0 lg:text-start text-center'>
-                      <Heading className='py-5 font-bold  text-[16px]'>Where Tradition Meets Connection
+                  <div className=' lg:col-span-6 col-span-12 justify-self-center  w-[100%] mb-3 lg:mb-0 lg:text-start text-center'>
+                      <Heading className='py-5 font-bold  text-[16px] lg:w-[75%]'>Say Goodbye to Endless Swiping
                       </Heading>
-                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] '>Our community is dedicated to singles who believe in the strength of complementary roles within relationships. Here, men take pride in providing, and women excel in nurturing a home. Trad Couples is for those ready to build a meaningful future grounded in respect and shared values.</p> 
-                      <div>
-                      <div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[15px] pt-3 font-[400]' > <p> <GoDot  size={18} /> </p> <p>Connect with like-minded singles
+                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] lg:w-[75%]'>No more endless swiping through thousands of profiles. Find individual matches by completing brief, and to the point questions about yourself and what you would like in a partner.</p> 
+                      <div> 
+
+                      <div className='text-[#6B6B6B] flex   gap-[2px] text-[16px] pt-3 font-[400]' > 
+                         <span> <GoDot  size={20} className='pt-1' /> </span>  
+                            <p>
+                          <span className='font-semibold'>Guided Communication Channels: </span> <span>Make every conversation purposeful and aligned with your values.
+                          </span> 
+                            </p>
+                           
+                         </div>
+
+                      <div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[15px] py-2 font-[400]'> <p> <GoDot  size={18} />  </p>  <p className='font-semibold'>High-Standards Matching: </p> <p>We focus on quality matches with conservative values.
                       </p> </div> 
 
-                      <div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[15px] py-2 font-[400]'> <p> <GoDot  size={18} /> </p> <p>Build relationships based on traditional values
-                      </p> </div>
-                      <div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[15px] font-[400]'> <p> <GoDot  size={18} /> </p> <p>Create a lasting foundation for family life
-
-                      </p> </div>
                       </div>
                   </div>
               </div>

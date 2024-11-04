@@ -75,9 +75,9 @@ const LandingCards = () => {
               <div className=' container grid grid-cols-12  items-center lg:pb-32 pb-14 gap-4  '>
   
                   <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 order-1 lg:text-start text-center '>
-                      <Heading className=' text-[22px] py-5 font-bold '>Be First to Join – Free 1-Month Subscription for Early Access!
+                      <Heading className=' text-[22px] py-5 font-bold '>Find Your Match – Free 1-Month Subscription for Early Access!
                       </Heading>
-                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mb-4  '>Sign up today to receive a voucher for a free 1-month subscription when we launch.</p> 
+                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mb-4  '>Our site officially launches in December. Subscribe now to receive a free or discounted profile and secure your place among the first members.</p> 
 
                       <div> 
                       <Form  layout="vertical" className=' w-full'>
@@ -101,7 +101,7 @@ const LandingCards = () => {
                 </SmallButton> 
             </Link>  
 
-            <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mt-4  '>Your privacy is our priority. We’ll keep your information secure and private.</p> 
+            <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mt-4  '>Your privacy is our priority. We’ll keep your information secure and private.Standard subscription fees will start from $20 per month after launch.</p> 
 
         </Form>
                       </div>
@@ -117,6 +117,76 @@ const LandingCards = () => {
               </div>
   
               {/* 4th section   */}
+              <div className='   '> 
+                  <div className=' container   grid grid-cols-12 items-center lg:pb-32 pb-14 gap-4 lg:text-start text-center'>
+  
+                  <div className='lg:col-span-6 col-span-12  lg:-order-1 -order-1 justify-self-center'>
+                  <Image src={img4} alt='' height={500} width={550} />
+                  </div>
+  
+                  <div className='lg:col-span-6 col-span-12  justify-self-center  lg:w-[75%] w-[100%]  lg:mb-0 mb-3  '>
+                  <Heading className=' text-[22px] py-5 font-bold '>Find a Partner Who Shares Your Values
+                      </Heading>
+                      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px]  '>Trad Couples brings together individuals who believe in conservative values, commitment, and clear relationship roles. If you’re marriage-minded and seek a lasting connection grounded in traditional principles, this is the platform for you.</p>  
+
+
+                  </div>
+                  </div>
+  
+              </div>   
+
+
+
+              {/* 4th section   */}
+              <div className='   '> 
+                  <div className=' container   grid grid-cols-12 items-center lg:pb-32 pb-14 gap-4 lg:text-start text-center'>
+  
+                  <div className='lg:col-span-6 col-span-12  lg:order-1 -order-1 justify-self-center'>
+                  <Image src={img4} alt='' height={500} width={550} />
+                  </div>
+  
+                  <div className='lg:col-span-6 col-span-12  justify-self-center  lg:w-[85%] w-[100%]  lg:mb-0 mb-3  '>
+                  <Heading className=' text-[22px] py-5 font-bold '>Value Statements
+                      </Heading>
+                   
+
+                       <div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>Where men are men, and women are women.
+
+</p> </div> 
+
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>High standards, conservative values, and age-old traditions.
+
+</p> </div> 
+
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>A community for those who seek serious relationships.
+
+</p> </div> 
+
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>Restoring the nuclear family
+
+
+</p> </div>
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>Cherishing tradition
+
+
+</p> </div>
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>Defying modernism.
+
+</p> </div>
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>Embracing Christian Values.
+</p> </div>
+<div className='text-[#6B6B6B] flex items-center  gap-[2px] text-[18px] pt-3 font-[500]'> <p> <GoDot  size={18} /> </p> <p>FAITH. FAMILY. FREEDOM.
+
+
+</p> </div>
+                  </div>
+                  </div>
+  
+              </div>  
+
+
+
+              {/* 5th section   */}
               <div className='   '> 
                   <div className=' container   grid grid-cols-12 items-center lg:pb-32 pb-14 gap-4 lg:text-start text-center'>
   
@@ -143,7 +213,53 @@ const LandingCards = () => {
                   </div>
                   </div>
   
-              </div>
+              </div> 
+
+                     {/* 6th section   */}
+                     <div className=' container grid grid-cols-12  items-center lg:pb-32 pb-14 gap-4  '>
+  
+  <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 order-1 lg:text-start text-center '>
+      <Heading className=' text-[22px] py-5 font-bold '>Join Today for Free or Discounted Access!
+      </Heading>
+      <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mb-4  '>Subscribe now to receive a free or discounted profile and secure your place among the first members.</p> 
+
+      <div> 
+      <Form  layout="vertical" className=' w-full'>
+<TextInput name='email' label='Email' placeholder="Full Name" />
+<TextInput name='email' label='Email' placeholder="Email Address" />
+
+<div className=' flex items-center justify-between mb-[10px]' > 
+<Checkbox ><span className='lg:text-[18px] text-[14px] ' style={{
+color: "#6A6D7C",
+fontWeight: 400,
+
+marginBottom: "10px",
+}}> I agree with </span> <Link href="/terms" className='text-[#54A7C3]'>Terms & Condition</Link> and <Link href="/privacy" className='text-[#54A7C3]'>Privacy Policy</Link></Checkbox>
+</div> 
+
+<Link href="/home" className=' ' >
+<SmallButton className={`mt-5  lg:h-[60px] h-[50px]  ${inter.className}`}>
+Subscribe Now
+   
+</SmallButton> 
+</Link>  
+
+
+</Form>
+      </div>
+  </div>
+
+  <div className='lg:col-span-6 col-span-12  justify-self-center'>
+      <Image src="/landing.jpg" alt='' height={500} width={550} />
+
+
+  </div>
+
+
+</div> 
+
+
+
    </div>
           </div>
     );

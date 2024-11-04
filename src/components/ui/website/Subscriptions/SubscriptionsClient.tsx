@@ -8,7 +8,6 @@ const data = [
     type: "Elite",
     perCredit: "33",
     credits: 1000,
-    less: "52%",
     description: [
       "Start 111 conversations",
       "Highlight your profile for 30 days FREE",
@@ -19,7 +18,6 @@ const data = [
     type: "Classic",
     perCredit: "40",
     credits: 1000,
-    less: "52%",
     description: [
       "Start 111 conversations",
       "Highlight your profile for 30 days FREE",
@@ -30,7 +28,6 @@ const data = [
     type: "Basic",
     perCredit: "69",
     credits: 1000,
-    less: "52%",
     description: [
       "Start 111 conversations",
       "Highlight your profile for 30 days FREE",

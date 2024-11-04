@@ -39,8 +39,8 @@ const LadingBanner = () => {
                 </SmallButton> 
             </Link> 
 
-            <p className={`my-3  lg:text-[20px] text-[16px] font-[400] ${inter.className} tracking-wide font-semibold lg:text-start lg:w-[460px]  text-primary  ` }>
-            Coming Soon – Official Launch in One Month!
+            <p className={`my-3  lg:text-[20px] text-[16px] font-[400] ${inter.className} tracking-wide font-bold lg:text-start lg:w-[660px]  text-white  ` }>
+            Our official launch is in December! Subscribe now to be among the first to create a free or discounted profile.
             </p>  
 
         </div> 

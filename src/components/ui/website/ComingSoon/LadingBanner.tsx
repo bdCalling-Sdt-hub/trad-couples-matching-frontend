@@ -46,7 +46,9 @@ const LadingBanner = ({scrollToFourthSection}:any) => {
                     </SmallButton>
                 </div>
 
-                <p className=' text-white absolute bottom-20 lg:w-[550px]  font-[400] lg:text-[18px] text-[14px] leading-[24px]  pb-20 '>Trad Couples is designed for those who seek a husband or wife with old-fashioned, time-tested values, without the influence of modern trends. Our precision matching system, based on conservative, traditional values, brings together like-minded singles who want genuine commitment</p>
+                <p className=' text-white absolute bottom-10 lg:w-[550px]  lg:text-[22px] text-[14px] leading-[24px]  pb-20 ps-2 font-bold '>FAITH. FAMILY. FREEDOM.</p> 
+                
+
 
             </div>
 

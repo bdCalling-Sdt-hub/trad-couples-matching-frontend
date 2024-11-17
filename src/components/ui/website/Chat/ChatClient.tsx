@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Dropdown, Input } from "antd";
 import { useRouter } from "next/navigation";
@@ -6,6 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { IoImageOutline, IoSendSharp } from "react-icons/io5";
+
 
 type TMessageList = {
   id: number;

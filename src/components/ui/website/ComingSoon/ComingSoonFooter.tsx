@@ -28,9 +28,27 @@ const ComingSoonFooter = () => {
                     <p className=' text-[#6B6B6B] font-[400] lg:text-[20px] text-[14px] leading-[24px]  '>Launching Soon. Follow us on social media for updates.</p>    
 <div className=' flex items-center gap-5 my-5'>
 
-<div> <FiFacebook size={28} color='#EEEEEE' /> </div>
-<div> <FaXTwitter  size={26} color='#EEEEEE' /> </div>
-<div> <PiInstagramLogoLight size={28} color='#EEEEEE' /> </div>
+<a
+        href="https://www.facebook.com/profile.php?id=61564562803533&rdid=KIyYDXbGLeGA7zll&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FeCqT38EfcGYt4kkA%2F"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FiFacebook size={28} color="#EEEEEE" />
+      </a>
+      <a
+        href="https://x.com/TradCouples?s=08"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaXTwitter size={26} color="#EEEEEE" />
+      </a>
+      <a
+        href="https://www.instagram.com/tradcouples/profilecard/?igsh=MWVpdDl4NjVxeWMxZg%3D%3D"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <PiInstagramLogoLight size={28} color="#EEEEEE" />
+      </a>
 
 </div>
                     <div>

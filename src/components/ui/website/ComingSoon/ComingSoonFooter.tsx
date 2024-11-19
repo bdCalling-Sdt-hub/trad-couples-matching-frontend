@@ -21,7 +21,7 @@ const ComingSoonFooter = () => {
                 <div className=' flex lg:flex-row flex-col justify-between items-center  '>
                     <div className=' w-full  '> 
                     <div className='flex flex-col  mb-5  '>
-                    <p className={` font-[500] text-[#EEEEEE]  text-[23px] leading-none tracking-wider ${montserrat.className}`}>TradCouples</p>
+                    <p className={` font-[500] text-[#EEEEEE]  text-[23px] leading-none tracking-wider ${montserrat.className}`}>Traditional Couples</p>
                     <p className=' text-[13px] leading-none text-[#EEEEEE] font-sans tracking-wider '>Matchmaking Services</p>
                 </div> 
 

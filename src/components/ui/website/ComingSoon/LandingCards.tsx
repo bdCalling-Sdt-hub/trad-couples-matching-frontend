@@ -109,19 +109,6 @@ const LandingCards = ({ fourthSectionRef}:any) => {
                 <TextInput name='email' label='Email' placeholder="Email Address" />
                 <TextInput name='country' label='Email' placeholder="Country" />
 
-                <div className="flex items-center mb-[10px] flex-nowrap">
-                    <Checkbox>
-                        <span className="lg:text-[18px] text-[14px] whitespace-nowrap" style={{ color: "#6A6D7C", fontWeight: 400 }}>
-                            I agree with
-                        </span>
-                        <Link href="/terms" className="text-[#54A7C3] ml-1 lg:text-[18px] text-[12px] whitespace-nowrap">Terms & Condition</Link>
-                        <span className="mx-1">and</span>
-                        <Link href="/privacy" className="text-[#54A7C3] lg:text-[18px] text-[12px] whitespace-nowrap">Privacy Policy</Link>
-                    </Checkbox>
-                </div>
-
-
-
                 <Link href="/home" className=' ' >
                     <SmallButton className={`mt-5  lg:h-[60px] h-[50px]  ${inter.className}`}>
                         Claim Your Free Month
@@ -191,16 +178,6 @@ const LandingCards = ({ fourthSectionRef}:any) => {
                                 <TextInput name='name' label='Email' placeholder="Full Name" />
                                 <TextInput name='email' label='Email' placeholder="Email Address" />
 
-                                <div className="flex items-center mb-[10px] flex-nowrap">
-                                    <Checkbox>
-                                        <span className="lg:text-[18px] text-[14px] whitespace-nowrap" style={{ color: "#6A6D7C", fontWeight: 400 }}>
-                                            I agree with
-                                        </span>
-                                        <Link href="/terms" className="text-[#54A7C3] ml-1 lg:text-[18px] text-[12px] whitespace-nowrap">Terms & Condition</Link>
-                                        <span className="mx-1">and</span>
-                                        <Link href="/privacy" className="text-[#54A7C3] lg:text-[18px] text-[12px] whitespace-nowrap">Privacy Policy</Link>
-                                    </Checkbox>
-                                </div>
 
                                 <Link href="/home" className=' ' >
                                     <SmallButton className={`mt-5  lg:h-[60px] h-[50px]  ${inter.className}`}>

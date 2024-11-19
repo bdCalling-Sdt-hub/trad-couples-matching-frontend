@@ -188,7 +188,7 @@ const LandingCards = ({ fourthSectionRef}:any) => {
 
                         <div>
                             <Form layout="vertical" className=' w-full'>
-                                <TextInput name='email' label='Email' placeholder="Full Name" />
+                                <TextInput name='name' label='Email' placeholder="Full Name" />
                                 <TextInput name='email' label='Email' placeholder="Email Address" />
 
                                 <div className="flex items-center mb-[10px] flex-nowrap">

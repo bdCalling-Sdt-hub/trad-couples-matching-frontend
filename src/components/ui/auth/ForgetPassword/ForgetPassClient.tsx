@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
@@ -8,6 +9,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
+import { useForgetPasswordMutation } from '@/redux/features/auth/authApi';
+import Swal from 'sweetalert2';
 
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
@@ -17,24 +20,48 @@ interface forgetPassProps {
 
 const ForgetPassClient = () => {
     const [show, setShow] = useState(false);
-    const router = useRouter()
+    const router = useRouter() 
+    const [forgetPassword ] = useForgetPasswordMutation()
 
     useEffect(() => {
         setShow(true);
     }, []);
 
 
-    const onFinish = (values: forgetPassProps) => {
+    const onFinish = async(values: forgetPassProps) => { 
 
-        const value = {
-            userType: "loginUser",
-            email: values?.email
-        }
-        if (values?.email) {
-            SetLocalStorage("userInfo", value)
-        }
-
-        router.push("/otp-verify")
+        await forgetPassword(values).then((res)=>{ 
+             if (res?.data?.success) {
+                    Swal.fire({
+                      text: res?.data?.message,
+                      icon: "success",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    }).then(() => { 
+            
+                        const value = {
+                            userType: "loginUser",
+                            email: values?.email
+                        }
+                        if (values?.email) {
+                            SetLocalStorage("userInfo", value)
+                        }
+                
+                        router.push("/otp-verify")
+                    });
+                  } else {
+                    Swal.fire({
+                      title: "Oops",
+                      //@ts-ignore
+                      text: res?.error?.data?.message,
+                      icon: "error",
+                      timer: 1500,
+                      showConfirmButton: false,
+                    });
+            
+                  }
+                
+        })
     }
 
     return (

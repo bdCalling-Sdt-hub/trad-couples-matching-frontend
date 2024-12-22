@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
@@ -6,20 +7,49 @@ import { ConfigProvider, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
+import { useResetPasswordMutation } from '@/redux/features/auth/authApi';
+import Swal from 'sweetalert2';
 
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 const ResetPasswordClient = () => {
   const [show, setShow] = useState(false);
   const router = useRouter()
+  const [resetPassword , {isError ,isLoading , isSuccess , error ,data}] = useResetPasswordMutation()  
 
   useEffect(() => {
     setShow(true);
   }, []);
 
-  const onFinish = () => {
-    router.push("/login")
-  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      if (data) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: data?.message,
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          router.push("/login")
+        
+        });
+      }
+    }
+    if (isError) {
+      Swal.fire({
+       //@ts-ignore
+        text: error?.data?.message,  
+        icon: "error",
+      });
+    }
+  }, [isSuccess, isError, error, data, router]);  
+
+
+  const onFinish = async(values:{ newPassword: string , confirmPassword: string}) => {   
+    await resetPassword(values)
+  } 
 
   return (
     <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh)] transition-all duration-1000 delay-300 ease-in-out  flex  items-center justify-center
@@ -34,7 +64,7 @@ const ResetPasswordClient = () => {
 
 
         <Form onFinish={onFinish} layout="vertical" className=' w-full'>
-          <PasswordInput name='new_password' label='New Password' placeholder="Enter Your Password" />
+          <PasswordInput name='newPassword' label='New Password' placeholder="Enter Your Password" />
 
           <ConfigProvider
             theme={{
@@ -45,9 +75,9 @@ const ResetPasswordClient = () => {
             }}
           >
             <Form.Item
-              name="confirm_password"
+              name="confirmPassword"
 
-              dependencies={["new_password"]}
+              dependencies={["newPassword"]}
               hasFeedback
               rules={[
                 {
@@ -56,7 +86,7 @@ const ResetPasswordClient = () => {
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
-                    if (!value || getFieldValue("new_password") === value) {
+                    if (!value || getFieldValue("newPassword") === value) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -83,7 +113,7 @@ const ResetPasswordClient = () => {
           </ConfigProvider>
 
           <LargeButton className="">
-            Update Password
+         {isLoading ? "Updating..." : "Update Password"}  
           </LargeButton>
 
         </Form>

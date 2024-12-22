@@ -26,7 +26,10 @@ const PasswordInput = ({name , label , placeholder}:propsType) => {
         > 
         
         <Form.Item name={name}  
-        rules={[{ required: true, message: `Please input your ${label}!` }]}> 
+        rules={[{ required: true, message: `Please input your ${label}!` } , {
+            min: 8,
+            message: "Password must be at least 8 characters long!",
+        }, ]}> 
  
         <Input.Password   
         placeholder={placeholder}

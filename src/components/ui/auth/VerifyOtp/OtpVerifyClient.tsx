@@ -1,25 +1,27 @@
-"use client"
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
+"use client" 
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
-import { GetLocalStorage } from '@/util/LocalStroage';
+import { GetLocalStorage, SetLocalStorage } from '@/util/LocalStroage';
 import { ConfigProvider, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
+import { useForgetPasswordMutation, useOtpVerifyMutation } from '@/redux/features/auth/authApi';
+import Swal from 'sweetalert2';
 
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
-interface valueProps {
-  otp: string | number | null
-}
 
 const OtpVerifyClient = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState<string | null>(null);
-  const userInfo = GetLocalStorage("userInfo");
+  const userInfo = GetLocalStorage("userInfo"); 
+  const [otpVerify] = useOtpVerifyMutation()
   const userType = userInfo?.userType 
-  console.log(userType);
-  const router = useRouter()
+  const router = useRouter() 
+  const [forgetPassword] = useForgetPasswordMutation() 
 
   useEffect(() => {
     setShow(true);
@@ -29,18 +31,76 @@ const OtpVerifyClient = () => {
     }
   }, [userInfo]);
 
-  const handleResend = () => {
-
-  }
-
-  const onFinish = (values: valueProps) => {
-    console.log(values);
-    if (userType === "registerUser") {
-      router.push("/verify-questions")
-    } else {
-      router.push("/reset-password")
+  const handleResendEmail = async () => {
+    const value = {
+      email: email
     }
+    await forgetPassword(value).then((res) => {
+      if (res?.data?.success) {
+        Swal.fire({
+          text: res?.data?.message,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      } else {
+        Swal.fire({
+          title: "Oops",
+          //@ts-ignore
+          text: res?.error?.data?.message,
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+      }
+    })
+
   }
+
+  const onFinish = async(values: { otp: string | null}) => {
+    // console.log(values); 
+    const data = {
+      email: email,
+      oneTimeCode: parseInt(values?.otp)
+    }
+
+    await otpVerify(data).then((res) => {
+
+      if (res?.data?.success) {
+        Swal.fire({
+          text: res?.data?.message,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => { 
+
+          if (userType === "registerUser") {
+            router.push("/login")
+          } else {
+            router.push("/reset-password")
+          } 
+
+          if(res?.data){   
+            SetLocalStorage("resetToken", res?.data?.data); 
+          }
+    
+        });
+      } else {
+        Swal.fire({
+          title: "Oops",
+          //@ts-ignore
+          text: res?.error?.data?.message,
+          icon: "error",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+      }
+    })
+  }; 
+    
+  
 
   return ( 
     <div className={`flex ${userType === "registerUser" ? " justify-end " : " justify-start"}`}>
@@ -56,46 +116,37 @@ const OtpVerifyClient = () => {
         <Form onFinish={onFinish} layout="vertical" className=' w-full mx-auto'>
  
         <ConfigProvider
-      theme={{
-        components: {
-          Select: {
-            activeBorderColor: "#BABABA",
-            hoverBorderColor: "#BABABA"
-          },
-        }, 
-        token: { 
-          colorBgContainer:"transparent"
-        }
-      }}
-    >
- 
-          <Form.Item
-            name="otp"
+            theme={{
+                components: {
+                    Input: {
+                        // lineHeight: 3,
+                        controlHeight: 55,
 
-            rules={[
-              {
-                required: true,
-                message: "Please Enter 5 Digit OTP",
-              },
-            ]}
-            className=' flex items-center justify-center'
-
-          >
-            <Input.OTP
-              length={5}
-              size="large"
-              style={{
-                // width: "100%", 
-                // height: 55, 
-                boxShadow: "none",
-                outline: "none",
-                background: "transparent",
-
-              }}
-              className=" placeholder:text-[#818181] placeholder:text-[22px] placeholder:font-medium placeholder:leading-6"
-            />
-          </Form.Item> 
-          </ConfigProvider>
+                        borderRadius: 10,
+                    },
+                },
+                token: {
+                    colorPrimary: '#292C61',
+                },
+            }}
+        >      
+        <Form.Item
+          className="flex items-center justify-center mx-auto"
+          name="otp"
+          rules={[{ required: true, message: 'Please input otp code here!' }]}
+        >
+          <Input.OTP
+            style={{
+              width: 300, 
+              height: 50,
+      
+            }}
+            className=""
+            variant="filled"
+            length={5}
+          />
+        </Form.Item>
+        </ConfigProvider>
 
           <LargeButton className="">
             Verify Code
@@ -103,7 +154,7 @@ const OtpVerifyClient = () => {
 
         </Form>
 
-        <p className='py-8 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResend} className='text-[#00445B] font-semibold '>Resend</span></p>
+        <p className='py-8 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResendEmail} className='text-[#00445B] font-semibold '>Resend</span></p>
       </div>
 
 

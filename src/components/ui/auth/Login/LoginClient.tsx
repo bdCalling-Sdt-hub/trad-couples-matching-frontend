@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
 import PasswordInput from '@/components/shared/PasswordInput';
 import TextInput from '@/components/shared/TextInput';
+import { useLoginMutation } from '@/redux/features/auth/authApi';
+import { SetLocalStorage } from '@/util/LocalStroage';
 import { Checkbox, Form } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 
 interface loginProps {
@@ -17,15 +21,50 @@ interface loginProps {
 const LoginClient = () => {
   const [show, setShow] = useState(false);
   const router = useRouter()
+  const [login, { isSuccess, isError, data, error, isLoading }] = useLoginMutation()
+
+  useEffect(() => {
+    if (isSuccess) {
+      if (data) {
+        Swal.fire({
+          title: "Login Successful",
+          text: "Welcome to TradeCouples",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+
+          if (data) {
+            SetLocalStorage("tradeToken", data?.data);
+          }
+          router.push("/bio-question");
+
+        });
+      }
+
+    }
+    if (isError) {
+      Swal.fire({
+        title: "Failed to Login",
+        //@ts-ignore
+        text: error?.data?.message,
+        icon: "error",
+      });
+    }
+  }, [isSuccess, isError, error, data, router]);
+
+
+  const onFinish = async (values: loginProps) => {
+    await login(values).then((res) => {
+      console.log(res);
+    })
+  };
+
 
   useEffect(() => {
     setShow(true);
   }, []);
 
-  const onFinish = (values: loginProps) => {
-    console.log(values);
-    router.push("/discover")
-  }
   return (
     <div className={`lg:w-[40%] w-full bg-white/90 h-[calc(100vh)] transition-all duration-1000 delay-150   flex  items-center justify-center  ${show ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
 
@@ -42,15 +81,15 @@ const LoginClient = () => {
 
           <PasswordInput name='password' label="Password" placeholder='Enter Your Password' />
 
-          <div className=' flex items-center justify-between mb-[10px]' > 
+          <div className=' flex items-center justify-between mb-[10px]' >
 
             <div>
 
-            <Checkbox ><span className='text-[#6A6D7C] font-[400] lg:text-[18px] text-[16px] ' > Remember Password </span></Checkbox>
+              <Checkbox ><span className='text-[#6A6D7C] font-[400] lg:text-[18px] text-[16px] ' > Remember Password </span></Checkbox>
             </div>
 
             <Link
-          className='text-primary font-[500] lg:text-[18px] text-[16px] '
+              className='text-primary font-[500] lg:text-[18px] text-[16px] '
               href="/forget-password"
             >
               Forgot password?
@@ -59,7 +98,7 @@ const LoginClient = () => {
           </div>
 
           <LargeButton className="">
-            Sign In
+            {isLoading ? "Loading..." : "Sign In"}
           </LargeButton>
 
         </Form>

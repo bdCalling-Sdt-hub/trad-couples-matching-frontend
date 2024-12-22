@@ -1,13 +1,8 @@
-"use client"
+
 import { ConfigProvider, Form, Input } from 'antd';
-import React, { useEffect } from 'react'; 
+import React from 'react'; 
 
 const TextInput = ({name  , placeholder }:{name:string , label:string  , placeholder:string}) => { 
-    const form = Form.useFormInstance() 
-
-    useEffect(()=>{ 
-        // form.setFieldsValue({name: ""}) 
-    },[form])
     return ( 
         <ConfigProvider
         theme={{

@@ -40,10 +40,7 @@ const Footer = () => {
             label: "Cookie Policy",
             path: "/cookie-policy-web"
         },
-        {
-            label: "Site Map",
-            path: "/site-map"
-        },
+
     ]
 
 

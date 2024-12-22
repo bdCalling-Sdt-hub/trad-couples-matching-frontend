@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import Heading from '@/components/shared/Heading';
 import LargeButton from '@/components/shared/LargeButton';
@@ -9,39 +10,76 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Poppins } from 'next/font/google';
+import { useRegisterMutation } from '@/redux/features/auth/authApi';
+import Swal from 'sweetalert2';
 
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 interface signUpProps {
-  userName: string
+  names: string
   gender: string
   email: string
   password: string | number
   confirm_password: string | number
 }
 const RegisterClient = () => {
-  const [show, setShow] = useState(false);
-  const router = useRouter()
+  const [show, setShow] = useState(false); 
+  const [register , {isLoading }] = useRegisterMutation() 
+  const router = useRouter()   
+ 
+
 
   useEffect(() => {
     setShow(true);
   }, []);
 
-  const onFinish = (values: signUpProps) => {
-    console.log(values);
-    const value = {
-      userType: "registerUser",
-      email: values?.email
-    }
-    if (values?.email) {
-      SetLocalStorage("userInfo", value)
-    }
-    router.push("/otp-verify")
+  const onFinish = async(values: signUpProps) => {
+    const {names , ...otherValues } = values 
+
+    const data = { 
+      name: names,
+      ...otherValues
+    }  
+
+    await register(data).then((res) => {
+    
+          if (res?.data?.success) {
+            Swal.fire({
+              text: res?.data?.message,
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500,
+            }).then(() => { 
+              const value = {
+                userType: "registerUser",
+                email: values?.email
+              }
+              if (values?.email) {
+                SetLocalStorage("userInfo", value)
+              } 
+              router.push("/otp-verify")
+            
+            });
+          } else {
+            Swal.fire({
+              title: "Oops",
+              //@ts-ignore
+              text: res?.error?.data?.message,
+              icon: "error",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+    
+          }
+        }) 
+
+   
+  
   }
 
   const option = [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' },
+    { value: 'Male', label: 'Male' },
+    { value: 'Female', label: 'Female' },
   ]
   return (
     <div className=' flex justify-end items-center'>
@@ -56,86 +94,87 @@ const RegisterClient = () => {
           </p>
 
 
-          <Form onFinish={onFinish} layout="vertical" className=' w-full'> 
+          <Form onFinish={onFinish} layout="vertical" className=' w-full'>
 
-            <TextInput name='userName' label='Name' placeholder="Your Name" />
+            <TextInput name='names' label='Name' placeholder="Your Name" />
 
             <ConfigProvider
               theme={{
                 components: {
                   Select: {
                     activeBorderColor: "#BABABA",
-                    hoverBorderColor: "#BABABA" , 
+                    hoverBorderColor: "#BABABA",
                   },
-                }, 
+                },
                 token: {
-                  colorBgContainer:"transparent" , 
-                       fontFamily: 'Poppins, sans-serif',
-                colorTextPlaceholder: "#6B6B6B"
+                  colorBgContainer: "transparent",
+                  fontFamily: 'Poppins, sans-serif',
+                  colorTextPlaceholder: "#6B6B6B"
                 },
               }}
             >
               <Form.Item name='gender' style={{ background: "transparent" }} >
                 <Select defaultValue="Male" options={option}
-                style={{
-                  height: "56px",  
-                  border: "1px solid #BABABA", 
-                  borderRadius: "8px",
-                }}
+                  style={{
+                    height: "56px",
+                    border: "1px solid #BABABA",
+                    borderRadius: "8px",
+                  }}
                 />
               </Form.Item>
             </ConfigProvider>
 
 
             <TextInput name='email' label='Email' placeholder="Enter Your Email" />
+            <TextInput name='contact' label='Contact' placeholder="Enter Your contact" />
             <PasswordInput name='password' label="Password" placeholder='Enter Your Password' />
- 
+
             <ConfigProvider
-        theme={{
-            token: {
-                fontFamily: 'Poppins, sans-serif',
-                colorTextPlaceholder: "#6B6B6B"
-            }
-        }}
-    >  
-    
-            <Form.Item
-              name="confirm_password"
-              dependencies={["password"]}
-              hasFeedback
-              rules={[
-                {
-                  required: true,
-                  message: "Please confirm your password!",
-                },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("password") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(
-                      new Error("The new password that you entered do not match!")
-                    );
-                  },
-                }),
-              ]}
+              theme={{
+                token: {
+                  fontFamily: 'Poppins, sans-serif',
+                  colorTextPlaceholder: "#6B6B6B"
+                }
+              }}
             >
-              <Input.Password
-                placeholder="Enter Confirm Password"
-                className="placeholder:text-[#818181] placeholder:text-[16px] placeholder:font-normal placeholder:leading-6"
-                style={{
-                  width: "100%",
-                  height: 56,
-                  boxShadow: "none",
-                  outline: "none",
-                  border: "1px solid #BABABA",
-                  borderRadius: 6,
-                  background: "transparent",
-                }}
-              />
-            </Form.Item>
-     </ConfigProvider>
-     
+
+              <Form.Item
+                name="confirm_password"
+                dependencies={["password"]}
+                hasFeedback
+                rules={[
+                  {
+                    required: true,
+                    message: "Please confirm your password!",
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error("The new password that you entered do not match!")
+                      );
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password
+                  placeholder="Enter Confirm Password"
+                  className="placeholder:text-[#818181] placeholder:text-[16px] placeholder:font-normal placeholder:leading-6"
+                  style={{
+                    width: "100%",
+                    height: 56,
+                    boxShadow: "none",
+                    outline: "none",
+                    border: "1px solid #BABABA",
+                    borderRadius: 6,
+                    background: "transparent",
+                  }}
+                />
+              </Form.Item>
+            </ConfigProvider>
+
             <div
 
             >
@@ -148,7 +187,7 @@ const RegisterClient = () => {
             </div>
 
             <LargeButton className="">
-              Sign In
+            {isLoading ? "Loading..." : "Sign Up"} 
             </LargeButton>
 
           </Form>

@@ -1,15 +1,22 @@
+"use client"
 import Image from 'next/image';
 import React from 'react'; 
-import img1 from "@/assets/home3.png"
 import Heading from '@/components/shared/Heading';
+import { useParams } from 'next/navigation';
+import { useGetBlogQuery } from '@/redux/features/footer/footerSlice';
+import { imageUrl } from '@/redux/base/baseApi';
 
-const BlogDetails = () => {
+const BlogDetails = () => { 
+  const {blogId} = useParams();  
+  const {data} = useGetBlogQuery(blogId); 
+  const blogData = data?.data;
+  console.log(blogData);
     return (
         <div className="container my-10">
       <div className="w-full h-[456px] relative">
         <Image
           alt="new details"
-          src={img1}
+          src={blogData?.image?.startsWith("http") ? blogData?.image : `${imageUrl}${blogData?.image}`}
           fill
           // style={{objectFit: "contain"}}
         />
@@ -23,12 +30,12 @@ const BlogDetails = () => {
         >
           <Heading
             className="font-normal lg:text-[32px] text-[24px] text-center   leading-[48px] text-[#3E3E3E]"
-          > A Scriptural look at Jesus’ teachings on marriage </Heading>
+          > {blogData?.title} </Heading>
         </div>
       </div>
 
       <p className="text-[#767676] text-[16px] leading-[21px] font-normal mt-10">
-       Quis urna. tempor consectetur risus quis dui. Ut leo. malesuada gravida eget ex. viverra Nunc Nunc dignissim, convallis. odio non sapien sed Praesent at sit luctus elit. leo. amet, urna viverra ac turpis Nunc elit. massa ipsum elit sed id  ipsum elit. enim. laoreet efficitur. eget maximus vitae nisi nisl. placerat ex ex. ex ac faucibus faucibus elit sit ex. nibh hendrerit Ut Nunc Ut non, Ut nec tincidunt tincidunt turpis Quisque enim. tincidunt ultrices In nibh vitae quis vitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibh Sed consectetur Morbi non luctus Quisque non dui. varius luctus lacus, sodales. porta sed elit consectetur ac Praesent viverra consectetur vitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibh Sed consectetur Morbi non luctus Quisque non dui. varius luctus lacus, sodales. porta sed elit consectetur ac Praesent viverra consectetur vitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibvitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibh Sed consectetur Morbi non luctus Quisque non dui. varius luctus lacus, sodales. porta sed elit consectetur ac Praesent viverra consectetur vitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibh Sed consectetur Morbi non luctus Quisque non dui. varius luctus lacus, sodales. porta sed elit consectetur ac Praesent viverra consectetur vitae sed Nunc at Nullam quis sapien malesuada convallis. vehicula, ipsum orci eu sit amet, hendrerit urna commodo tincidunt placerat odio risus ullamcorper leo. nisl. est. sed vitae Nunc nibh sapien odio ipsum massa In non luctus non. id convallis. at urna risus dui. laoreet Sed ac enim. amet, ac leo. scelerisque ex Donec Quisque nibh Sed consectetur Morbi non luctus Quisque non dui. varius luctus lacus, sodales. porta sed elit consectetur ac Praesent viverra consectetur
+        {blogData?.description}
       </p>
     </div>
     );

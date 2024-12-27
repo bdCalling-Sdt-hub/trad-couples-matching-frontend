@@ -6,102 +6,155 @@ import SectionHeader from './SectionHeader';
 import StepsFooterBtn from './StepsFooterBtn';
 import QuestionDropdown from '@/components/shared/QuestionDropdown';
 import { Poppins } from 'next/font/google';
-import {homeOwnership, livingAlone, beliefInChrist, childrenDesired, mainProviderBelief, willingToFatherOthersChildren, roleModelsForBoys, standardForDaughters, interests, preferredAgeRange, preferredEthnicity, preferredPhysique, preferredFitnessLevel } from "@/components/shared/Option"
+import {homeOwnership, livingAlone, beliefInChrist, childrenDesired, mainProviderBelief, willingToFatherOthersChildren, roleModelsForBoys, standardForDaughters, interests, preferredAgeRange, preferredEthnicity, preferredPhysique, preferredFitnessLevel , christianityOptions, womanAsNurturer  } from "@/components/shared/Option"
+import { useProfileQuery } from '@/redux/features/auth/authApi';
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
-const option = [
-    {
-        value: "Yes",
-        label: "Yes"
-    },
-    {
-        value: "No",
-        label: "No"
-    }
-]
+
 
 const Questions = () => {
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(0);   
+    const {data:profile} = useProfileQuery(undefined)  
+    const gender = profile?.data?.gender
+    console.log(profile); 
+
+    const [formData, setFormData] = useState({ 
+        liveAlone: "",
+        liveWithParents: "",
+        christian: "",
+        believeJesusIsHead: "",
+        numberOfChildrenWanted: "",
+        manIsMainProvider: "",
+        menRoleModelsForBoys: "",
+        menSetStandardForDaughters: "",
+        interestsHobbies: "",
+        preferredAgeRange: "",
+        preferredEthnicity: "",
+        preferredPhysique: "",
+        preferredFitnessLevel: "",
+        stepUpAsMother: "",
+        mothersAreNurturers: true,
+        womenMakeHome: "",
+        preferHomesteadingOrUrban: "",
+        haveAHome: "",
+        stepUpAsFather: "",
+      }); 
+
+      const handleChange = (key: string, value: any) => {
+        setFormData((prev) => ({ ...prev, [key]: value }));
+      };   
+
+      console.log(formData);
+
 
     const steps = [ 
-        //for male 
-        {
-            title: "Do You Have A Home?",
-            content: <div className='w-full '>
-                <QuestionDropdown name='haveAHome' placeholder='Yes/No'
-                    options={homeOwnership} />
-            </div>
-        },
+       
+   
         {
             title: "Do You Live Alone?",
             content: <div className='w-full '>
-                <QuestionDropdown name='liveAlone' placeholder='Yes/No'
-                    options={livingAlone} />
+                <QuestionDropdown name='liveAlone' placeholder=''
+                    options={livingAlone} onChange={(value) => handleChange("liveAlone", value)} />
             </div>
         },
         {
             title: "Are You A Christian?",
             content: <div className='w-full '>
-                <QuestionDropdown name='christian' placeholder='Yes/No'
-                    options={option} />
+                <QuestionDropdown name='christian' placeholder=''
+                    options={christianityOptions}  onChange={(value) => handleChange("christian", value)} />
             </div>
         },
         {
             title: "Do You Believe Jesse Christ Is The Head Of The House And Then The Man ?",
             content: <div className='w-full '>
-                <QuestionDropdown name='believeJesusIsHead' placeholder='Yes/No'
-                    options={beliefInChrist} />
+                <QuestionDropdown name='believeJesusIsHead' placeholder=''
+                    options={beliefInChrist} onChange={(value) => handleChange("believeJesusIsHead", value)} />
             </div>
         }, 
         // change name 
         {
             title: "How Many Children Do You Want ?",
             content: <div className='w-full '>
-                <QuestionDropdown name='howManyChildren' placeholder='Number of Children '
-                    options={childrenDesired} />
+                <QuestionDropdown name='numberOfChildrenWanted' placeholder='Number of Children '
+                    options={childrenDesired} onChange={(value) => handleChange("numberOfChildrenWanted", value)}  />
             </div>
         },
+     
+        // for male  
+        ...(gender === "Female" ? [
+            {
+                title: "Are You Willing To Step Up and Mother Another Woman’s Children?",
+                content: <div className='w-full'>
+                    <QuestionDropdown name='stepUpAsMother' placeholder='Yes/No'
+                        options={willingToFatherOthersChildren} onChange={(value) => handleChange("stepUpAsMother", value)} />
+                </div>
+            } ,  
+            {
+                title: "Do You Believe That Mothers Are Nurturers ?",
+                content: <div className='w-full '>
+                    <QuestionDropdown name='mothersAreNurturers' placeholder='Yes/No'
+                        options={womanAsNurturer} onChange={(value) => handleChange("mothersAreNurturers", value)} />
+                </div>
+            }, 
+            {
+                title: "Do You Believe That Women Make The Home ?",
+                content: <div className='w-full '> 
+                    <QuestionDropdown name='womenMakeHome' placeholder='Yes/No'
+                        options={roleModelsForBoys} onChange={(value) => handleChange("womenMakeHome", value)} />
+                </div>
+            }
+
+        ] : [ 
+            {
+                title: "Do You Have A Home?",
+                content: <div className='w-full '>
+                    <QuestionDropdown name='haveAHome' placeholder=''
+                        options={homeOwnership} onChange={(value) => handleChange("haveAHome", value)}  />
+                </div>
+            },
+            {
+                title: "Are You Willing To Step Up and Father Another Man’s Children?",
+                content: <div className='w-full '>
+                    <QuestionDropdown name='stepUpAsFather' placeholder='Yes/No'
+                        options={willingToFatherOthersChildren} onChange={(value) => handleChange("stepUpAsFather", value)} />
+                </div>
+            }
+        ]), 
+
         {
             title: "Do You Believe The Man Is The Main Provider And Protector Of The Household ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='manIsMainProvider' placeholder='Yes/No'
-                    options={mainProviderBelief} />
+                    options={mainProviderBelief} onChange={(value) => handleChange("manIsMainProvider", value)} />
             </div>
         }, 
-        // for male 
-        {
-            title: "Are You Willing To Step Up and Father Another Man’s Children ?",
-            content: <div className='w-full '>
-                <QuestionDropdown name='stepUpAsFather' placeholder='Yes/No'
-                    options={willingToFatherOthersChildren} />
-            </div>
-        },
+       
         {
             title: "Do You Believe That Man Are Role Models For Little Boy ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='menRoleModelsForBoys' placeholder='Yes/No'
-                    options={roleModelsForBoys} />
+                    options={roleModelsForBoys} onChange={(value) => handleChange("menRoleModelsForBoys", value)} />
             </div>
         },
         {
             title: "Do You Believe That Man Set The Standard For Daughters ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='menSetStandardForDaughters' placeholder='Yes/No'
-                    options={standardForDaughters} />
+                    options={standardForDaughters} onChange={(value) => handleChange("menSetStandardForDaughters", value)} />
             </div>
         },
         {
             title: "What Are Your Interests /Shorts/Hobbies ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='interestsHobbies' placeholder='interests /shorts/hobbies'
-                    options={interests} />
+                    options={interests} onChange={(value) => handleChange("interestsHobbies", value)} />
             </div>
         },
         {
             title: "What Is Your Preferred Age Range For A Partner ?",
             content: <div className='flex items-center  lg:w-2/3 w-full gap-3 '>
                 <QuestionDropdown name='preferredAgeRange' placeholder='20'
-                    options={preferredAgeRange} />
+                    options={preferredAgeRange} onChange={(value) => handleChange("preferredAgeRange", value)} />
 
             </div>
         },
@@ -109,21 +162,21 @@ const Questions = () => {
             title: "What Is Your Preferred Ethnicity For Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='preferredEthnicity' placeholder='Select'
-                    options={preferredEthnicity} />
+                    options={preferredEthnicity} onChange={(value) => handleChange("preferredEthnicity", value)} />
             </div>
         },
         {
             title: "What Is Your Preferred Physique In A Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='preferredPhysique' placeholder='Select'
-                    options={preferredPhysique} />
+                    options={preferredPhysique} onChange={(value) => handleChange("preferredPhysique", value)} />
             </div>
         },
         {
             title: "What Is Your Preferred Fitness Level In A Partner ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='preferredFitnessLevel' placeholder='Select'
-                    options={preferredFitnessLevel} />
+                    options={preferredFitnessLevel} onChange={(value) => handleChange("preferredFitnessLevel", value)} />
             </div>
         },
     ];
@@ -152,7 +205,7 @@ const Questions = () => {
                 </div>
 
                 {/* footer buttons   */}
-                <StepsFooterBtn current={current} setCurrent={setCurrent} steps={steps} />
+                <StepsFooterBtn current={current} setCurrent={setCurrent} steps={steps} formData={formData} />
 
             </div>
         </div>

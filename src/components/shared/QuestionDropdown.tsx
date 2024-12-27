@@ -5,10 +5,11 @@ import React, { useEffect } from 'react';
 interface propsType {
   name: string
   placeholder: string
-  options: { value: string; label: string | JSX.Element }[];
+  options: { value: string|boolean ; label: string | JSX.Element }[]; 
+  onChange: (value: any) => void;
 }
 
-const QuestionDropdown = ({ name, placeholder, options }: propsType) => {
+const QuestionDropdown = ({ name, placeholder, options , onChange  }: propsType) => {
   const form = Form.useFormInstance()
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const QuestionDropdown = ({ name, placeholder, options }: propsType) => {
       <Form.Item
         name={name} className=' lg:w-1/3 w-full '
       >
-        <Select placeholder={placeholder} options={options} style={{ height: 45 }} />
+        <Select placeholder={placeholder} options={options} style={{ height: 45 }}   onChange={(value) => onChange(value)} />
 
       </Form.Item>
 

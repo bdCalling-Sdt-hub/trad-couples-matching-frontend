@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-export const height=[
+export const height = [
     {
         value: "152cm",
         label: <p>Under 5'0" (152 cm)</p>
@@ -25,85 +25,101 @@ export const height=[
         value: "191cm+",
         label: <p>Over 6'3" (191 cm+)</p>
     },
-]  
+]
 
 
-export const bodyShape=[
+export const bodyShape = [
     {
-        value:"slim" ,
-        label:"Slim"
+        value: "slim",
+        label: "Slim"
     },
     {
-        value:"athletic" ,
-        label:"Athletic"
+        value: "athletic",
+        label: "Athletic"
     },
     {
-        value:"average" ,
-        label:"Average"
+        value: "average",
+        label: "Average"
     },
     {
-        value:"curvy" ,
-        label:"Curvy"
+        value: "curvy",
+        label: "Curvy"
     },
     {
-        value:"muscular" ,
-        label:"Muscular"
+        value: "muscular",
+        label: "Muscular"
     },
     {
-        value:"plus-size" ,
-        label:"Plus-size"
+        value: "plus-size",
+        label: "Plus-size"
     },
-] 
+]
 
-export const educationOn=[
+export const educationOn = [
     {
-        value:"High School Diploma" ,
-        label:"High School Diploma"
-    } ,
+        value: "High School Diploma / GED",
+        label: "High School Diploma / GED",
+    },
     {
-        value:"College" ,
-        label:"College"
-    } ,
+        value: "Some College / In Progress",
+        label: "Some College / In Progress",
+    },
     {
-        value:"University Degree" ,
-        label:"University Degree"
-    } ,
+        value: "Associate’s Degree",
+        label: "Associate’s Degree",
+    },
     {
-        value:"Doctorate (PhD)" ,
-        label:"Doctorate (PhD)"
-    } ,
+        value: "Bachelor’s Degree",
+        label: "Bachelor’s Degree",
+    },
     {
-        value:"Trade / Vocational Certification" ,
-        label:"Trade / Vocational Certification"
-    } ,
-] 
+        value: "Master’s Degree",
+        label: "Master’s Degree",
+    },
+    {
+        value: "Professional Degree (e.g., MD, JD)",
+        label: "Professional Degree (e.g., MD, JD)",
+    },
+    {
+        value: "Doctorate (PhD)",
+        label: "Doctorate (PhD)",
+    },
+    {
+        value: "Trade / Vocational Certification",
+        label: "Trade / Vocational Certification",
+    },
+    {
+        value: "Prefer Not to Say",
+        label: "Prefer Not to Say",
+    },
+];
 
-export const ethnicity=[
+export const ethnicity = [
     {
-        value:"Caucasian / White" ,
-        label:"Caucasian / White"
-    } , 
+        value: "Caucasian / White",
+        label: "Caucasian / White"
+    },
     {
-        value:"African / Black" ,
-        label:"African / Black"
-    } , 
+        value: "African / Black",
+        label: "African / Black"
+    },
     {
-        value:"Asian" ,
-        label:"Asian"
-    } , 
+        value: "Asian",
+        label: "Asian"
+    },
     {
-        value:"Hispanic / Latino" ,
-        label:"Hispanic / Latino"
-    } , 
+        value: "Hispanic / Latino",
+        label: "Hispanic / Latino"
+    },
     {
-        value:"Middle Eastern / Arab" ,
-        label:"Middle Eastern / Arab"
-    } , 
+        value: "Middle Eastern / Arab",
+        label: "Middle Eastern / Arab"
+    },
     {
-        value:"Mixed Ethnicity" ,
-        label:"Mixed Ethnicity"
-    } , 
-] 
+        value: "Mixed Ethnicity",
+        label: "Mixed Ethnicity"
+    },
+]
 
 export const country = [
     { value: "United States", label: "United States" },
@@ -139,172 +155,7 @@ export const country = [
     { value: "Japan", label: "Japan" }
 ];
 
-export const province = [
-    { value: "United States", label: "United States" },
-    { value: "Alabama", label: "Alabama" },
-    { value: "Alaska", label: "Alaska" },
-    { value: "Arizona", label: "Arizona" },
-    { value: "Arkansas", label: "Arkansas" },
-    { value: "California", label: "California" },
-    { value: "Colorado", label: "Colorado" },
-    { value: "Connecticut", label: "Connecticut" },
-    { value: "Delaware", label: "Delaware" },
-    { value: "Florida", label: "Florida" },
-    { value: "Georgia", label: "Georgia" },
-    { value: "Hawaii", label: "Hawaii" },
-    { value: "Idaho", label: "Idaho" },
-    { value: "Illinois", label: "Illinois" },
-    { value: "Indiana", label: "Indiana" },
-    { value: "Iowa", label: "Iowa" },
-    { value: "Kansas", label: "Kansas" },
-    { value: "Kentucky", label: "Kentucky" },
-    { value: "Louisiana", label: "Louisiana" },
-    { value: "Maine", label: "Maine" },
-    { value: "Maryland", label: "Maryland" },
-    { value: "Massachusetts", label: "Massachusetts" },
-    { value: "Michigan", label: "Michigan" },
-    { value: "Minnesota", label: "Minnesota" },
-    { value: "Mississippi", label: "Mississippi" },
-    { value: "Missouri", label: "Missouri" },
-    { value: "Montana", label: "Montana" },
-    { value: "Nebraska", label: "Nebraska" },
-    { value: "Nevada", label: "Nevada" },
-    { value: "New Hampshire", label: "New Hampshire" },
-    { value: "New Jersey", label: "New Jersey" },
-    { value: "New Mexico", label: "New Mexico" },
-    { value: "New York", label: "New York" },
-    { value: "North Carolina", label: "North Carolina" },
-    { value: "North Dakota", label: "North Dakota" },
-    { value: "Ohio", label: "Ohio" },
-    { value: "Oklahoma", label: "Oklahoma" },
-    { value: "Oregon", label: "Oregon" },
-    { value: "Pennsylvania", label: "Pennsylvania" },
-    { value: "Rhode Island", label: "Rhode Island" },
-    { value: "South Carolina", label: "South Carolina" },
-    { value: "South Dakota", label: "South Dakota" },
-    { value: "Tennessee", label: "Tennessee" },
-    { value: "Texas", label: "Texas" },
-    { value: "Utah", label: "Utah" },
-    { value: "Vermont", label: "Vermont" },
-    { value: "Virginia", label: "Virginia" },
-    { value: "Washington", label: "Washington" },
-    { value: "West Virginia", label: "West Virginia" },
-    { value: "Wisconsin", label: "Wisconsin" },
-    { value: "Wyoming", label: "Wyoming" },
 
-    { value: "United Kingdom", label: "United Kingdom" },
-    { value: "England", label: "England" },
-    { value: "Northern Ireland", label: "Northern Ireland" },
-    { value: "Scotland", label: "Scotland" },
-    { value: "Wales", label: "Wales" },
-
-    { value: "Canada", label: "Canada" },
-    { value: "Alberta", label: "Alberta" },
-    { value: "British Columbia", label: "British Columbia" },
-    { value: "Manitoba", label: "Manitoba" },
-    { value: "New Brunswick", label: "New Brunswick" },
-    { value: "Newfoundland and Labrador", label: "Newfoundland and Labrador" },
-    { value: "Nova Scotia", label: "Nova Scotia" },
-    { value: "Ontario", label: "Ontario" },
-    { value: "Prince Edward Island", label: "Prince Edward Island" },
-    { value: "Quebec", label: "Quebec" },
-    { value: "Saskatchewan", label: "Saskatchewan" },
-
-    { value: "Australia", label: "Australia" },
-    { value: "Australian Capital Territory", label: "Australian Capital Territory" },
-    { value: "New South Wales", label: "New South Wales" },
-    { value: "Northern Territory", label: "Northern Territory" },
-    { value: "Queensland", label: "Queensland" },
-    { value: "South Australia", label: "South Australia" },
-    { value: "Tasmania", label: "Tasmania" },
-    { value: "Victoria", label: "Victoria" },
-    { value: "Western Australia", label: "Western Australia" },
-
-    { value: "South Africa", label: "South Africa" },
-    { value: "Eastern Cape", label: "Eastern Cape" },
-    { value: "Free State", label: "Free State" },
-    { value: "Gauteng", label: "Gauteng" },
-    { value: "KwaZulu-Natal", label: "KwaZulu-Natal" },
-    { value: "Limpopo", label: "Limpopo" },
-    { value: "Mpumalanga", label: "Mpumalanga" },
-    { value: "Northern Cape", label: "Northern Cape" },
-    { value: "North West", label: "North West" },
-    { value: "Western Cape", label: "Western Cape" },
-
-    { value: "India", label: "India" },
-    { value: "Andhra Pradesh", label: "Andhra Pradesh" },
-    { value: "Assam", label: "Assam" },
-    { value: "Bihar", label: "Bihar" },
-    { value: "Chhattisgarh", label: "Chhattisgarh" },
-    { value: "Goa", label: "Goa" },
-    { value: "Gujarat", label: "Gujarat" },
-    { value: "Haryana", label: "Haryana" },
-    { value: "Himachal Pradesh", label: "Himachal Pradesh" },
-    { value: "Jharkhand", label: "Jharkhand" },
-    { value: "Karnataka", label: "Karnataka" },
-    { value: "Kerala", label: "Kerala" },
-    { value: "Madhya Pradesh", label: "Madhya Pradesh" },
-    { value: "Maharashtra", label: "Maharashtra" },
-    { value: "Manipur", label: "Manipur" },
-    { value: "Meghalaya", label: "Meghalaya" },
-    { value: "Mizoram", label: "Mizoram" },
-    { value: "Nagaland", label: "Nagaland" },
-    { value: "Odisha", label: "Odisha" },
-    { value: "Punjab", label: "Punjab" },
-    { value: "Rajasthan", label: "Rajasthan" },
-    { value: "Sikkim", label: "Sikkim" },
-    { value: "Tamil Nadu", label: "Tamil Nadu" },
-    { value: "Telangana", label: "Telangana" },
-    { value: "Tripura", label: "Tripura" },
-    { value: "Uttar Pradesh", label: "Uttar Pradesh" },
-    { value: "Uttarakhand", label: "Uttarakhand" },
-    { value: "West Bengal", label: "West Bengal" },
-
-    { value: "Pakistan", label: "Pakistan" },
-    { value: "Balochistan", label: "Balochistan" },
-    { value: "Islamabad Capital Territory", label: "Islamabad Capital Territory" },
-    { value: "Khyber Pakhtunkhwa", label: "Khyber Pakhtunkhwa" },
-    { value: "Punjab", label: "Punjab" },
-    { value: "Sindh", label: "Sindh" },
-
-    { value: "Nigeria", label: "Nigeria" },
-    { value: "Abia", label: "Abia" },
-    { value: "Adamawa", label: "Adamawa" },
-    { value: "Akwa Ibom", label: "Akwa Ibom" },
-    { value: "Anambra", label: "Anambra" },
-    { value: "Bauchi", label: "Bauchi" },
-    { value: "Bayelsa", label: "Bayelsa" },
-    { value: "Benue", label: "Benue" },
-    { value: "Borno", label: "Borno" },
-    { value: "Cross River", label: "Cross River" },
-    { value: "Delta", label: "Delta" },
-    { value: "Ebonyi", label: "Ebonyi" },
-    { value: "Edo", label: "Edo" },
-    { value: "Ekiti", label: "Ekiti" },
-    { value: "Enugu", label: "Enugu" },
-    { value: "Gombe", label: "Gombe" },
-    { value: "Imo", label: "Imo" },
-    { value: "Jigawa", label: "Jigawa" },
-    { value: "Kaduna", label: "Kaduna" },
-    { value: "Kano", label: "Kano" },
-    { value: "Katsina", label: "Katsina" },
-    { value: "Kebbi", label: "Kebbi" },
-    { value: "Kogi", label: "Kogi" },
-    { value: "Kwara", label: "Kwara" },
-    { value: "Lagos", label: "Lagos" },
-    { value: "Nasarawa", label: "Nasarawa" },
-    { value: "Niger", label: "Niger" },
-    { value: "Ogun", label: "Ogun" },
-    { value: "Ondo", label: "Ondo" },
-    { value: "Osun", label: "Osun" },
-    { value: "Oyo", label: "Oyo" },
-    { value: "Plateau", label: "Plateau" },
-    { value: "Rivers", label: "Rivers" },
-    { value: "Sokoto", label: "Sokoto" },
-    { value: "Taraba", label: "Taraba" },
-    { value: "Yobe", label: "Yobe" },
-    { value: "Zamfara", label: "Zamfara" }
-];
 
 export const hairColor = [
     { value: "Black", label: "Black" },
@@ -332,14 +183,16 @@ export const maritalStatus = [
     { value: "Single", label: "Single" },
     { value: "Divorced", label: "Divorced" },
     { value: "Widowed", label: "Widowed" },
-    { value: "Separated", label: "Separated" }
-]; 
+    { value: "Separated", label: "Separated" } ,
+    { value: "Annulled", label: "Annulled" } ,
+    { value: "Other", label: "Other" }
+];
 
 export const relocationWillingness = [
     { value: "Yes, Open to Relocating", label: "Yes, Open to Relocating" },
     { value: "Maybe, Open to Discussion", label: "Maybe, Open to Discussion" },
     { value: "No, Prefer to Stay in Current Location", label: "No, Prefer to Stay in Current Location" }
-]; 
+];
 
 export const livingEnvironment = [
     { value: "Rural Living", label: "Rural Living" },
@@ -378,7 +231,7 @@ export const homeOwnership = [
     { value: "Yes, I Rent a Home", label: "Yes, I Rent a Home" },
     { value: "No, Currently Living with Family", label: "No, Currently Living with Family" },
     { value: "No, Currently Renting", label: "No, Currently Renting" }
-]; 
+];
 
 export const livingAlone = [
     { value: "Yes, I Live Alone", label: "Yes, I Live Alone" },
@@ -388,8 +241,10 @@ export const livingAlone = [
 ];
 
 export const beliefInChrist = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: "Yes, I believe this", label: "Yes, I believe this" },
+    { value: "No, I have different beliefs", label: "No, I have different beliefs" },
+    { value: "Open to Discussion", label: "Open to Discussion" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
 ];
 
 export const childrenDesired = [
@@ -401,28 +256,36 @@ export const childrenDesired = [
 ];
 
 export const mainProviderBelief = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: "Yes, I believe this", label: "Yes, I believe this" },
+    { value: "No, I have different beliefs", label: "No, I have different beliefs" },
+    { value: "Open to Discussion", label: "Open to Discussion" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
 ];
 
 export const willingToFatherOthersChildren = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: "Yes, I am open to this", label: "Yes, I am open to this" },
+    { value: "No, I prefer not to", label: "No, I prefer not to" },
+    { value: "Open to Discussion", label: "Open to Discussion" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
 ];
 
 export const roleModelsForBoys = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: "Yes, I believe this", label: "Yes, I believe this" },
+    { value: "No, I have a different perspective", label: "No, I have a different perspective" },
+    { value: "Open to Discussion", label: "Open to Discussion" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
 ];
 
 export const standardForDaughters = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: "Yes, I believe this", label: "Yes, I believe this" },
+    { value: "No, I have a different perspective", label: "No, I have a different perspective" },
+    { value: "Open to Discussion", label: "Open to Discussion" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
 ];
 
 export const womanAsNurturer = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" }
+    { value: true, label: "Yes" },
+    { value: false, label: "No" }
 ];
 
 export const womanComplementIncome = [
@@ -501,4 +364,334 @@ export const preferredFitnessLevel = [
 ];
 
 
+export const universityFrom = [
+    {
+        title: 'United States',
+        value: 'United States',
+        children: [
+            { title: 'Harvard University', value: 'Harvard University' },
+            { title: 'Yale University', value: 'Yale University' },
+            { title: 'Princeton University', value: 'Princeton University' },
+            { title: 'Stanford University', value: 'Stanford University' },
+            { title: 'Massachusetts Institute of Technology (MIT)', value: 'Massachusetts Institute of Technology (MIT)' },
+            { title: 'University of California, Berkeley', value: 'University of California, Berkeley' },
+            { title: 'University of Chicago', value: 'University of Chicago' },
+            { title: 'Columbia University', value: 'Columbia University' },
+            { title: 'New York University (NYU)', value: 'New York University (NYU)' },
+            { title: 'University of Michigan', value: 'University of Michigan' },
+            { title: 'University of Texas at Austin', value: 'University of Texas at Austin' },
+            { title: 'University of Southern California (USC)', value: 'University of Southern California (USC)' },
+        ],
+    },
+    {
+        title: 'United Kingdom',
+        value: 'United Kingdom',
+        children: [
+            { title: 'University of Oxford', value: 'University of Oxford' },
+            { title: 'University of Cambridge', value: 'University of Cambridge' },
+            { title: 'London School of Economics (LSE)', value: 'London School of Economics (LSE)' },
+            { title: 'Imperial College London', value: 'Imperial College London' },
+            { title: 'University College London (UCL)', value: 'University College London (UCL)' },
+            { title: 'University of Edinburgh', value: 'University of Edinburgh' },
+            { title: 'King’s College London', value: 'King’s College London' },
+            { title: 'University of Manchester', value: 'University of Manchester' },
+            { title: 'University of Warwick', value: 'University of Warwick' },
+            { title: 'University of Bristol', value: 'University of Bristol' },
+        ],
+    },
+    {
+        title: 'Canada',
+        value: 'Canada',
+        children: [
+            { title: 'University of Toronto', value: 'University of Toronto' },
+            { title: 'McGill University', value: 'McGill University' },
+            { title: 'University of British Columbia (UBC)', value: 'University of British Columbia (UBC)' },
+            { title: 'University of Alberta', value: 'University of Alberta' },
+            { title: 'Queen’s University', value: 'Queen’s University' },
+            { title: 'University of Montreal', value: 'University of Montreal' },
+            { title: 'Western University', value: 'Western University' },
+            { title: 'University of Ottawa', value: 'University of Ottawa' },
+            { title: 'Simon Fraser University', value: 'Simon Fraser University' },
+        ],
+    },
+    {
+        title: 'Australia',
+        value: 'Australia',
+        children: [
+            { title: 'University of Sydney', value: 'University of Sydney' },
+            { title: 'University of Melbourne', value: 'University of Melbourne' },
+            { title: 'Australian National University (ANU)', value: 'Australian National University (ANU)' },
+            { title: 'University of Queensland', value: 'University of Queensland' },
+            { title: 'University of New South Wales (UNSW)', value: 'University of New South Wales (UNSW)' },
+            { title: 'Monash University', value: 'Monash University' },
+            { title: 'University of Western Australia (UWA)', value: 'University of Western Australia (UWA)' },
+        ],
+    },
+    {
+        title: 'India',
+        value: 'India',
+        children: [
+            { title: 'Indian Institute of Technology (IIT)', value: 'Indian Institute of Technology (IIT)' },
+            { title: 'University of Delhi', value: 'University of Delhi' },
+            { title: 'Jawaharlal Nehru University (JNU)', value: 'Jawaharlal Nehru University (JNU)' },
+            { title: 'Indian Institute of Management (IIM)', value: 'Indian Institute of Management (IIM)' },
+            { title: 'Banaras Hindu University (BHU)', value: 'Banaras Hindu University (BHU)' },
+            { title: 'University of Mumbai', value: 'University of Mumbai' },
+        ],
+    },
+    {
+        title: 'South Africa',
+        value: 'South Africa',
+        children: [
+            { title: 'University of Cape Town', value: 'University of Cape Town' },
+            { title: 'University of the Witwatersrand', value: 'University of the Witwatersrand' },
+            { title: 'Stellenbosch University', value: 'Stellenbosch University' },
+            { title: 'University of Pretoria', value: 'University of Pretoria' },
+            { title: 'University of Johannesburg', value: 'University of Johannesburg' },
+        ],
+    },
+    {
+        title: 'Middle East',
+        value: 'Middle East',
+        children: [
+            { title: 'American University of Beirut (AUB)', value: 'American University of Beirut (AUB)' },
+            { title: 'King Saud University (Saudi Arabia)', value: 'King Saud University (Saudi Arabia)' },
+            { title: 'Qatar University', value: 'Qatar University' },
+            { title: 'American University in Dubai', value: 'American University in Dubai' },
+            { title: 'University of Jordan', value: 'University of Jordan' },
+        ],
+    },
+    {
+        title: 'Other Notable Institutions',
+        value: 'Other Notable Institutions',
+        children: [
+            { title: 'ETH Zurich (Switzerland)', value: 'ETH Zurich (Switzerland)' },
+            { title: 'National University of Singapore (NUS)', value: 'National University of Singapore (NUS)' },
+            { title: 'University of Hong Kong', value: 'University of Hong Kong' },
+            { title: 'University of Tokyo (Japan)', value: 'University of Tokyo (Japan)' },
+            { title: 'Seoul National University (South Korea)', value: 'Seoul National University (South Korea)' },
+            { title: 'Moscow State University (Russia)', value: 'Moscow State University (Russia)' },
+        ],
+    },
+    {
+        title: 'Manual Entry Option',
+        value: 'Manual Entry Option',
+        children: [{ title: 'Other (Please Specify)', value: 'Other (Please Specify)' }],
+    },
+];
 
+export const province = [
+    {
+        title: "United States",
+        value: "United States",
+        children: [
+            { title: "Alabama", value: "Alabama" },
+            { title: "Alaska", value: "Alaska" },
+            { title: "Arizona", value: "Arizona" },
+            { title: "Arkansas", value: "Arkansas" },
+            { title: "California", value: "California" },
+            { title: "Colorado", value: "Colorado" },
+            { title: "Connecticut", value: "Connecticut" },
+            { title: "Delaware", value: "Delaware" },
+            { title: "Florida", value: "Florida" },
+            { title: "Georgia", value: "Georgia" },
+            { title: "Hawaii", value: "Hawaii" },
+            { title: "Idaho", value: "Idaho" },
+            { title: "Illinois", value: "Illinois" },
+            { title: "Indiana", value: "Indiana" },
+            { title: "Iowa", value: "Iowa" },
+            { title: "Kansas", value: "Kansas" },
+            { title: "Kentucky", value: "Kentucky" },
+            { title: "Louisiana", value: "Louisiana" },
+            { title: "Maine", value: "Maine" },
+            { title: "Maryland", value: "Maryland" },
+            { title: "Massachusetts", value: "Massachusetts" },
+            { title: "Michigan", value: "Michigan" },
+            { title: "Minnesota", value: "Minnesota" },
+            { title: "Mississippi", value: "Mississippi" },
+            { title: "Missouri", value: "Missouri" },
+            { title: "Montana", value: "Montana" },
+            { title: "Nebraska", value: "Nebraska" },
+            { title: "Nevada", value: "Nevada" },
+            { title: "New Hampshire", value: "New Hampshire" },
+            { title: "New Jersey", value: "New Jersey" },
+            { title: "New Mexico", value: "New Mexico" },
+            { title: "New York", value: "New York" },
+            { title: "North Carolina", value: "North Carolina" },
+            { title: "North Dakota", value: "North Dakota" },
+            { title: "Ohio", value: "Ohio" },
+            { title: "Oklahoma", value: "Oklahoma" },
+            { title: "Oregon", value: "Oregon" },
+            { title: "Pennsylvania", value: "Pennsylvania" },
+            { title: "Rhode Island", value: "Rhode Island" },
+            { title: "South Carolina", value: "South Carolina" },
+            { title: "South Dakota", value: "South Dakota" },
+            { title: "Tennessee", value: "Tennessee" },
+            { title: "Texas", value: "Texas" },
+            { title: "Utah", value: "Utah" },
+            { title: "Vermont", value: "Vermont" },
+            { title: "Virginia", value: "Virginia" },
+            { title: "Washington", value: "Washington" },
+            { title: "West Virginia", value: "West Virginia" },
+            { title: "Wisconsin", value: "Wisconsin" },
+            { title: "Wyoming", value: "Wyoming" },
+        ],
+    },
+    {
+        title: "United Kingdom",
+        value: "United Kingdom",
+        children: [
+            { title: "England", value: "England" },
+            { title: "Northern Ireland", value: "Northern Ireland" },
+            { title: "Scotland", value: "Scotland" },
+            { title: "Wales", value: "Wales" },
+        ],
+    },
+    {
+        title: "Canada",
+        value: "Canada",
+        children: [
+            { title: "Alberta", value: "Alberta" },
+            { title: "British Columbia", value: "British Columbia" },
+            { title: "Manitoba", value: "Manitoba" },
+            { title: "New Brunswick", value: "New Brunswick" },
+            { title: "Newfoundland and Labrador", value: "Newfoundland and Labrador" },
+            { title: "Nova Scotia", value: "Nova Scotia" },
+            { title: "Ontario", value: "Ontario" },
+            { title: "Prince Edward Island", value: "Prince Edward Island" },
+            { title: "Quebec", value: "Quebec" },
+            { title: "Saskatchewan", value: "Saskatchewan" },
+        ],
+    },
+    {
+        title: "Australia",
+        value: "Australia",
+        children: [
+            { title: "Australian Capital Territory", value: "Australian Capital Territory" },
+            { title: "New South Wales", value: "New South Wales" },
+            { title: "Northern Territory", value: "Northern Territory" },
+            { title: "Queensland", value: "Queensland" },
+            { title: "South Australia", value: "South Australia" },
+            { title: "Tasmania", value: "Tasmania" },
+            { title: "Victoria", value: "Victoria" },
+            { title: "Western Australia", value: "Western Australia" },
+        ],
+    },
+    {
+        title: "South Africa",
+        value: "South Africa",
+        children: [
+            { title: "Eastern Cape", value: "Eastern Cape" },
+            { title: "Free State", value: "Free State" },
+            { title: "Gauteng", value: "Gauteng" },
+            { title: "KwaZulu-Natal", value: "KwaZulu-Natal" },
+            { title: "Limpopo", value: "Limpopo" },
+            { title: "Mpumalanga", value: "Mpumalanga" },
+            { title: "Northern Cape", value: "Northern Cape" },
+            { title: "North West", value: "North West" },
+            { title: "Western Cape", value: "Western Cape" },
+        ],
+    },
+    {
+        title: "India",
+        value: "India",
+        children: [
+            { title: "Andhra Pradesh", value: "Andhra Pradesh" },
+            { title: "Assam", value: "Assam" },
+            { title: "Bihar", value: "Bihar" },
+            { title: "Chhattisgarh", value: "Chhattisgarh" },
+            { title: "Goa", value: "Goa" },
+            { title: "Gujarat", value: "Gujarat" },
+            { title: "Haryana", value: "Haryana" },
+            { title: "Himachal Pradesh", value: "Himachal Pradesh" },
+            { title: "Jharkhand", value: "Jharkhand" },
+            { title: "Karnataka", value: "Karnataka" },
+            { title: "Kerala", value: "Kerala" },
+            { title: "Madhya Pradesh", value: "Madhya Pradesh" },
+            { title: "Maharashtra", value: "Maharashtra" },
+            { title: "Manipur", value: "Manipur" },
+            { title: "Meghalaya", value: "Meghalaya" },
+            { title: "Mizoram", value: "Mizoram" },
+            { title: "Nagaland", value: "Nagaland" },
+            { title: "Odisha", value: "Odisha" },
+            { title: "Punjab", value: "Punjab" },
+            { title: "Rajasthan", value: "Rajasthan" },
+            { title: "Sikkim", value: "Sikkim" },
+            { title: "Tamil Nadu", value: "Tamil Nadu" },
+            { title: "Telangana", value: "Telangana" },
+            { title: "Tripura", value: "Tripura" },
+            { title: "Uttar Pradesh", value: "Uttar Pradesh" },
+            { title: "Uttarakhand", value: "Uttarakhand" },
+            { title: "West Bengal", value: "West Bengal" },
+        ],
+    },
+    {
+        title: "Pakistan",
+        value: "Pakistan",
+        children: [
+            { title: "Balochistan", value: "Balochistan" },
+            { title: "Islamabad Capital Territory", value: "Islamabad Capital Territory" },
+            { title: "Khyber Pakhtunkhwa", value: "Khyber Pakhtunkhwa" },
+            { title: "Punjab", value: "Punjab" },
+            { title: "Sindh", value: "Sindh" },
+        ],
+    },
+    {
+        title: "Nigeria",
+        value: "Nigeria",
+        children: [
+            { title: "Abia", value: "Abia" },
+            { title: "Adamawa", value: "Adamawa" },
+            { title: "Akwa Ibom", value: "Akwa Ibom" },
+            { title: "Anambra", value: "Anambra" },
+            { title: "Bauchi", value: "Bauchi" },
+            { title: "Bayelsa", value: "Bayelsa" },
+            { title: "Benue", value: "Benue" },
+            { title: "Borno", value: "Borno" },
+            { title: "Cross River", value: "Cross River" },
+            { title: "Delta", value: "Delta" },
+            { title: "Ebonyi", value: "Ebonyi" },
+            { title: "Edo", value: "Edo" },
+            { title: "Ekiti", value: "Ekiti" },
+            { title: "Enugu", value: "Enugu" },
+            { title: "Gombe", value: "Gombe" },
+            { title: "Imo", value: "Imo" },
+            { title: "Jigawa", value: "Jigawa" },
+            { title: "Kaduna", value: "Kaduna" },
+            { title: "Kano", value: "Kano" },
+            { title: "Katsina", value: "Katsina" },
+            { title: "Kebbi", value: "Kebbi" },
+            { title: "Kogi", value: "Kogi" },
+            { title: "Kwara", value: "Kwara" },
+            { title: "Lagos", value: "Lagos" },
+            { title: "Nasarawa", value: "Nasarawa" },
+            { title: "Niger", value: "Niger" },
+            { title: "Ogun", value: "Ogun" },
+            { title: "Ondo", value: "Ondo" },
+            { title: "Osun", value: "Osun" },
+            { title: "Oyo", value: "Oyo" },
+            { title: "Plateau", value: "Plateau" },
+            { title: "Rivers", value: "Rivers" },
+            { title: "Sokoto", value: "Sokoto" },
+            { title: "Taraba", value: "Taraba" },
+            { title: "Yobe", value: "Yobe" },
+            { title: "Zamfara", value: "Zamfara" },
+        ]
+    }
+]
+
+export const custodyStatus = [
+    { value: "No", label: "No" },
+    { value: "Yes, Full-Time Custody", label: "Yes, Full-Time Custody" },
+    { value: "Yes, Part-Time Custody", label: "Yes, Part-Time Custody" },
+    { value: "Yes, Grown Children", label: "Yes, Grown Children" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+]; 
+
+export const christianityOptions = [
+    { value: "Yes, I am a Christian", label: "Yes, I am a Christian" },
+    { value: "No, but I am religious", label: "No, but I am religious" },
+    { value: "No, not religious", label: "No, not religious" },
+    { value: "Open to All Faiths", label: "Open to All Faiths" },
+    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+];

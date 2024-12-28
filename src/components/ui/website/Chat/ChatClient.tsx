@@ -1,232 +1,164 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Dropdown, Input } from "antd";
+import { UserContext } from "@/provider/User";
+import { imageUrl } from "@/redux/base/baseApi";
+import { useCreateInitialChatMutation, useGetChatListQuery, useGetMessageListQuery, useSendMessageMutation } from "@/redux/features/chat/chatSlice";
+import { Dropdown, Form, Input } from "antd";
+import moment from "moment";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { CiImageOn } from "react-icons/ci";
 import { FiSearch } from "react-icons/fi";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { IoImageOutline, IoSendSharp } from "react-icons/io5";
-
+import { IoSendSharp } from "react-icons/io5";
+import { MdOutlineCancel } from "react-icons/md";
 
 type TMessageList = {
-  id: number;
-  name: string;
-  address: string;
-  time: string;
-  text: string;
-  image: string;
+  participants: Participant[];
+  _id: string;
+  lastMessage: LastMessage;
 };
 
-const items = [
-  {
-    label: (
-      <p className="text-[15px] font-medium  hover:text-primary text-[#A3A3A3] w-[100px] ">
-        View Profile
-      </p>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <p className="text-[15px] font-medium  hover:text-primary text-[#A3A3A3]">
-        Add to Favorites
-      </p>
-    ),
-    key: "1",
-  },
-  {
-    label: (
-      <p className="text-[15px] font-medium  hover:text-primary text-[#A3A3A3]">
-        Send Private Key
-      </p>
-    ),
-    key: "2",
-  },
-  {
-    label: (
-      <p className="text-[15px] font-medium  hover:text-primary text-[#A3A3A3]">
-        Block
-      </p>
-    ),
-    key: "3",
-  },
-  {
-    label: (
-      <p className="text-[15px] font-medium  hover:text-primary text-[#A3A3A3]">
-        Report
-      </p>
-    ),
-    key: "4",
-  },
-];
+type Participant = {
+  _id: string;
+  name: string;
+  image: string; 
+  address: string;
+};
 
-const messageList = [
-  {
-    id: 1,
-    name: "Mariam Star",
-    address: "New York, USA",
-    time: "10:00 AM",
-    text: "Hello , How are you ?",
-    image: "/user.svg"
-  },
-  {
-    id: 2,
-    name: "Courtney Henry",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg"
-  },
-  {
-    id: 3,
-    name: "Ana Rose",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/user.svg",
-  },
-  {
-    id: 4,
-    name: "Mariam Star",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg"
-  },
-  {
-    id: 5,
-    name: "Courtney Henry",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/user.svg",
-  },
-  {
-    id: 6,
-    name: "Ana Rose",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg"
-  },
-  {
-    id: 7,
-    name: "Mariam Star",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/user.svg"
-  },
-  {
-    id: 8,
-    name: "Courtney Henry",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg",
-  },
-  {
-    id: 9,
-    name: "Ana Rose",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg"
-  },
-  {
-    id: 10,
-    name: "Mariam Star",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/user.svg"
-  },
-  {
-    id: 11,
-    name: "Courtney Henry",
-    time: "10:00 AM",
-    address: "New York, USA",
-    text: "Hello , How are you ?",
-    image: "/person.svg",
-  },
-];
+type LastMessage = {
+  _id: string;
+  sender: string;
+  text: string;
+  createdAt: string;
+  image: string;
+}; 
 
-const messageContent = [
-  {
-    id: 1,
-    message: "How can i help you?",
-    date: "27 April 2024",
-  },
-  {
-    id: 2,
-    message: "what are the amenities?",
-    date: "27 April 2024",
-  },
-  {
-    id: 3,
-    message: "there are so many amenities.",
-    date: "27 April 2024",
-  },
-  {
-    id: 4,
-    message: "i want to book the room",
-    date: "27 April 2024",
-  },
-  {
-    id: 5,
-    message: "sure.",
-    date: "27 April 2024",
-  },
-  {
-    id: 6,
-    message: "how much for the room per week?",
-    date: "27 April 2024",
-  },
-  {
-    id: 7,
-    message: "200$",
-    date: "27 April 2024",
-  },
-  {
-    id: 8,
-    message: "How can i help you?",
-    date: "27 April 2024",
-  },
-  {
-    id: 9,
-    message: "what are the amenities?",
-    date: "27 April 2024",
-  },
-  {
-    id: 10,
-    message: "How can i help you?",
-    date: "27 April 2024",
-  },
-  {
-    id: 11,
-    message: "what are the amenities?",
-    date: "27 April 2024",
-  },
-];
+const menuItems = [
+  { label: "View Profile", key: "0" },
+  { label: "Add to Favorites", key: "1" },
+  { label: "Send Private Key", key: "2" },
+  { label: "Block", key: "3" },
+  { label: "Report", key: "4" },
+].map(item => ({
+  label: <p className="text-[15px] font-medium hover:text-primary text-[#A3A3A3]">{item.label}</p>,
+  key: item.key,
+}));
+
+
+
+
 const ChatClient = () => {
-  const [person, setPerson] = useState<TMessageList | null>({
-    id: 1,
-    name: "Mariam Star",
-    address: "New York, USA",
-    time: "10:00 AM",
-    text: "Hello , How are you ?",
-    image: "/user.svg"
-  });
-  const [personId, setpersonId] = useState<number | null>(1);
-  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [image, setImage] = useState<File | null>(null);
+  const [imageURL, setImageURL] = useState<string | null>(null);
+  const [person, setPerson] = useState<TMessageList | null>();
+  const [isChatVisible, setIsChatVisible] = useState(false); 
+  const [keyword, setKeyword] = useState("");
   const router = useRouter();
+  const { data: messages } = useGetChatListQuery(keyword) 
+  const [messageInput , setMessageInput] = useState(""); 
+  const [sendMessage] = useSendMessageMutation(); 
+  const [createInitialChat] = useCreateInitialChatMutation() 
+  const {data:getMessageList} = useGetMessageListQuery(person?.participants[0]?._id)  
+  const [messageList, setMessageList] = useState();  
+  const { socket } = useContext(UserContext);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  console.log(getMessageList);  
 
-  const handleMessage = (value: TMessageList) => {
-    setPerson(value);
-    setpersonId(value?.id);
-    setIsChatVisible(true);
-    router.push(`/chat?id=${value.id}`);
+  useEffect(() => {
+    if (getMessageList) {
+      setMessageList(getMessageList?.data);
+    }
+  }, [getMessageList]);
+
+  // Scroll to the bottom of the chat
+  useEffect(() => {
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [messageList]);
+
+  // Handle new message from socket
+  const handleConnection = useCallback(
+    (data) => {
+      setMessageList((prev) => [...prev, data]);
+    },
+    [setMessageList]
+  );
+
+  useEffect(() => {
+    const event = `message::${person?.participants[0]?._id}`;
+    socket.on(event, handleConnection);
+    return () => {
+      socket.off(event, handleConnection);
+    };
+  }, [person, socket, handleConnection]);
+
+  // Refresh chat list on socket event
+  const handleChatListRefresh = useCallback(() => {
+    setKeyword((prev) => prev); // Trigger query refresh
+  }, []);
+
+  useEffect(() => {
+    const event = `chat-list-update`;
+    socket.on(event, handleChatListRefresh);
+    return () => {
+      socket.off(event, handleChatListRefresh);
+    };
+  }, [socket, handleChatListRefresh]);
+
+  const handleSubmit = async() => { 
+    const chatId = person?.participants[0]?._id;
+       
+    const formData = new FormData(); 
+    formData.append("text", messageInput);  
+    if(image){
+      formData.append("image", image);
+    } 
+    formData.append("chatId", chatId);   
+
+    let messageType = "";
+    if (image && messageInput) {
+      messageType = "both";
+    } else if (image) {
+      messageType = "file";
+    } else if (messageInput) {
+      messageType = "text";
+    }
+    formData.append("messageType", messageType); 
+
+    await sendMessage(formData).then((res) => {  
+      if (res?.data?.success) { 
+      setMessageInput("");
+      setImage(null);
+      setImageURL(null); 
+      }
+    })
+  };
+
+
+
+
+  const handleMessage = async(value: TMessageList) => { 
+    await createInitialChat(value?._id).then((res) => {
+      if (res?.data?.success) {  
+        setPerson(value);
+        setIsChatVisible(true);
+        router.push(`/chat?id=${value?.participants[0]?._id}`); 
+
+       }
+    })
+
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+      setImageURL(URL.createObjectURL(file));
+    }
   };
 
   const handleBackToList = () => {
@@ -234,153 +166,179 @@ const ChatClient = () => {
     router.push("/chat");
   };
 
-  return (
-    <div className="container mt-4 mb-4 ">
-      <div className="grid grid-cols-12  lg:h-[79vh] h-full  rounded-xl">
-        {/* Message List */}
-        <div
-          className={`lg:col-span-4 col-span-12 bg-[#F7F7F7]    ${
-            isChatVisible ? "hidden lg:block" : ""
-          }`}
-        >
-          <div className="h-[66px] bg-primary rounded-tl-2xl lg:rounded-tr-none rounded-tr-2xl flex items-center justify-center">
-            {/* <p className=" text-white font-medium text-[32px]  text-center">Message</p> */}
-          </div>
+  const handleCancelImage = () => {
+    setImage(null);
+    setImageURL(null);
+  };
 
-          {/* search  */}
-          <div
-            className="mx-auto px-2 my-3"
-            style={{
-              width: "100%",
-              height: "40px",
-              borderRadius: "8px",
-              marginBottom: "20px",
-            }}
-          >
+  return (
+    <div className="container mt-4 mb-4">
+      <div className="grid grid-cols-12 lg:h-[79vh] h-full rounded-xl">
+        {/* Message List */}
+        <div className={`lg:col-span-4 col-span-12 bg-[#F7F7F7] ${isChatVisible ? "hidden lg:block" : ""}`}>
+          <div className="h-[66px] bg-primary rounded-tl-2xl lg:rounded-tr-none rounded-tr-2xl flex items-center justify-center" />
+
+          {/* Search */}
+          <div className="mx-auto px-2 my-3">
             <Input
               placeholder="Search here..."
               prefix={<FiSearch size={20} color="#868FA0" />}
-              style={{
-                width: "100%",
-                height: 45,
-                fontSize: "14px",
-                background: "#E9E9E9",
-              }}
-              size="middle"
+              style={{ width: "100%", height: 45, fontSize: "14px", background: "#E9E9E9" }} 
+              onChange={(e) => setKeyword(e.target.value)}
             />
           </div>
 
-          {/* message list  */}
+          {/* Message List */}
           <div className="overflow-y-auto h-[71vh] px-2">
-            {messageList.map((value: TMessageList, index) => (
-              <div key={index} onClick={() => handleMessage(value)}>
-                <div
-                  className={`flex justify-between  px-2 py-2 rounded-lg mb-2 cursor-pointer ${
-                    personId === value?.id ? "bg-[#E7EBED]" : "bg-white"
+            {messages?.data?.map((message: TMessageList) => (
+              <div
+                key={message?.participants[0]?._id}
+                onClick={() => handleMessage(message)}
+                className={`flex justify-between px-2 py-2 rounded-lg mb-2 cursor-pointer ${person?.participants[0]?._id === message?.participants[0]?._id ? "bg-[#E7EBED]" : "bg-white"
                   }`}
-                >
-                  <div className="flex items-center gap-1">
-                    <img src={value?.image} alt="" className="rounded-full" />
-                    <div className="flex-col gap-1">
-                      <p className="text-[#12354E] font-medium text-[16px]">
-                        {value?.name}
-                      </p>
-                      <p className="text-[#6A6A6A] text-[14px]">
-                        {value?.text}
-                      </p>
-                    </div>
+              >
+                <div className="flex items-center gap-1">
+                  <img src={message?.participants[0]?.image?.startsWith("http") ? message?.participants[0]?.image : `${imageUrl}${message?.participants[0]?.image}`} alt="" className="rounded-full" style={{ width: "45px", height: "45px" }} />
+                  <div>
+                    <p className="text-[#12354E] font-medium text-[16px]">{message?.participants[0]?.name}</p>
+                    <p className="text-[#6A6A6A] text-[14px]">{message?.lastMessage?.text}</p>
                   </div>
-                  <p className="text-[#6A6A6A] text-[15px]">{value?.time}</p>
                 </div>
+                <p className="text-[#6A6A6A] text-[15px]">{moment(message?.lastMessage?.createdAt).format("hh:mm A")}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Chat Section */}
-        <div
-          className={`lg:col-span-8 col-span-12 bg-[#FCFCFC] ${
-            isChatVisible ? "block" : "hidden lg:block"
-          }`}
-        >
-          <div>
-            <div className="flex items-center justify-between gap-2 h-[66px] px-4 bg-primary  rounded-tr-2xl lg:rounded-tl-none rounded-tl-2xl">
+        <div className={`lg:col-span-8 col-span-12 bg-[#FCFCFC] ${isChatVisible ? "block" : "hidden lg:block"}`}> 
+          {
+            person ?  <div>
+            <div className="flex items-center justify-between h-[66px] px-4 bg-primary rounded-tr-2xl lg:rounded-tl-none rounded-tl-2xl">
               <div className="flex items-center gap-2">
-                <button
-                  className="lg:hidden text-white"
-                  onClick={handleBackToList}
-                >
+                <button className="lg:hidden text-white" onClick={handleBackToList}>
                   <IoMdArrowRoundBack size={20} />
                 </button>
-
-                <img
-                  src={person?.image as string}
-                  alt=""
-                  className="rounded-full"
-                />
+                <img src={person?.participants[0]?.image?.startsWith("http") ? person?.participants[0]?.image : `${imageUrl}${person?.participants[0]?.image}`} alt="" className="rounded-full" style={{ width: "55px", height: "55px" }} />
                 <div>
-                  <p className="text-[18px] text-white font-medium">
-                    {person?.name}
-                  </p>
-                  <p className="text-[16px] text-white font-normal">
-                    {person?.address}
-                  </p>
+                  <p className="text-[18px] text-white font-medium">{person?.participants[0]?.name}</p>
+                  <p className="text-[16px] text-white font-normal">{person?.participants[0]?.address}</p>
                 </div>
               </div>
-              <Dropdown menu={{ items }}>
-                <p className="text-white cursor-pointer">
-                  <BsThreeDotsVertical size={22} />
-                </p>
+              <Dropdown menu={{ items: menuItems }}>
+                <BsThreeDotsVertical size={22} className="text-white cursor-pointer" />
               </Dropdown>
             </div>
+
             <div className="bg-[#F7F7F7] w-full h-[calc(73vh+54px)] rounded-lg relative border-x-2 border-gray-100">
-              {/* Chat messages */}
+              {/* Chat Messages */}
               <div className="py-6 lg:px-8 px-3 overflow-y-auto h-[72vh]">
-                {messageContent.map((value, index) => (
-                  <div
-                    key={index}
-                    className={`flex mb-5 w-full ${
-                      index % 2 === 0
-                        ? "items-end justify-end"
-                        : "items-start justify-start"
-                    }`}
-                  >
-                    <div
-                      className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3 flex-col gap-4 ${
-                        index % 2 === 0
-                          ? "bg-[#E6F2F6] rounded-t-xl rounded-bl-xl"
-                          : "bg-[#E5E5E5] rounded-t-xl rounded-br-xl"
-                      }`}
-                    >
-                      <p>{value?.message}</p>
-                      <p className="text-end text-[12px] text-[#918d8d]">
-                        {value?.date}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              {messageList?.map((value:{ text: string; messageType: string; chatId: string; image: string; createdAt: string}, index:number) => (
+  <div
+    key={index}
+    className={`flex mb-5 w-full ${value?.chatId === person?.participants[0]?._id ? "justify-end" : "justify-start"}`}
+  >
+    {value?.messageType === "file" && (
+      <div
+        className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3 bg-[#E5E5E5] rounded-t-xl ${value?.chatId === person?.participants[0]?._id ? "rounded-bl-xl" : "rounded-br-xl"}`}
+      >
+        <img
+          style={{ width: 140, height: 140, borderRadius: 8 }}
+          src={value.image?.startsWith("http") ? value?.image : `${imageUrl}${value?.image}`}
+          alt=""
+        />
+        <p className="text-[#8B8B8B] text-[12px] text-right mt-2">
+          {moment(value?.createdAt).format("hh:mm A")}
+        </p>
+      </div>
+    )}
+    {value?.messageType === "text" && (
+      <div
+        className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3 ${value?.chatId === person?.participants[0]?._id
+          ? "bg-[#E6F2F6] rounded-t-xl rounded-bl-xl"
+          : "bg-[#E5E5E5] rounded-t-xl rounded-br-xl"
+        }`}
+      >
+        <p className="text-[#6A6A6A]">{value?.text}</p>
+        <p className="text-[#918d8d] text-[12px] text-end">
+          {moment(value?.createdAt).format("hh:mm A")}
+        </p>
+      </div>
+    )}
+    {value?.messageType === "both" && (
+      <div
+        className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3 ${value?.chatId === person?.participants[0]?._id
+          ? "bg-[#E6F2F6] rounded-t-xl rounded-bl-xl"
+          : "bg-[#E5E5E5] rounded-t-xl rounded-br-xl"
+        }`}
+      >
+        <img
+          style={{ width: 140, height: 140, borderRadius: 8 }}
+          src={value.image?.startsWith("http") ? value?.image : `${imageUrl}${value?.image}`}
+          alt=""
+        />
+        <p className="text-[#6A6A6A] mt-2">{value?.text}</p>
+        <p className="text-[#918d8d] text-[12px] text-end">
+          {moment(value?.createdAt).format("hh:mm A")}
+        </p>
+      </div>
+    )}
+  </div>
+))}
               </div>
 
-              {/* footer  */}
+              {/* Footer */}
               <div className="absolute bottom-1 w-full py-1">
-                <div className="flex items-center justify-between gap-3 w-full px-3">
+                {imageURL && (
+                  <div className="w-fit ms-3 mb-2 bg-gray-200  flex items-center gap-2 relative ">
+                    <img src={imageURL} alt="" className="w-[100px] h-[100px] p-2 " />
+                    <button
+                      onClick={handleCancelImage}
+                      className="text-red-800 text-sm font-medium absolute -top-1 -right-1"
+                    >
+                      <MdOutlineCancel size={24} />
+                    </button>
+                  </div>
+                )}
+
+                <Form className="flex items-center gap-3 px-3">
                   <textarea
                     className="flex-1 h-[50px] resize-none py-2 rounded-l-full px-4 rounded-r-full shadow-md"
-                    placeholder="Type your message"
+                    placeholder="Type your message"  
+                    onChange={(e)=>setMessageInput(e.target.value)}
                   />
-                  <div className="flex items-center gap-4 cursor-pointer">
-                    <IoImageOutline size={22} />
-                    <button className="h-[40px] w-[40px] bg-primary text-white rounded-full flex justify-center items-center">
+                  <div className="flex items-center gap-4">
+                    <input
+                      type="file"
+                      id="img"
+                      className="hidden" 
+                      style={{ display: "none" }}
+                      onChange={handleFileChange}
+                    />
+                    <label htmlFor="img">
+                      <CiImageOn color="#607888" size={24} className="cursor-pointer" />
+                    </label>
+                    <button type="submit" onClick={handleSubmit} className="h-[40px] w-[40px] bg-primary text-white rounded-full flex justify-center items-center">
                       <IoSendSharp size={22} />
                     </button>
                   </div>
-                </div>
+                </Form>
               </div>
             </div>
+          </div> 
+          : 
+          <div>
+          <div className="flex items-center justify-between h-[66px] px-4 bg-primary rounded-tr-2xl lg:rounded-tl-none rounded-tl-2xl" />
+          <div className="flex items-center justify-center mt-10 h-full">
+            <p className="text-[18px] text-[#12354E] font-medium">Select a chat to start messaging</p>
           </div>
+        </div>
+          }
+         
         </div>
       </div>
     </div>
   );
 };
+
 export default ChatClient;

@@ -4,6 +4,7 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry"; 
 import { Montserrat } from 'next/font/google'
 import ReduxProvider from "@/redux/lib/ReduxProvider";
+import { UserProvider } from "@/provider/User";
 const montserrat = Montserrat({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "TradeCouples",
@@ -20,8 +21,10 @@ export default function RootLayout({
       className={`${montserrat.className}`} suppressHydrationWarning={true}
       > 
        <AntdRegistry>  
-        <ReduxProvider > 
-        {children}
+        <ReduxProvider >   
+        <UserProvider >
+              {children}
+            </UserProvider>
         </ReduxProvider>
        </AntdRegistry>
       </body>

@@ -1,7 +1,10 @@
+import { useGetQuestionnaireQuery } from '@/redux/features/profile/profileSlice';
 import React from 'react';
 import { GoDotFill } from 'react-icons/go';
 
-const ProfileMyChoice = () => { 
+const ProfileMyChoice = () => {   
+    const {data:allQuestion} = useGetQuestionnaireQuery(undefined) 
+    console.log(allQuestion);
     const data=[
         "I Have a home ." , 
         "I am living with my parents ." , 

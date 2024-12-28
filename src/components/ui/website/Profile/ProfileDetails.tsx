@@ -5,23 +5,28 @@ import React, { useEffect, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import ProfileAboutSection from "./ProfileAboutSection";
 import ProfileMyChoice from "./ProfileMyChoice";
-import ProfileMyPhotos from "./ProfileMyPhotos";
+// import ProfileMyPhotos from "./ProfileMyPhotos"; 
 import Link from "next/link";
-import profile1 from "@/assets/profile12.svg" 
+import { useProfileQuery } from "@/redux/features/auth/authApi";
+import { imageUrl } from "@/redux/base/baseApi";
+import { useGetBioQuery } from "@/redux/features/profile/profileSlice";
 
 const ProfileDetails = () => {
-
-    const [coverFile, setCoverFile] = useState<File | null>(null);
-    const [coverUrl, setCoverUrl] = useState<string>("/about.svg");
-
+    const {data:profile} = useProfileQuery(undefined)   
+    const {data:getBio} = useGetBioQuery(undefined) 
+    const bioData = getBio?.data
+    const userProfile = profile?.data 
     const [profileFile, setProfileFile] = useState<File | null>(null);
-    const [profileUrl, setProfileUrl] = useState<string>(profile1);
+    const [profileUrl, setProfileUrl] = useState();
+ 
+ console.log(bioData); 
 
-    useEffect(() => {
-        if (coverFile) {
-            setCoverUrl(URL.createObjectURL(coverFile));
-        }
-    }, [coverFile]);
+ useEffect(() => {
+     if (userProfile) {
+         setProfileUrl(userProfile?.image?.startsWith("http") ? userProfile?.image : `${imageUrl}${userProfile?.image}`);
+     }     
+ }, [userProfile]);
+
 
     useEffect(() => {
         if (profileFile) {
@@ -29,12 +34,6 @@ const ProfileDetails = () => {
         }
     }, [profileFile]);
 
-    const onCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setCoverFile(file);
-        }
-    };
 
     const onProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -47,18 +46,18 @@ const ProfileDetails = () => {
         {
             key: '1',
             label: <p className='text-[15px] font-medium'> About Me</p>,
-            children: <ProfileAboutSection />,
+            children: <ProfileAboutSection bioData={bioData} userProfile={userProfile} />,
         },
         {
             key: '2',
             label: <p className='text-[15px] font-medium'> My Choice</p>,
             children: <ProfileMyChoice />,
         },
-        {
-            key: "3",
-            label: <p className='text-[15px] font-medium'>Photos</p>,
-            children: <ProfileMyPhotos />,
-        }
+        // {
+        //     key: "3",
+        //     label: <p className='text-[15px] font-medium'>Photos</p>,
+        //     children: <ProfileMyPhotos />,
+        // }
     ];
 
     return (
@@ -66,7 +65,7 @@ const ProfileDetails = () => {
             {/* Cover photo */}
             <div className="lg:h-[200px] h-[250px] relative z-0">
                 <Image
-                    src={coverUrl}
+                    src="/about.svg"
                     alt="host-profile"
                     width={1000}
                     height={1000}
@@ -76,31 +75,6 @@ const ProfileDetails = () => {
                         zIndex: 0,
                         objectFit: "cover",
                     }}
-                />
-                {/* <label
-                    htmlFor="imageUploadBanner"
-                    style={{
-                        position: "absolute",
-                        top: 4,
-                        right: 5,
-                        backgroundColor: "white",
-                        width: 35,
-                        height: 35,
-                        borderRadius: "50%",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        cursor: "pointer",
-                    }}
-                >
-                    <CiEdit size={25} color="#929394" />
-                </label> */}
-
-                <input
-                    id="imageUploadBanner"
-                    type="file"
-                    onChange={onCoverImageChange}
-                    style={{ display: "none" }}
                 />
             </div>
 
@@ -137,10 +111,10 @@ const ProfileDetails = () => {
                     </div>
 
                     <div className="mt-3">
-                        <div className='font-semibold text-2xl tracking-wider py-2'>Mariam Star</div>
+                        <div className='font-semibold text-2xl tracking-wider py-2'>{userProfile?.name}</div>
                         <div className='text-[#6B6B6B] flex gap-5 text-[15px] font-medium'>
-                            <p>Age: 25</p>
-                            <p>New York, USA</p>
+                            <p>Age: {bioData?.age}</p>
+                            <p>{bioData?.country}</p>
                         </div>
                     </div>
                 </div>

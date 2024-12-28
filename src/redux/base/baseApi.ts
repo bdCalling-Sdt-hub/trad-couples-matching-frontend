@@ -17,4 +17,5 @@ export const baseApi = createApi({
 });
 
 // export const imageUrl = "http://206.189.231.81:5000";
-export const imageUrl = "http://192.168.10.102:5000/";
+export const imageUrl = "http://192.168.10.102:5000/"; 
+export const socketURL = "http://192.168.10.102:5000"

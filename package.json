@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.5.0",
     "antd": "^5.0.0",
     "lucide-react": "^0.453.0",
+    "moment": "^2.30.1",
     "next": "14.2.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,6 +23,7 @@
     "redux-cli-setup": "^1.1.4",
     "redux-persist": "^6.0.0",
     "sharp": "^0.33.5",
+    "socket.io-client": "^4.8.1",
     "sweetalert2": "^11.15.3"
   },
   "overrides": {

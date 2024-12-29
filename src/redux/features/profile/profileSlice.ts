@@ -18,8 +18,17 @@ const profileSlice = baseApi.injectEndpoints({
         }), 
 
          getQuestionnaire: builder.query({
+            query: () => "/questionnaire", 
+            transformResponse: (response: any) => { 
+            
+                const data = Array.isArray(response?.data) ? [] : Object.values(response?.data)
+                return data
+            }
+        }),  
+
+        getAllQuestions: builder.query({
             query: () => "/questionnaire",
-        }), 
+        }),
 
         updateQuestionnaire: builder.mutation({
             query: (data) => {
@@ -29,9 +38,25 @@ const profileSlice = baseApi.injectEndpoints({
                     body: data, 
                 }
             } ,
+        }), 
+
+        getProfilePicture:builder.query({
+            query: () => "/gallery",
+        }),  
+
+        CreateProfilePicture:builder.mutation({
+            query: (data) => {
+                return {
+                    method: "POST",
+                    url: "/gallery/upload-picture",
+                    body: data,
+                }
+            },
         }),
+
+
       
     }) 
 })  
 
-export const { useGetBioQuery , useUpdateBioMutation , useGetQuestionnaireQuery , useUpdateQuestionnaireMutation } = profileSlice
+export const { useGetBioQuery , useUpdateBioMutation , useGetQuestionnaireQuery , useUpdateQuestionnaireMutation , useGetAllQuestionsQuery , useCreateProfilePictureMutation , useGetProfilePictureQuery } = profileSlice

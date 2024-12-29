@@ -7,7 +7,7 @@ import ProfileAboutSection from "./ProfileAboutSection";
 import ProfileMyChoice from "./ProfileMyChoice";
 // import ProfileMyPhotos from "./ProfileMyPhotos"; 
 import Link from "next/link";
-import { useProfileQuery } from "@/redux/features/auth/authApi";
+import { useProfileQuery, useUpdateProfileMutation } from "@/redux/features/auth/authApi";
 import { imageUrl } from "@/redux/base/baseApi";
 import { useGetBioQuery } from "@/redux/features/profile/profileSlice";
 
@@ -17,9 +17,8 @@ const ProfileDetails = () => {
     const bioData = getBio?.data
     const userProfile = profile?.data 
     const [profileFile, setProfileFile] = useState<File | null>(null);
-    const [profileUrl, setProfileUrl] = useState();
- 
- console.log(bioData); 
+    const [profileUrl, setProfileUrl] = useState(); 
+    const [updateProfile] = useUpdateProfileMutation()
 
  useEffect(() => {
      if (userProfile) {
@@ -35,10 +34,17 @@ const ProfileDetails = () => {
     }, [profileFile]);
 
 
-    const onProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
+    const onProfileImageChange = async(e: React.ChangeEvent<HTMLInputElement>) => { 
+        const file = e.target.files?.[0]; 
+        const formData = new FormData();
         if (file) {
-            setProfileFile(file);
+            setProfileFile(file); 
+            formData.append("image", file);
+            await updateProfile(formData).then((res) => {
+                if (res?.data?.success) {
+                    console.log(res);
+                }
+            });
         }
     };
 

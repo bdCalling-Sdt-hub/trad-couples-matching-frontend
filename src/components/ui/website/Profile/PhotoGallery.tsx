@@ -48,7 +48,7 @@ const PhotoGallery = () => {
 
     if (newDataUri) {
       const file = base64ToFile(newDataUri, `profile-image-${index}.png`);
-      console.log(`Image file at index ${index}:`, file);
+      // console.log(`Image file at index ${index}:`, file); 
     }
   };
 

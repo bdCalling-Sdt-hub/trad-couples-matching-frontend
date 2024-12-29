@@ -6,7 +6,7 @@ import SectionHeader from './SectionHeader';
 import StepsFooterBtn from './StepsFooterBtn';
 import QuestionDropdown from '@/components/shared/QuestionDropdown';
 import { Poppins } from 'next/font/google';
-import {homeOwnership, livingAlone, beliefInChrist, childrenDesired, mainProviderBelief, willingToFatherOthersChildren, roleModelsForBoys, standardForDaughters, interests, preferredAgeRange, preferredEthnicity, preferredPhysique, preferredFitnessLevel , christianityOptions, womanAsNurturer  } from "@/components/shared/Option"
+import {homeOwnership, livingAlone, beliefInChrist, childrenDesired, mainProviderBelief, willingToFatherOthersChildren, roleModelsForBoys, standardForDaughters, interests, preferredAgeRange, preferredEthnicity, preferredPhysique, preferredFitnessLevel , christianityOptions, womanAsNurturer, willingToMothersOthersChildren, makeHome  } from "@/components/shared/Option"
 import { useProfileQuery } from '@/redux/features/auth/authApi';
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
@@ -33,7 +33,7 @@ const Questions = () => {
         preferredPhysique: "",
         preferredFitnessLevel: "",
         stepUpAsMother: "",
-        mothersAreNurturers: true,
+        mothersAreNurturers: "",
         womenMakeHome: "",
         preferHomesteadingOrUrban: "",
         haveAHome: "",
@@ -85,22 +85,22 @@ const Questions = () => {
             {
                 title: "Are You Willing To Step Up and Mother Another Woman’s Children?",
                 content: <div className='w-full'>
-                    <QuestionDropdown name='stepUpAsMother' placeholder='Yes/No'
-                        options={willingToFatherOthersChildren} onChange={(value) => handleChange("stepUpAsMother", value)} />
+                    <QuestionDropdown name='stepUpAsMother' placeholder=''
+                        options={willingToMothersOthersChildren} onChange={(value) => handleChange("stepUpAsMother", value)} />
                 </div>
             } ,  
             {
                 title: "Do You Believe That Mothers Are Nurturers ?",
                 content: <div className='w-full '>
-                    <QuestionDropdown name='mothersAreNurturers' placeholder='Yes/No'
+                    <QuestionDropdown name='mothersAreNurturers' placeholder=''
                         options={womanAsNurturer} onChange={(value) => handleChange("mothersAreNurturers", value)} />
                 </div>
             }, 
             {
                 title: "Do You Believe That Women Make The Home ?",
                 content: <div className='w-full '> 
-                    <QuestionDropdown name='womenMakeHome' placeholder='Yes/No'
-                        options={roleModelsForBoys} onChange={(value) => handleChange("womenMakeHome", value)} />
+                    <QuestionDropdown name='womenMakeHome' placeholder=''
+                        options={makeHome} onChange={(value) => handleChange("womenMakeHome", value)} />
                 </div>
             }
 

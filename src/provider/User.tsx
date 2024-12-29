@@ -8,8 +8,8 @@ import { useProfileQuery } from '@/redux/features/auth/authApi';
 
 interface UserContextType {
     user: any;
-    socket: ReturnType<typeof io>;
-    setUser: React.Dispatch<React.SetStateAction<any>>;
+    socket: any;
+    setUser: any;
 }
 
 export const UserContext = React.createContext<UserContextType | null>(null);
@@ -39,7 +39,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         if (profile) {
-            setUser(profile);
+            setUser(profile?.data);
         }
     }, [profile])
 

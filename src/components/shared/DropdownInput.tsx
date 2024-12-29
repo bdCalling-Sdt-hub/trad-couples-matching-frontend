@@ -6,10 +6,10 @@ import React, { useEffect } from 'react';
 interface propsType {
     name: string 
     label: string 
-    defaultValue: string 
+   
     options: Array<{ value: string | number; label: string | number;}>;
 }
-const DropdownInput = ({name , label , defaultValue , options}:propsType) => { 
+const DropdownInput = ({name , label  , options}:propsType) => { 
     const form = Form.useFormInstance() 
 
     useEffect(()=>{ 
@@ -31,7 +31,7 @@ const DropdownInput = ({name , label , defaultValue , options}:propsType) => {
         name={name} 
         label={ label === ""? "" : <div className='text-[#4E4E4E]  text-[15px] font-medium '>{label}</div> }
       >
-        <Select defaultValue={defaultValue}   options={options}
+        <Select   options={options}
          style={{height:"45px" }} />
           
       </Form.Item>

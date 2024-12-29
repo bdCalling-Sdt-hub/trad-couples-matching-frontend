@@ -25,7 +25,7 @@ interface propsType{
         preferredPhysique: string | null;
         preferredFitnessLevel: string | null;
         stepUpAsMother: string | null;
-        mothersAreNurturers: boolean | null;
+        mothersAreNurturers: string | null;
         womenMakeHome: string | null;
         preferHomesteadingOrUrban: string | null;
         haveAHome: string | null;

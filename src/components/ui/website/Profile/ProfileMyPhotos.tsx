@@ -1,10 +1,12 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ImagePickerConf } from 'react-image-picker-editor';
 import 'react-image-picker-editor/dist/index.css';
 import PhotoGallery from './PhotoGallery';
+import { useCreateProfilePictureMutation, useGetProfilePictureQuery } from '@/redux/features/profile/profileSlice';
+import { UserContext } from '@/provider/User';
 
 
 const ReactImagePickerEditor = dynamic(
@@ -12,7 +14,11 @@ const ReactImagePickerEditor = dynamic(
   { ssr: false }
 );
 
-const ProfileMyPhotos = () => {  
+const ProfileMyPhotos = () => {   
+  const {data:getPhotos} = useGetProfilePictureQuery(undefined)  
+  const getProfilePictures = getPhotos?.data 
+  const [CreateProfilePicture]  = useCreateProfilePictureMutation()  
+  // const { user } = useContext(UserContext); 
 
     const config:ImagePickerConf = {
       borderRadius: '8px',
@@ -40,14 +46,14 @@ const ProfileMyPhotos = () => {
       }; 
 
     const [imageSrc, setImageSrc] = useState<string | null | undefined>('');  
-    console.log(imageSrc);
+    // console.log(imageSrc); 
     const initialImage = 'https://i.ibb.co.com/Vwm8kST/Rectangle-5307-2.png';  
 
     const handleImageChange = (newDataUri: string) => {
       setImageSrc(newDataUri); 
       if (newDataUri) {
         const file = base64ToFile(newDataUri, 'profile-image.png');
-        console.log('Image file:', file); 
+        // console.log('Image file:', file);  
       }
     }; 
 

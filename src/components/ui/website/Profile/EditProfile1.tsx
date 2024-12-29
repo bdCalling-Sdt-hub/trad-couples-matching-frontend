@@ -2,195 +2,75 @@
 import OutLineBtn from '@/components/shared/OutLineBtn';
 import ProfileEditDropdown from '@/components/shared/ProfileEditDropdown';
 import SmallButton from '@/components/shared/SmallButton';
+import {  useGetBioQuery, useUpdateBioMutation } from '@/redux/features/profile/profileSlice';
 import { ConfigProvider, DatePicker, Form, Input } from 'antd';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsArrowLeft, BsArrowRight, BsPersonVcard } from 'react-icons/bs';
 import { CgGirl } from 'react-icons/cg';
 import { FaRegCalendarAlt } from 'react-icons/fa';
-import { FaChildren, FaRegEye, FaRegMap } from 'react-icons/fa6';
+import { FaRegEye, FaRegMap } from 'react-icons/fa6';
 import { GiBodyHeight } from 'react-icons/gi';
-import { GoHeartFill } from 'react-icons/go';
 import { IoIosBody } from 'react-icons/io';
-import { IoPersonSharp } from 'react-icons/io5';
-import { MdCastForEducation, MdOutlineTempleHindu } from 'react-icons/md';
+import { MdCastForEducation } from 'react-icons/md';
 import { SiEthers } from 'react-icons/si';
+import { height, bodyShape, educationOn, ethnicity, country, province, hairColor, eyeColor, occupation, universityFrom } from "@/components/shared/Option"
+import moment from 'moment';
+import Swal from 'sweetalert2';
+
 
 const EditProfile1 = () => {
-    const location = [
-        {
-            value: "BanglaDesh",
-            label: "Bangladesh"
-        },
-        {
-            value: "India",
-            label: "India"
-        },
-        {
-            value: "China",
-            label: "China"
-        },
-        {
-            value: "USA",
-            label: "USA"
-        },
+    const [form] = Form.useForm();
+    const { data: getBio } = useGetBioQuery(undefined)
+    const bioData = getBio?.data
+  
+    const [updateBio] = useUpdateBioMutation()
 
-    ]
-
-    const MaritalStatus = [
-        {
-            value: "Single",
-            label: "Single"
-        },
-        {
-            value: "Mingle",
-            label: "Mingle"
-        },
-        {
-            value: "Married",
-            label: "Married"
+    useEffect(() => {
+        if (bioData) {
+            form.setFieldsValue({
+                dob: bioData.dob ? moment(bioData.dob, 'YYYY-MM-DD') : null,
+                maritalStatus: bioData.maritalStatus,
+                age: bioData.age,
+                country: bioData.country,
+                height: bioData.height,
+                province: bioData.region,
+                bodyShape: bioData.bodyShape,
+                ethnicity: bioData.ethnicity,
+                hairColor: bioData.hairColor,
+                educationOn: bioData.educationOn,
+                educationFrom: bioData.educationFrom,
+                eyeColor: bioData.eyeColor,
+                occupation: bioData.occupation,
+                aboutMe: bioData.aboutMe,
+            });
         }
-    ]
+    }, [bioData, form]);
 
-    const children = [
-        {
-            value: 1,
-            label: 1
-        },
-        {
-            value: 2,
-            label: 2
-        },
-        {
-            value: 3,
-            label: 3
-        }
-    ]
+    const onFinish = async (values: any) => {
+        await updateBio(values).then((res) => { 
 
-    const height = [
-        {
-            value: "150cm",
-            label: "150cm"
-        },
-        {
-            value: "160cm",
-            label: "160cm"
-        },
-        {
-            value: "170cm",
-            label: "170cm"
-        }
-    ]
+            if (res?.data?.success) {
+                Swal.fire({
+                    text: res?.data?.message,
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
+            } else {
+                Swal.fire({
+                    title: "Oops",
+                    text: res?.data?.message,
+                    icon: "error",
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
+            }
+        })
+    };
 
-    const bodyShape = [
-        {
-            value: "Fit",
-            label: "Fit"
-        },
-        {
-            value: "Fat",
-            label: "Fat"
-        }
-    ]
 
-    const hairColor = [
-        {
-            value: "Black",
-            label: "black"
-        },
-        {
-            value: "Brown",
-            label: "Brown"
-        }
-    ]
-
-    const eyeColor = [
-        {
-            value: "Black",
-            label: "Black"
-        },
-        {
-            value: "Brown",
-            label: "Brown"
-        }
-    ]
-
-    const education = [
-        {
-            value: "Graduate",
-            label: "Graduate"
-        }
-    ]
-
-    const university = [
-        {
-            value: "From USA University",
-            label: "From USA University"
-        },
-        {
-            value: "From Dhaka University",
-            label: "From Dhaka University"
-        }
-    ]
-
-    const occupation = [
-        {
-            value: "Teacher",
-            label: "Teacher"
-        },
-        {
-            value: "Programmer",
-            label: "Programmer"
-        }
-    ]
-
-    const religion = [
-        {
-            value: "Cristian",
-            label: "Cristian"
-        },
-        {
-            value: "Muslim",
-            label: "Muslim"
-        },
-        {
-            value: "Hindu",
-            label: "Hindu"
-        }
-    ]
-
-    const gender = [
-        {
-            value: "female",
-            label: "Female"
-        },
-        {
-            value: "male",
-            label: "Male"
-        }
-    ]
-
-    const province = [
-        {
-            value: "New York",
-            label: "New York"
-        },
-        {
-            value: "Dhaka",
-            label: "Dhaka"
-        }
-    ]
-
-    const ethnicity = [
-        {
-            value: "American",
-            label: "American"
-        }, {
-            value: "Bengali",
-            label: "Bengali"
-        }
-    ]
     return (
         <div className=''>
 
@@ -205,10 +85,8 @@ const EditProfile1 = () => {
             </div>
 
             <div className='container'>
-                <Form layout='vertical'>
+                <Form layout='vertical' form={form} onFinish={onFinish}>
                     <div className=' grid lg:grid-cols-2 grid-cols-1 gap-x-16 '>
-                        <ProfileEditDropdown name='gender' label="Gender" defaultValue="Female" options={gender} icon={<IoPersonSharp />} />
-                        <ProfileEditDropdown name='religion' label="Religion" defaultValue="Christian" options={religion} icon={<MdOutlineTempleHindu />} />
 
                         {/* date of birth  */}
                         <ConfigProvider
@@ -232,8 +110,6 @@ const EditProfile1 = () => {
                             </Form.Item>
                         </ConfigProvider>
 
-                        <ProfileEditDropdown name='martialStatus' label="Marital Status" defaultValue="Single" options={MaritalStatus} icon={<GoHeartFill />} />
-
                         {/* age  */}
                         <Form.Item name="age" label={<div className='flex items-center gap-2 text-start'>
                             <div className=' flex justify-center items-center bg-primary h-7 w-7 rounded-full  '> <p className='text-white text-lg'><FaRegCalendarAlt /></p></div>
@@ -242,44 +118,44 @@ const EditProfile1 = () => {
                             <Input style={{ height: "45px", width: "100%" }} />
                         </Form.Item>
 
-                        <ProfileEditDropdown name='children' label="Children" defaultValue="0" options={children} icon={<FaChildren />} />
+                        {/* <ProfileEditDropdown name='children' label="Children" defaultValue="0" options={children} icon={<FaChildren />} /> */}
 
 
-                        <ProfileEditDropdown name='country' label="Country" defaultValue="USA" options={location} icon={<FaRegMap />} />
+                        <ProfileEditDropdown name='country' label="Country" options={country} icon={<FaRegMap />} />
 
 
-                        <ProfileEditDropdown name='height' label="Height" defaultValue="170cm" options={height} icon={<GiBodyHeight />} />
+                        <ProfileEditDropdown name='height' label="Height" options={height} icon={<GiBodyHeight />} />
 
-                        <ProfileEditDropdown name='province' label="Province/Region" defaultValue="New York" options={province} icon={<AiOutlineGlobal />} />
+                        <ProfileEditDropdown name='province' label="Province/Region" options={province} icon={<AiOutlineGlobal />} />
 
-                        <ProfileEditDropdown name='bodyShape' label="Body Shape" defaultValue="fit" options={bodyShape} icon={<IoIosBody />} />
-
-
-                        <ProfileEditDropdown name='ethnicity' label="Ethnicity" defaultValue="American" options={ethnicity} icon={<SiEthers />} />
+                        <ProfileEditDropdown name='bodyShape' label="Body Shape" options={bodyShape} icon={<IoIosBody />} />
 
 
-                        <ProfileEditDropdown name='hairColor' label="Hair Color" defaultValue="Brown" options={hairColor} icon={<CgGirl />} />
+                        <ProfileEditDropdown name='ethnicity' label="Ethnicity" options={ethnicity} icon={<SiEthers />} />
+
+
+                        <ProfileEditDropdown name='hairColor' label="Hair Color" options={hairColor} icon={<CgGirl />} />
 
                         {/* education   */}
                         <div className=' flex gap-2 items-center w-full'>
                             <div className='w-1/3'>
-                                <ProfileEditDropdown name='education' label="Education" defaultValue="Graduate" options={education} icon={<MdCastForEducation />} />
+                                <ProfileEditDropdown name='educationOn' label="Education" options={educationOn} icon={<MdCastForEducation />} />
                             </div>
 
                             <div className='w-2/3'>
-                                <ProfileEditDropdown name='educationFrom' label="" defaultValue="From USA University" options={university} icon={""} />
+                                <ProfileEditDropdown name='educationFrom' label="" options={universityFrom} icon={""} />
                             </div>
 
                         </div>
 
-                        <ProfileEditDropdown name='eyeColor' label="Eye Color" defaultValue="Brown" options={eyeColor} icon={<FaRegEye />} />
+                        <ProfileEditDropdown name='eyeColor' label="Eye Color" options={eyeColor} icon={<FaRegEye />} />
 
-                        <ProfileEditDropdown name='occupation' label="Occupation" defaultValue="Teacher" options={occupation} icon={<BsPersonVcard />} />
+                        <ProfileEditDropdown name='occupation' label="Occupation" options={occupation} icon={<BsPersonVcard />} />
                     </div>
 
                     <p className='w-full border-b-2 border-[#e2dddd] my-4'></p>
 
-                    <Form.Item name="description" label={<p className='font-medium text-[15px]'>Description</p>}>
+                    <Form.Item name="aboutMe" label={<p className='font-medium text-[15px]'>Description</p>}>
                         <Input.TextArea rows={5} style={{ width: "100%" }} />
                     </Form.Item>
 

@@ -4,20 +4,20 @@ import React, { useEffect } from 'react';
 
 interface propsType {
     name: string
-    label: string
-    defaultValue: string
+    label: string|number
     options: Array<{ value: string | number; label: string | number; }>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: any
 }
 
-const ProfileEditDropdown = ({ name, label, defaultValue, options, icon }: propsType) => {
+const ProfileEditDropdown = ({ name, label, options, icon }: propsType) => {
     const form = Form.useFormInstance()
 
     useEffect(() => {
         form.setFieldsValue({ name: "default" })
-    }, [form])
-    return ( 
+    }, [form])  
+
+        return ( 
         <ConfigProvider
         theme={{
           components: {
@@ -34,7 +34,7 @@ const ProfileEditDropdown = ({ name, label, defaultValue, options, icon }: props
                 <p className='text-[#4E4E4E]  text-[15px] font-medium'>{label}</p>
             </div>}>
 
-            <Select defaultValue={defaultValue} options={options} style={{ height: "45px" }} />
+            <Select  options={options} style={{ height: "45px" }} />
 
         </Form.Item>
       

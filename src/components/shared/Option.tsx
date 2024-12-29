@@ -226,66 +226,82 @@ export const occupation = [
 ];
 
 export const homeOwnership = [
-    { value: "Yes, I Own a Home", label: "Yes, I Own a Home" },
-    { value: "Yes, I Own a Farm / Homestead", label: "Yes, I Own a Farm / Homestead" },
-    { value: "Yes, I Rent a Home", label: "Yes, I Rent a Home" },
-    { value: "No, Currently Living with Family", label: "No, Currently Living with Family" },
-    { value: "No, Currently Renting", label: "No, Currently Renting" }
+    { value: "I own a home and live there.", label: "Yes, I Own a Home" },
+    { value: "I own a farm or homestead and live there.", label: "Yes, I Own a Farm / Homestead" },
+    { value: "I rent a home and live there.", label: "Yes, I Rent a Home" },
+    { value: "I am currently living with my family.", label: "No, Currently Living with Family" },
+    { value: "I am currently renting a place to live.", label: "No, Currently Renting" }
 ];
 
 export const livingAlone = [
-    { value: "Yes, I Live Alone", label: "Yes, I Live Alone" },
-    { value: "No, I Live with Family", label: "No, I Live with Family" },
-    { value: "No, I Live with Roommates", label: "No, I Live with Roommates" },
-    { value: "No, I Live with Children", label: "No, I Live with Children" }
+    { value: "I live alone in my home.", label: "Yes, I Live Alone" },
+    { value: "I am living with my family members.", label: "No, I Live with Family" },
+    { value: "I am living with my roommates.", label: "No, I Live with Roommates" },
+    { value: "I am living with my children.", label: "No, I Live with Children" }
 ];
 
 export const beliefInChrist = [
-    { value: "Yes, I believe this", label: "Yes, I believe this" },
-    { value: "No, I have different beliefs", label: "No, I have different beliefs" },
-    { value: "Open to Discussion", label: "Open to Discussion" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+    { value: "I believe Jesus Christ is the head of the house and then the man.", label: "Yes, I believe this" },
+    { value: "I have different beliefs regarding the head of the household.", label: "No, I have different beliefs" },
+    { value: "I am open to discussing beliefs about the household structure.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my beliefs on this topic.", label: "Prefer Not to Say" }
 ];
 
 export const childrenDesired = [
-    { value: "None", label: "None" },
-    { value: "1-2", label: "1-2" },
-    { value: "3-4", label: "3-4" },
-    { value: "5 or more", label: "5 or more" },
-    { value: "Open to Discussion", label: "Open to Discussion" }
+    { value: "I do not want any children.", label: "None" },
+    { value: "I want 1 or 2 children.", label: "1-2" },
+    { value: "I want 3 or 4 children.", label: "3-4" },
+    { value: "I want 5 or more children.", label: "5 or more" },
+    { value: "I am open to discussing the number of children.", label: "Open to Discussion" }
 ];
 
 export const mainProviderBelief = [
-    { value: "Yes, I believe this", label: "Yes, I believe this" },
-    { value: "No, I have different beliefs", label: "No, I have different beliefs" },
-    { value: "Open to Discussion", label: "Open to Discussion" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
-];
+    { value: "I believe that the man is the main provider and protector of the household.", label: "Yes, I believe this" },
+    { value: "I have different beliefs about the roles of provider and protector in the household.", label: "No, I have different beliefs" },
+    { value: "I am open to discussing beliefs about the roles of provider and protector in the household.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my beliefs on this topic.", label: "Prefer Not to Say" }
+]; 
+
+export const willingToMothersOthersChildren = [
+    { value: "I am willing to step up and mother another woman’s children.", label: "Yes, I am open to this" },
+    { value: "I prefer not to take on this responsibility.", label: "No, I prefer not to" },
+    { value: "I am open to discussing the possibility of mothering another woman’s children.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my stance on this.", label: "Prefer Not to Say" }
+];  
 
 export const willingToFatherOthersChildren = [
-    { value: "Yes, I am open to this", label: "Yes, I am open to this" },
-    { value: "No, I prefer not to", label: "No, I prefer not to" },
-    { value: "Open to Discussion", label: "Open to Discussion" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
-];
+    { value: "I am willing to step up and father another man’s children.", label: "Yes, I am open to this" },
+    { value: "I prefer not to take on this responsibility.", label: "No, I prefer not to" },
+    { value: "I am open to discussing the possibility of fathering another man’s children.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my stance on this.", label: "Prefer Not to Say" }
+]; 
+ 
+export const makeHome =[
+   
+        { value: "I believe that women play a key role in making the home.", label: "Yes, I believe this" },
+        { value: "I have a different perspective on the role of women in making the home.", label: "No, I have a different perspective" },
+        { value: "I am open to discussing the role of women in making the home.", label: "Open to Discussion" },
+        { value: "I prefer not to disclose my beliefs on this topic.", label: "Prefer Not to Say" }
+
+]
 
 export const roleModelsForBoys = [
-    { value: "Yes, I believe this", label: "Yes, I believe this" },
-    { value: "No, I have a different perspective", label: "No, I have a different perspective" },
-    { value: "Open to Discussion", label: "Open to Discussion" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+    { value: "I believe that men are role models for little boys.", label: "Yes, I believe this" },
+    { value: "I have a different perspective on men being role models for little boys.", label: "No, I have a different perspective" },
+    { value: "I am open to discussing the role of men as role models for little boys.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my beliefs on this topic.", label: "Prefer Not to Say" }
 ];
 
 export const standardForDaughters = [
-    { value: "Yes, I believe this", label: "Yes, I believe this" },
-    { value: "No, I have a different perspective", label: "No, I have a different perspective" },
-    { value: "Open to Discussion", label: "Open to Discussion" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+    { value: "I believe that men set the standard for daughters.", label: "Yes, I believe this" },
+    { value: "I have a different perspective on men setting the standard for daughters.", label: "No, I have a different perspective" },
+    { value: "I am open to discussing the role of men in setting the standard for daughters.", label: "Open to Discussion" },
+    { value: "I prefer not to disclose my beliefs on this topic.", label: "Prefer Not to Say" }
 ];
 
 export const womanAsNurturer = [
-    { value: true, label: "Yes" },
-    { value: false, label: "No" }
+    { value: "I believe that mothers are nurturers.", label: "Yes" },
+    { value: "I don't believe that mothers are nurturers.", label: "No" }
 ];
 
 export const womanComplementIncome = [
@@ -299,68 +315,68 @@ export const willingToMotherOthersChildren = [
 ];
 
 export const interests = [
-    { value: "Reading / Literature", label: "Reading / Literature" },
-    { value: "Traveling / Adventure", label: "Traveling / Adventure" },
-    { value: "Cooking / Baking", label: "Cooking / Baking" },
-    { value: "Farming", label: "Farming" },
-    { value: "Gardening / Homesteading", label: "Gardening / Homesteading" },
-    { value: "Firearms, shooting", label: "Firearms, shooting" },
-    { value: "Self Defence", label: "Self Defence" },
-    { value: "Music / Instruments", label: "Music / Instruments" },
-    { value: "Arts / Crafts", label: "Arts / Crafts" },
-    { value: "Fitness / Gym", label: "Fitness / Gym" },
-    { value: "Outdoor Activities (Hiking, Camping)", label: "Outdoor Activities (Hiking, Camping)" },
-    { value: "Sports (e.g., Football, Basketball)", label: "Sports (e.g., Football, Basketball)" },
-    { value: "Hunting / Fishing", label: "Hunting / Fishing" },
-    { value: "Animal Care / Pets", label: "Animal Care / Pets" },
-    { value: "Religious / Community Involvement", label: "Religious / Community Involvement" },
-    { value: "Volunteering / Charity Work", label: "Volunteering / Charity Work" },
-    { value: "Technology", label: "Technology" },
-    { value: "DIY Projects / Woodworking", label: "DIY Projects / Woodworking" },
-    { value: "Photography / Videography", label: "Photography / Videography" },
-    { value: "Fashion / Sewing", label: "Fashion / Sewing" },
-    { value: "Collecting (Books, Antiques, etc.)", label: "Collecting (Books, Antiques, etc.)" }
+    { value: "I enjoy reading literature and exploring new books.", label: "Reading / Literature" },
+    { value: "I enjoy traveling and going on adventures to new places.", label: "Traveling / Adventure" },
+    { value: "I love cooking and baking, trying new recipes in the kitchen.", label: "Cooking / Baking" },
+    { value: "I have a passion for farming and working on agricultural projects.", label: "Farming" },
+    { value: "I enjoy gardening and homesteading, growing my own food and plants.", label: "Gardening / Homesteading" },
+    { value: "I am interested in firearms and shooting as a sport.", label: "Firearms, shooting" },
+    { value: "I practice self-defense to stay fit and safe.", label: "Self Defence" },
+    { value: "I enjoy playing music and learning new instruments.", label: "Music / Instruments" },
+    { value: "I enjoy engaging in arts and crafts activities.", label: "Arts / Crafts" },
+    { value: "I focus on fitness and go to the gym regularly to stay healthy.", label: "Fitness / Gym" },
+    { value: "I love outdoor activities like hiking and camping in nature.", label: "Outdoor Activities (Hiking, Camping)" },
+    { value: "I enjoy playing sports like football and basketball.", label: "Sports (e.g., Football, Basketball)" },
+    { value: "I am passionate about hunting and fishing as hobbies.", label: "Hunting / Fishing" },
+    { value: "I take care of animals and enjoy looking after pets.", label: "Animal Care / Pets" },
+    { value: "I am involved in religious or community activities to help others.", label: "Religious / Community Involvement" },
+    { value: "I enjoy volunteering and participating in charity work.", label: "Volunteering / Charity Work" },
+    { value: "I have a keen interest in technology and new innovations.", label: "Technology" },
+    { value: "I love DIY projects and woodworking to create things with my hands.", label: "DIY Projects / Woodworking" },
+    { value: "I enjoy photography and videography to capture memorable moments.", label: "Photography / Videography" },
+    { value: "I am interested in fashion and sewing to create unique clothing.", label: "Fashion / Sewing" },
+    { value: "I enjoy collecting books, antiques, and other unique items.", label: "Collecting (Books, Antiques, etc.)" }
 ];
 
 export const preferredAgeRange = [
-    { value: "18-25", label: "18-25" },
-    { value: "26-30", label: "26-30" },
-    { value: "31-35", label: "31-35" },
-    { value: "36-40", label: "36-40" },
-    { value: "41-45", label: "41-45" },
-    { value: "46-50", label: "46-50" },
-    { value: "51-55", label: "51-55" },
-    { value: "56+", label: "56+" },
-    { value: "Open to All Ages", label: "Open to All Ages" }
+    { value: "I prefer a partner aged between 18 and 25.", label: "18-25" },
+    { value: "I prefer a partner aged between 26 and 30.", label: "26-30" },
+    { value: "I prefer a partner aged between 31 and 35.", label: "31-35" },
+    { value: "I prefer a partner aged between 36 and 40.", label: "36-40" },
+    { value: "I prefer a partner aged between 41 and 45.", label: "41-45" },
+    { value: "I prefer a partner aged between 46 and 50.", label: "46-50" },
+    { value: "I prefer a partner aged between 51 and 55.", label: "51-55" },
+    { value: "I prefer a partner aged 56 or older.", label: "56+" },
+    { value: "I am open to a partner of any age.", label: "Open to All Ages" }
 ];
 
 export const preferredEthnicity = [
-    { value: "Caucasian / White", label: "Caucasian / White" },
-    { value: "African / Black", label: "African / Black" },
-    { value: "Asian", label: "Asian" },
-    { value: "Hispanic / Latino", label: "Hispanic / Latino" },
-    { value: "Middle Eastern / Arab", label: "Middle Eastern / Arab" },
-    { value: "Mixed Ethnicity", label: "Mixed Ethnicity" },
-    { value: "South Asian (e.g., Indian, Pakistani)", label: "South Asian (e.g., Indian, Pakistani)" },
-    { value: "No Preference", label: "No Preference" }
+    { value: "I prefer a partner who is Caucasian or White.", label: "Caucasian / White" },
+    { value: "I prefer a partner who is African or Black.", label: "African / Black" },
+    { value: "I prefer a partner who is Asian.", label: "Asian" },
+    { value: "I prefer a partner who is Hispanic or Latino.", label: "Hispanic / Latino" },
+    { value: "I prefer a partner who is Middle Eastern or Arab.", label: "Middle Eastern / Arab" },
+    { value: "I prefer a partner who has a mixed ethnicity background.", label: "Mixed Ethnicity" },
+    { value: "I prefer a partner who is South Asian (e.g., Indian, Pakistani).", label: "South Asian (e.g., Indian, Pakistani)" },
+    { value: "I have no preference when it comes to ethnicity.", label: "No Preference" }
 ];
 
 export const preferredPhysique = [
-    { value: "Slim", label: "Slim" },
-    { value: "Athletic", label: "Athletic" },
-    { value: "Average", label: "Average" },
-    { value: "Curvy", label: "Curvy" },
-    { value: "Muscular", label: "Muscular" },
-    { value: "Plus-size", label: "Plus-size" },
-    { value: "No Preference", label: "No Preference" }
+    { value: "I prefer a partner with a slim physique.", label: "Slim" },
+    { value: "I prefer a partner with an athletic physique.", label: "Athletic" },
+    { value: "I prefer a partner with an average physique.", label: "Average" },
+    { value: "I prefer a partner with a curvy physique.", label: "Curvy" },
+    { value: "I prefer a partner with a muscular physique.", label: "Muscular" },
+    { value: "I prefer a partner with a plus-size physique.", label: "Plus-size" },
+    { value: "I have no preference when it comes to physique.", label: "No Preference" }
 ];
 
 export const preferredFitnessLevel = [
-    { value: "Very Active (Exercises Daily)", label: "Very Active (Exercises Daily)" },
-    { value: "Moderately Active (Exercises Weekly)", label: "Moderately Active (Exercises Weekly)" },
-    { value: "Occasionally Active (Exercises Sometimes)", label: "Occasionally Active (Exercises Sometimes)" },
-    { value: "Not Active", label: "Not Active" },
-    { value: "No Preference", label: "No Preference" }
+    { value: "I prefer a partner who is very active and exercises daily.", label: "Very Active (Exercises Daily)" },
+    { value: "I prefer a partner who is moderately active and exercises weekly.", label: "Moderately Active (Exercises Weekly)" },
+    { value: "I prefer a partner who is occasionally active and exercises sometimes.", label: "Occasionally Active (Exercises Sometimes)" },
+    { value: "I prefer a partner who is not active and doesn't exercise.", label: "Not Active" },
+    { value: "I have no preference when it comes to fitness level.", label: "No Preference" }
 ];
 
 
@@ -689,9 +705,9 @@ export const custodyStatus = [
 ]; 
 
 export const christianityOptions = [
-    { value: "Yes, I am a Christian", label: "Yes, I am a Christian" },
-    { value: "No, but I am religious", label: "No, but I am religious" },
-    { value: "No, not religious", label: "No, not religious" },
-    { value: "Open to All Faiths", label: "Open to All Faiths" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
-];
+    { value: "I am a Christian and follow Christian beliefs.", label: "Yes, I am a Christian" },
+    { value: "I am not a Christian but practice another religion.", label: "No, but I am religious" },
+    { value: "I am not religious and do not practice any faith.", label: "No, not religious" },
+    { value: "I am open to all faiths and religious beliefs.", label: "Open to All Faiths" },
+    { value: "I prefer not to disclose my religious beliefs.", label: "Prefer Not to Say" } 
+]

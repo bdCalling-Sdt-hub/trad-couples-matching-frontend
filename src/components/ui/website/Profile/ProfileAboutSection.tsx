@@ -36,7 +36,7 @@ interface bioDataType {
 
 
 const ProfileAboutSection = ({bioData , userProfile}:{bioData:bioDataType , userProfile:{gender:string}}) => { 
-    console.log(bioData); 
+  
      
     const data = [
         {

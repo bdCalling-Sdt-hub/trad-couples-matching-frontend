@@ -26,8 +26,6 @@ export const height = [
         label: <p>Over 6'3" (191 cm+)</p>
     },
 ]
-
-
 export const bodyShape = [
     {
         value: "slim",
@@ -154,8 +152,6 @@ export const country = [
     { value: "China", label: "China" },
     { value: "Japan", label: "Japan" }
 ];
-
-
 
 export const hairColor = [
     { value: "Black", label: "Black" },

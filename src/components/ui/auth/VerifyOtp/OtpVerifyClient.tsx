@@ -76,7 +76,7 @@ const OtpVerifyClient = () => {
         }).then(() => { 
 
           if (userType === "registerUser") {
-            router.push("/login")
+            router.push("/bio-question")
           } else {
             router.push("/reset-password")
           } 

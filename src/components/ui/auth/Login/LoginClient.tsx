@@ -37,7 +37,7 @@ const LoginClient = () => {
           if (data) {
             SetLocalStorage("tradeToken", data?.data);
           }
-          router.push("/bio-question");
+          router.push("/discover");
 
         });
       }

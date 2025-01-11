@@ -1,5 +1,4 @@
 "use client";
-import DropdownInput from "@/components/shared/DropdownInput";
 import SingleCard from "@/components/shared/SingleCard";
 
 import { ConfigProvider, Form, Input, Pagination } from "antd";
@@ -8,249 +7,44 @@ import { CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoFilterSharp } from "react-icons/io5";
 import { TfiReload } from "react-icons/tfi";
-import profile3 from "@/assets/profile3.svg";
-import profile4 from "@/assets/profile4.svg";
-import profile1 from "@/assets/profile12.svg";
-import profile5 from "@/assets/profile5.svg";
-import profile6 from "@/assets/profile6.svg";
-import profile7 from "@/assets/profile7.svg";
-import profile8 from "@/assets/profile8.svg";
-import profile9 from "@/assets/profile9.svg";
-import profile10 from "@/assets/profile10.svg";
-import profile16 from "@/assets/profile16.svg";
-
-const profiles = [
-  {
-    id: 1,
-    gender: "female",
-    image: profile1,
-    name: "Emma Johnson",
-    age: 28,
-    address: "1234 Elm Street, IL",
-  },
-  {
-    id: 3,
-    gender: "female",
-    image: profile3,
-    name: "Sophia Brown",
-    age: 26,
-    address: "9101 Pine Street, IL",
-  },
-  {
-    id: 4,
-    gender: "male",
-    image: profile4,
-    name: "Noah Williams",
-    age: 29,
-    address: "1122 Maple Drive, IL",
-  },
-  {
-    id: 5,
-    gender: "female",
-    image: profile5,
-    name: "Isabella Davis",
-    age: 24,
-    address: "1314 Birch Road, IL",
-  },
-  {
-    id: 6,
-    gender: "male",
-    image: profile6,
-    name: "Mason Garcia",
-    age: 31,
-    address: "1415 Cedar Lane, IL",
-  },
-  {
-    id: 7,
-    gender: "female",
-    image: profile7,
-    name: "Ava Wilson",
-    age: 27,
-    address: "1516 Walnut Way, IL",
-  },
-  {
-    id: 8,
-    gender: "male",
-    image: profile8,
-    name: "Ethan Martinez",
-    age: 32,
-    address: "1617 Spruce Court, IL",
-  },
-  {
-    id: 9,
-    gender: "female",
-    image: profile9,
-    name: "Ethan Martinez",
-    age: 25,
-    address: "1819 Cherry Boulevard, IL",
-  },
-  {
-    id: 10,
-    gender: "male",
-    image: profile10,
-    name: "James Anderson",
-    age: 33,
-    address: "2021 Fir Street, IL",
-  },
-  {
-    id: 16,
-    gender: "male",
-    image: profile16,
-    name: "Lucas King",
-    age: 29,
-    address: "2727 Orchid Way, IL",
-  },
-];
-
-const ShortBy = [
-  {
-    value: "Newest",
-    label: "Newest",
-  },
-];
-
-const location = [
-  {
-    value: "BanglaDesh",
-    label: "Bangladesh",
-  },
-  {
-    value: "India",
-    label: "India",
-  },
-  {
-    value: "China",
-    label: "China",
-  },
-  {
-    value: "USA",
-    label: "USA",
-  },
-];
-
-const MaritalStatus = [
-  {
-    value: "Single",
-    label: "Single",
-  },
-  {
-    value: "Mingle",
-    label: "Mingle",
-  },
-  {
-    value: "Married",
-    label: "Married",
-  },
-];
-
-const children = [
-  {
-    value: 1,
-    label: 1,
-  },
-  {
-    value: 2,
-    label: 2,
-  },
-  {
-    value: 3,
-    label: 3,
-  },
-];
-
-const height = [
-  {
-    value: "150cm",
-    label: "150cm",
-  },
-  {
-    value: "160cm",
-    label: "160cm",
-  },
-  {
-    value: "170cm",
-    label: "170cm",
-  },
-];
-
-const bodyShape = [
-  {
-    value: "Fit",
-    label: "Fit",
-  },
-  {
-    value: "Fat",
-    label: "Fat",
-  },
-];
-
-const hairColor = [
-  {
-    value: "Black",
-    label: "black",
-  },
-  {
-    value: "Brown",
-    label: "Brown",
-  },
-];
-
-const eyeColor = [
-  {
-    value: "Black",
-    label: "Black",
-  },
-  {
-    value: "Brown",
-    label: "Brown",
-  },
-];
-
-const education = [
-  {
-    value: "Graduate",
-    label: "Graduate",
-  },
-];
-
-const occupation = [
-  {
-    value: "Teacher",
-    label: "Teacher",
-  },
-  {
-    value: "Programmer",
-    label: "Programmer",
-  },
-];
-
-const religion = [
-  {
-    value: "Cristian",
-    label: "Cristian",
-  },
-  {
-    value: "Muslim",
-    label: "Muslim",
-  },
-  {
-    value: "Hindu",
-    label: "Hindu",
-  },
-];
+import { useGetAllPersonsQuery } from "@/redux/features/search/searchSlice";
+import { imageUrl } from "@/redux/base/baseApi";
+import { bodyShape, country, educationOn, eyeColor, hairColor, height, maritalStatus, occupation } from "@/components/shared/Option";
+import DropDownForFilter from "@/components/shared/DropDownForFilter";
 
 const SearchClient = () => {
-  const [isFilter, setIsFilter] = useState(false);
+  const [isFilter, setIsFilter] = useState(false); 
+  const [filters, setFilters] = useState({ 
+    search: undefined,
+    country: undefined,
+    maritalStatus: undefined,
+    height: undefined,
+    bodyShape: undefined,
+    hairColor: undefined,
+    eyeColor: undefined,
+    educationOn: undefined,
+    occupation: undefined,
+  });
   const [page, setPage] = useState(1);
-  const pageSize = 16;
+  const pageSize = 16; 
+  const {data} = useGetAllPersonsQuery(filters);
+  const persons = data?.data
 
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
+  const profiles = persons?.peoples?.map((person:{_id:string,user:{image:string,name:string},age:number,country:string}) => ({
+    id: person._id,
+    image: person?.user?.image?.startsWith("http") ? person?.user?.image : `${imageUrl}${person?.user?.image}`,
+    name: person?.user?.name,
+    age: person?.age,
+    address: person?.country,
+}
+  ));
 
-  const currentPageProfiles = profiles.slice(startIndex, endIndex);
+  const handleFilterChange = (name: string, value:any) => {
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleFilter = () => {
-    setIsFilter(!isFilter);
+  const handleFilterToggle = () => {
+    setIsFilter((prev) => !prev);
   };
 
   return (
@@ -266,35 +60,38 @@ const SearchClient = () => {
               borderRadius: "10px",
               width: "100%",
               padding: "4px",
-            }}
+            }} 
+            onChange={(e) => handleFilterChange("search", e.target.value)}
           />
-          <div className="flex items-center w-full gap-3 mt-4  ">
-            {/* filter   */}
+     <div className="flex items-center w-full gap-3 mt-4">
             <div
-              className=" bg-primary text-white font-medium  px-4 py-3 rounded-lg w-full flex  items-center justify-between cursor-pointer"
-              onClick={handleFilter}
+              className="bg-primary text-white font-medium px-4 py-3 rounded-lg w-full flex items-center justify-between cursor-pointer"
+              onClick={handleFilterToggle}
             >
-              <p className=" flex items-center gap-1">
-                <span>
-                  {" "}
-                  <IoFilterSharp size={22} />{" "}
-                </span>{" "}
-                <span> Filter</span>
+              <p className="flex items-center gap-1">
+                <IoFilterSharp size={22} />
+                Filter
               </p>
-              <p className="text-white ">
-                {" "}
-                <FaAngleDown
-                  className={`font-semibold rotate-icon`}
-                  style={{
-                    transform: `rotate(
-                ${isFilter ? 0 : 270}deg)`,
-                  }}
-                />{" "}
-              </p>
+              <FaAngleDown
+                className="text-white"
+                style={{ transform: `rotate(${isFilter ? 0 : 270}deg)` }}
+              />
             </div>
-            {/* reload  */}
             <button
-              className={`bg-black text-white w-[60px] h-[45px] rounded-lg flex justify-center items-center`}
+              className="bg-black text-white w-[60px] h-[45px] rounded-lg flex justify-center items-center"
+              onClick={() =>
+                setFilters({ 
+                  search: undefined,
+                  country: undefined,
+                  maritalStatus: undefined,
+                  height: undefined,
+                  bodyShape: undefined,
+                  hairColor: undefined,
+                  eyeColor: undefined,
+                  educationOn: undefined,
+                  occupation: undefined,
+                })
+              }
             >
               <TfiReload size={22} />
             </button>
@@ -305,71 +102,61 @@ const SearchClient = () => {
               className={`bg-[#F7F7F7] p-2 w-full transition-all duration-600 ease-in-out z-10`}
             >
               <Form layout="vertical">
-                <DropdownInput
+                {/* <DropdownInput
                   name="shortBy"
                   label="Short by"
-                  defaultValue="Newest"
+                
                   options={ShortBy}
-                />
-                <DropdownInput
-                  name="location"
-                  label="Location"
-                  defaultValue="BanglaDesh"
-                  options={location}
-                />
-                <DropdownInput
+                /> */} 
+
+                <DropDownForFilter
+                  name="country"
+                  label="Country"
+                  options={country} 
+                  onChange={(value) => handleFilterChange("country", value)}
+                /> 
+
+                <DropDownForFilter
                   name="maritalStatus"
                   label="Marital Status"
-                  defaultValue="Single"
-                  options={MaritalStatus}
+                  options={maritalStatus} 
+                  onChange={(value) => handleFilterChange("maritalStatus", value)}
                 />
-                <DropdownInput
-                  name="children"
-                  label="Children"
-                  defaultValue="1"
-                  options={children}
-                />
-                <DropdownInput
+                <DropDownForFilter
                   name="height"
                   label="Height"
-                  defaultValue="150cm"
-                  options={height}
+                  options={height} 
+                  onChange={(value) => handleFilterChange("height", value)}
                 />
-                <DropdownInput
+                <DropDownForFilter
                   name="bodyShape"
                   label="Body Shape"
-                  defaultValue="Fit"
+                onChange={(value) => handleFilterChange("bodyShape", value)}
                   options={bodyShape}
                 />
-                <DropdownInput
+                <DropDownForFilter
                   name="hairColor"
                   label="Hair Color"
-                  defaultValue="Black"
+                 onChange={(value) => handleFilterChange("hairColor", value)}
                   options={hairColor}
                 />
-                <DropdownInput
+                <DropDownForFilter
                   name="eyeColor"
                   label="Eye Color"
-                  defaultValue="Black"
+              onChange={(value) => handleFilterChange("eyeColor", value)}
                   options={eyeColor}
                 />
-                <DropdownInput
+                <DropDownForFilter
                   name="education"
                   label="Education"
-                  defaultValue="Graduate"
-                  options={education}
+                onChange={(value) => handleFilterChange("educationOn", value)}
+                  options={educationOn}
                 />
-                <DropdownInput
+                <DropDownForFilter
                   name="occupation"
                   label="Occupation"
-                  defaultValue="Teacher"
+                 onChange={(value) => handleFilterChange("occupation", value)}
                   options={occupation}
-                />
-                <DropdownInput
-                  name="religion"
-                  label="Religion"
-                  defaultValue="Cristian"
-                  options={religion}
                 />
               </Form>
             </div>
@@ -380,7 +167,7 @@ const SearchClient = () => {
 
         <div className="lg:col-span-9 col-span-12 mb-5 ">
           <div className=" cards grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-8 gap-4 justify-self-center z-0 ">
-            {currentPageProfiles?.map((value, index: number) => (
+            {profiles?.map((value:{id: string , image: string , name: string , age: string , address: string}, index: number) => (
               <SingleCard key={index} value={value} />
             ))}
           </div>
@@ -399,7 +186,7 @@ const SearchClient = () => {
         <Pagination
           align="center"
           current={page}
-          total={profiles.length}
+          // total={profiles.length} 
           onChange={(page) => setPage(page)}
           pageSize={pageSize}
         />

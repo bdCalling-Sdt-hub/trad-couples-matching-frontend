@@ -55,7 +55,7 @@ const StepsFooterBtn = ({current ,setCurrent, steps , formData}:propsType) => {
                       showConfirmButton: false,
                       timer: 1500,
                     }).then(()=>{
-                        router.push("/discover")
+                        router.push("/login")
                     })
                   } else {
                     Swal.fire({

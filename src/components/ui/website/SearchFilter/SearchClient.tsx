@@ -13,8 +13,8 @@ import { bodyShape, country, educationOn, eyeColor, hairColor, height, maritalSt
 import DropDownForFilter from "@/components/shared/DropDownForFilter";
 
 const SearchClient = () => {
-  const [isFilter, setIsFilter] = useState(false); 
-  const [filters, setFilters] = useState({ 
+  const [isFilter, setIsFilter] = useState(false);
+  const [filters, setFilters] = useState({
     search: undefined,
     country: undefined,
     maritalStatus: undefined,
@@ -26,20 +26,21 @@ const SearchClient = () => {
     occupation: undefined,
   });
   const [page, setPage] = useState(1);
-  const pageSize = 16; 
-  const {data} = useGetAllPersonsQuery(filters);
-  const persons = data?.data
+  const pageSize = 12;
+  const { data , refetch} = useGetAllPersonsQuery(filters);
+  const persons = data?.data 
 
-  const profiles = persons?.peoples?.map((person:{_id:string,user:{image:string,name:string},age:number,country:string}) => ({
-    id: person._id,
+  const profiles = persons?.peoples?.map((person: { user: { image: string, name: string, _id: string }, age: number, country: string , isFavorite: boolean }) => ({
+    id: person?.user?._id,
     image: person?.user?.image?.startsWith("http") ? person?.user?.image : `${imageUrl}${person?.user?.image}`,
     name: person?.user?.name,
     age: person?.age,
-    address: person?.country,
-}
+    address: person?.country,  
+    isFavorite: person?.isFavorite
+  }
   ));
 
-  const handleFilterChange = (name: string, value:any) => {
+  const handleFilterChange = (name: string, value: any) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -60,10 +61,10 @@ const SearchClient = () => {
               borderRadius: "10px",
               width: "100%",
               padding: "4px",
-            }} 
+            }}
             onChange={(e) => handleFilterChange("search", e.target.value)}
           />
-     <div className="flex items-center w-full gap-3 mt-4">
+          <div className="flex items-center w-full gap-3 mt-4">
             <div
               className="bg-primary text-white font-medium px-4 py-3 rounded-lg w-full flex items-center justify-between cursor-pointer"
               onClick={handleFilterToggle}
@@ -80,7 +81,7 @@ const SearchClient = () => {
             <button
               className="bg-black text-white w-[60px] h-[45px] rounded-lg flex justify-center items-center"
               onClick={() =>
-                setFilters({ 
+                setFilters({
                   search: undefined,
                   country: undefined,
                   maritalStatus: undefined,
@@ -102,62 +103,63 @@ const SearchClient = () => {
               className={`bg-[#F7F7F7] p-2 w-full transition-all duration-600 ease-in-out z-10`}
             >
               <Form layout="vertical">
-                {/* <DropdownInput
-                  name="shortBy"
-                  label="Short by"
-                
-                  options={ShortBy}
-                /> */} 
 
                 <DropDownForFilter
                   name="country"
                   label="Country"
-                  options={country} 
+                  options={country}
                   onChange={(value) => handleFilterChange("country", value)}
-                /> 
+                />
 
                 <DropDownForFilter
                   name="maritalStatus"
                   label="Marital Status"
-                  options={maritalStatus} 
+                  options={maritalStatus}
                   onChange={(value) => handleFilterChange("maritalStatus", value)}
                 />
+
                 <DropDownForFilter
                   name="height"
                   label="Height"
-                  options={height} 
+                  options={height}
                   onChange={(value) => handleFilterChange("height", value)}
                 />
+
                 <DropDownForFilter
                   name="bodyShape"
                   label="Body Shape"
-                onChange={(value) => handleFilterChange("bodyShape", value)}
+                  onChange={(value) => handleFilterChange("bodyShape", value)}
                   options={bodyShape}
                 />
+
                 <DropDownForFilter
                   name="hairColor"
                   label="Hair Color"
-                 onChange={(value) => handleFilterChange("hairColor", value)}
+                  onChange={(value) => handleFilterChange("hairColor", value)}
                   options={hairColor}
                 />
+
                 <DropDownForFilter
                   name="eyeColor"
                   label="Eye Color"
-              onChange={(value) => handleFilterChange("eyeColor", value)}
+                  onChange={(value) => handleFilterChange("eyeColor", value)}
                   options={eyeColor}
                 />
+
                 <DropDownForFilter
                   name="education"
                   label="Education"
-                onChange={(value) => handleFilterChange("educationOn", value)}
+                  onChange={(value) => handleFilterChange("educationOn", value)}
                   options={educationOn}
                 />
+
                 <DropDownForFilter
                   name="occupation"
                   label="Occupation"
-                 onChange={(value) => handleFilterChange("occupation", value)}
+                  onChange={(value) => handleFilterChange("occupation", value)}
                   options={occupation}
                 />
+
               </Form>
             </div>
           ) : (
@@ -167,30 +169,30 @@ const SearchClient = () => {
 
         <div className="lg:col-span-9 col-span-12 mb-5 ">
           <div className=" cards grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-8 gap-4 justify-self-center z-0 ">
-            {profiles?.map((value:{id: string , image: string , name: string , age: string , address: string}, index: number) => (
-              <SingleCard key={index} value={value} />
+            {profiles?.map((value: { id: string, image: string, name: string, age: string, address: string }, index: number) => (
+              <SingleCard key={index} value={value} refetch={refetch} />
             ))}
           </div>
         </div>
       </div>
 
-      <div className="mb-5"> 
+      <div className="mb-5">
 
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#007ba5",
-          },
-        }}
-      >
-        <Pagination
-          align="center"
-          current={page}
-          // total={profiles.length} 
-          onChange={(page) => setPage(page)}
-          pageSize={pageSize}
-        />
-      </ConfigProvider>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#007ba5",
+            },
+          }}
+        >
+          <Pagination
+            align="center"
+            current={page}
+            total={persons?.meta?.total}  
+            onChange={(page) => setPage(page)}
+            pageSize={pageSize}
+          />
+        </ConfigProvider>
 
       </div>
     </div>

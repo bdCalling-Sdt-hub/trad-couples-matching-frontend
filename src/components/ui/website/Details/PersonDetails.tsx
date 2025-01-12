@@ -2,7 +2,7 @@
 import AboutMe from '@/components/ui/website/Details/AboutMe';
 import MyChoice from '@/components/ui/website/Details/MyChoice';
 import Photos from '@/components/ui/website/Details/Photos';
-import { ConfigProvider, Dropdown, Form, Input, Tabs } from 'antd';
+import { ConfigProvider, Dropdown, Form, Input, message, Tabs } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -10,11 +10,22 @@ import { BiLeftArrowAlt } from 'react-icons/bi';
 import { FiSend } from 'react-icons/fi';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoMdKey } from 'react-icons/io';
-import { LuHeart } from 'react-icons/lu'; 
-import profile1 from "@/assets/profile12.svg" 
+import { LuHeart } from 'react-icons/lu';
+import { useGetPersonDetailsQuery } from '@/redux/features/details/detailsSlice';
+import { useParams, useRouter } from 'next/navigation';
+import { imageUrl } from '@/redux/base/baseApi';
+import { useCreateInitialChatMutation, useSendMessageMutation } from '@/redux/features/chat/chatSlice';
 
 const PersonDetails = () => {
-  const [isMessage, setIsMessage] = useState(false) 
+  const [isMessage, setIsMessage] = useState(false)
+  const { personId } = useParams()
+  const { data } = useGetPersonDetailsQuery(personId)
+  const personDetails = data
+  const [createInitialChat] = useCreateInitialChatMutation()
+  const [sendMessage] = useSendMessageMutation()
+  const router = useRouter() 
+  const [chatId , setChatId] = useState("")
+  console.log(personDetails);
 
   const items = [
     {
@@ -29,31 +40,60 @@ const PersonDetails = () => {
       label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3]'>Report</p>,
       key: '2',
     },
-  
-  ]; 
+
+  ];
 
   const profileItems = [
     {
       key: '1',
       label: <p className='text-[15px] font-medium'> About Me</p>,
-      children: <AboutMe />,
+      children: <AboutMe bio={personDetails} />,
     },
     {
       key: '2',
       label: <p className='text-[15px] font-medium'> My Choice</p>,
-      children: <MyChoice />,
+      children: <MyChoice choices={personDetails?.questionary} />,
     },
     {
       key: '3',
       label: <p className='text-[15px] font-medium'>Photos</p>,
-      children: <Photos />,
+      children: <Photos personDetails={personDetails} />,
     },
 
   ];
 
 
-  const handleMessage = () => {
-    setIsMessage(!isMessage)
+  const handleMessage = async () => {
+
+    await createInitialChat(personDetails?._id).then((res) => {
+      console.log(res);
+      if (res?.data?.success) {
+        setIsMessage(!isMessage) 
+        setChatId(res?.data?.data?._id)
+      }
+    })
+  }
+
+
+  const handleSubmitMessage = async (values: { message: string }) => {
+    console.log(values);
+  
+    const formData = new FormData();
+    formData.append("text", values.message);
+
+    formData.append("chatId", chatId);
+
+    const messageType = "text";
+
+    formData.append("messageType", messageType);
+
+    await sendMessage(formData).then((res) => {
+      if (res?.data?.success) {
+        message.success(res?.data?.message)
+        router.push("/chat")
+      }
+    })
+
   }
   return (
     <div className='' >
@@ -70,11 +110,11 @@ const PersonDetails = () => {
           {/* profile image and info's   */}
           <div className='container flex lg:flex flex-wrap justify-between '>
             <div className='flex flex-col lg:flex-row gap-3'>
-              <Image src={profile1} alt='' height={450} width={280} style={{ borderRadius: "20px", height: "290px", width: "250px" , objectFit:"cover" }} className=' -mt-[145px] border-2 border-white' />
+              <Image src={personDetails?.image?.startsWith("http") ? personDetails?.image : `${imageUrl}${personDetails?.image}`} alt='' height={450} width={280} style={{ borderRadius: "20px", height: "290px", width: "250px", objectFit: "cover" }} className=' -mt-[145px] border-2 border-white' />
 
               <div>
-                <p className=' font-semibold text-2xl tracking-wider py-2'>Mariam Star</p>
-                <p className='text-[#6B6B6B] flex  gap-5 text-[15px] font-medium'> <span>Age:25 </span> <span> New York, USA</span></p>
+                <p className=' font-semibold text-2xl tracking-wider py-2'>{personDetails?.name}</p>
+                <p className='text-[#6B6B6B] flex  gap-5 text-[15px] font-medium'> <span>Age: {personDetails?.bio?.age} </span> <span> {personDetails?.bio?.country}</span></p>
               </div>
             </div>
 
@@ -92,18 +132,18 @@ const PersonDetails = () => {
               <p className=' w-10 h-10 bg-[#EBEBEB] cursor-pointer flex justify-center items-center text-primary rounded-full '><IoMdKey size={20} /></p>
 
               <Dropdown
-    menu={{items}} className=''
-  > 
-              <p className='w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-[#4E4E4E] rounded-full font-semibold cursor-pointer'><HiOutlineDotsHorizontal size={22} /></p>
-   </Dropdown>
+                menu={{ items }} className=''
+              >
+                <p className='w-10 h-10 bg-[#EBEBEB] flex justify-center items-center text-[#4E4E4E] rounded-full font-semibold cursor-pointer'><HiOutlineDotsHorizontal size={22} /></p>
+              </Dropdown>
             </div>
           </div>
 
           {/* Message  */}  {
             isMessage ? <div className='mt-2'>
-              <Form  >
+              <Form onFinish={handleSubmitMessage} >
                 <Form.Item name="message">
-                  <Input.TextArea rows={4} className='w-full rounded-lg resize-none bg-[#EEEEEE]' placeholder={`Message with Mariam Star`} />
+                  <Input.TextArea rows={4} className='w-full rounded-lg resize-none bg-[#EEEEEE]' placeholder={`Message with ${personDetails?.name}`} />
                 </Form.Item>
 
                 <button className=' bg-primary text-white font-semibold h-[45px] w-[200px]  rounded-lg '>Send Message</button>

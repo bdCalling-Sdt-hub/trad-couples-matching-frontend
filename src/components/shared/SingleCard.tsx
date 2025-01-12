@@ -6,32 +6,52 @@ import React, { useState } from 'react';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
 import { Montserrat } from 'next/font/google'
+import { useCreateFavoriteMutation } from '@/redux/features/favorite/favoriteSlice';
+import { message } from 'antd';
+import { useCreateInitialChatMutation } from '@/redux/features/chat/chatSlice';
 
 
 const montserrat = Montserrat({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 
-const SingleCard = ({ value }: any) => {
+const SingleCard = ({ value , refetch }: any) => {
     const router = useRouter()
-    const [isFavorite, setIsFavorite] = useState(false)
-    const [userId, setUserId] = useState<number | string>()
-
+    const [userId, setUserId] = useState<number | string>(value?.id) 
+    const [createFavorite] = useCreateFavoriteMutation() 
+    const [createInitialChat] = useCreateInitialChatMutation()
 
     const handleDetails = (id: any) => {
         router.push(`/details/${id}`)
     }
 
-    const handleFavorite = (e: React.MouseEvent, id: number | string) => {
+    const handleFavorite = async(e: React.MouseEvent, id: number | string) => {
         e.stopPropagation();
         e.preventDefault();
-        setUserId(id)
-        setIsFavorite(!isFavorite)
+        setUserId(id) 
+
+        const data = {
+            favoriteUserId : userId
+        }
+        console.log(data);
+        await createFavorite(data).then((res)=>{
+            console.log(res); 
+            if(res?.data?.success){ 
+                message.success(res?.data?.message)
+                refetch()
+            }
+        })
     }
 
-    const handelChat = (e: React.MouseEvent) => {
+    const handelChat = async(e: React.MouseEvent) => {
         e.stopPropagation();
-        e.preventDefault();
-        router.push("/chat")
+        e.preventDefault(); 
+        await createInitialChat(userId).then((res) => { 
+            console.log(res); 
+            if(res?.data?.success){ 
+                router.push("/chat")
+            }
+        })
+       
     };
 
     return (
@@ -60,7 +80,7 @@ const SingleCard = ({ value }: any) => {
                             {
                                 userId === value?.id ?
                                     (
-                                        isFavorite ? <IoIosHeart size={26} /> : <IoIosHeartEmpty size={26} />) : <IoIosHeartEmpty size={26} />
+                                        value?.isFavorite ? <IoIosHeart size={24} /> : <IoIosHeartEmpty size={24} />) : <IoIosHeartEmpty size={24} />
                             }
 
                         </p>

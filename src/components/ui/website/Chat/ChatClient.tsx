@@ -68,15 +68,13 @@ const ChatClient = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [form] = Form.useForm();
 
-
-
   useEffect(() => {
     if (getMessageList) {
       setMessageList(getMessageList?.data);
     }
   }, [getMessageList]);
 
-  // Scroll to the bottom of the chat
+ 
   useEffect(() => {
     scrollRef.current?.scrollTo({
       top: scrollRef.current.scrollHeight,
@@ -84,7 +82,7 @@ const ChatClient = () => {
     });
   }, [messageList]);
 
-  // Handle new message from socket
+ 
   const handleConnection = useCallback(
     (data: any) => {
       setMessageList((prev: any) => [...prev, data]);
@@ -100,9 +98,9 @@ const ChatClient = () => {
     };
   }, [person, socket, handleConnection]);
 
-  // Refresh chat list on socket event
+ 
   const handleChatListRefresh = useCallback(() => {
-    setKeyword((prev) => prev); // Trigger query refresh
+    setKeyword((prev) => prev); 
   }, []);
 
   useEffect(() => {

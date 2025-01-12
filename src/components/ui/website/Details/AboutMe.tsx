@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsPersonVcard } from 'react-icons/bs';
@@ -10,96 +11,98 @@ import { IoPersonSharp } from 'react-icons/io5';
 import { MdCastForEducation, MdOutlineDateRange, MdOutlineTempleHindu } from 'react-icons/md';
 import { SiEthers } from 'react-icons/si';
 
-const AboutMe = () => { 
+const AboutMe = ({bio}:any) => {  
+  
+    const bioData = bio?.bio
     const data = [
         {
             icon: <p className='text-white '><IoPersonSharp size={20}/></p>, 
              title:"Gender" ,
-             value:"Female"
+             value: bio?.gender
         } , 
         
         {
             icon: <p className='text-white '><MdOutlineDateRange size={20}/></p>, 
              title:"Age" ,
-             value:"20, Date of birth: 09 Dec 2003"
+             value: `${bioData?.age} , ${moment(bioData?.dob).format("DD MMM YYYY")} `
         } , 
         
         {
             icon: <p className='text-white '><FaRegMap size={20}/></p>, 
              title:"Country" ,
-             value:"BanglaDesh"
+             value: bioData?.country
         } , 
         
         {
             icon: <p className='text-white '><AiOutlineGlobal size={20}/></p>, 
              title:"Province/Region" ,
-             value:"New Work"
+             value: bioData?.region
         } , 
         
         {
             icon: <p className='text-white '><SiEthers size={20}/></p>, 
              title:"Ethnicity" ,
-             value:"American"
+             value: bioData?.ethnicity
         } , 
         
         {
             icon: <p className='text-white '><MdCastForEducation size={20}/></p>, 
              title:"Education" ,
-             value:"Graduate,from USA University"
+             value: `${bioData?.educationOn} , ${bioData?.educationFrom}`
         } , 
         
         {
             icon: <p className='text-white '><BsPersonVcard size={20}/></p>, 
              title:"Occupation" ,
-             value:"Programmer"
+             value: bioData?.occupation
         } , 
         
         {
             icon: <p className='text-white '><MdOutlineTempleHindu size={20}/></p>, 
-             title:"Religion" ,
-             value:"Christian"
+             title:"Region" ,
+             value: bioData?.region
         } , 
         
         {
             icon: <p className='text-white '><GoHeartFill size={20}/></p>, 
              title:"Marital status" ,
-             value:"Single"
+             value: bioData?.maritalStatus
         } , 
         
         {
             icon: <p className='text-white '><FaChildren size={20}/></p>, 
              title:"Children" ,
-             value:"0"
+             value: ` ${bioData?.howManyChildren} `
         } , 
         
         {
             icon: <p className='text-white '><GiBodyHeight size={20}/></p>, 
              title:"Height" ,
-             value:"170 cm"
+             value: bioData?.height
         } , 
         
         {
             icon: <p className='text-white '><IoIosBody size={20}/></p>, 
              title:"Body Shape" ,
-             value:"fit"
+             value: bioData?.bodyShape
         } , 
         
         {
             icon: <p className='text-white '><CgGirl size={20}/></p>, 
              title:"Hair Color" ,
-             value:"Brown"
+             value: bioData?.hairColor
         } , 
         
         {
             icon: <p className='text-white '><FaRegEye size={20}/></p>, 
              title:"Eye Color" ,
-             value:"Brown"
+             value: bioData?.eyeColor
         } , 
         
-    ]
+    ]   
     return (
         <div className='mb-5'>
-           <p className=' bg-[#EEEEEE] p-5 text-[#4E4E4E] rounded-lg text-[16px] mb-4  text-justify'>fringilla felis, non Morbi placerat nulla, volutpat elementum laoreet Nam Quisque nulla, In at, facilisis porta Morbi non, maximus laoreet elit maximus Donec venenatis id venenatis ex. viverra ultrices Nam elementum volutpat leo. quis Ut sodales. dui lorem. ac at porta placerat consectetur amet, elementum vel In Ut Nullam enim. urna tincidunt non Praesent venenatis ipsum Praesent Ut efficitur. Lorem volutpat Nullam In felis, at lacus viverra vel eu Nullam Sed ex elementum </p>  
+           <p className=' bg-[#EEEEEE] p-5 text-[#4E4E4E] rounded-lg text-[16px] mb-4  text-justify'>{bioData?.aboutMe}</p>  
 
            <div className=' grid lg:grid-cols-2 grid-cols-1  items-center bg-[#EEEEEE] py-4 rounded-lg lg:px-5 px-3'>
 {

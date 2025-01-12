@@ -6,7 +6,7 @@ interface propsType {
     name: string 
     label: string 
     onChange?: (value: string | number) => void;
-    options: Array<{ value: string | number; label: string | number;}>;
+    options: Array<{ value: string | number; label: string | number| JSX.Element;}>;
 }
 
 const DropDownForFilter = ({name , label  , options , onChange}:propsType) => { 

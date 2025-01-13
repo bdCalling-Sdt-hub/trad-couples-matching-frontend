@@ -15,7 +15,7 @@ export const baseApi = createApi({
     },
   }),
   endpoints: () => ({}), 
-  tagTypes: ["favorites"],
+  tagTypes: ["favorites" , "chats"],
 });
 
 // export const imageUrl = "http://192.168.10.15:8000/";

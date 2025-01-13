@@ -5,7 +5,8 @@
 import { UserContext } from "@/provider/User";
 import { imageUrl } from "@/redux/base/baseApi";
 import { useCreateInitialChatMutation, useGetChatListQuery, useGetMessageListQuery, useSendMessageMutation } from "@/redux/features/chat/chatSlice";
-import { Dropdown, Form, Input } from "antd";
+import { useCreateFavoritesMutation } from "@/redux/features/favorite/favoriteSlice";
+import { Dropdown, Form, Input, message } from "antd";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
@@ -15,6 +16,7 @@ import { FiSearch } from "react-icons/fi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { IoSendSharp } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
+import ReportModal from "../Details/ReportModal";
 
 type TMessageList = {
   participants: Participant[];
@@ -37,20 +39,6 @@ type LastMessage = {
   image: string;
 };
 
-const menuItems = [
-  { label: "View Profile", key: "0" },
-  { label: "Add to Favorites", key: "1" },
-  { label: "Send Private Key", key: "2" },
-  { label: "Block", key: "3" },
-  { label: "Report", key: "4" },
-].map(item => ({
-  label: <p className="text-[15px] font-medium hover:text-primary text-[#A3A3A3]">{item.label}</p>,
-  key: item.key,
-}));
-
-
-
-
 const ChatClient = () => {
   const [image, setImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(null);
@@ -62,11 +50,36 @@ const ChatClient = () => {
   const [messageInput, setMessageInput] = useState("");
   const [sendMessage] = useSendMessageMutation();
   const [createInitialChat] = useCreateInitialChatMutation()
-  const { data: getMessageList } = useGetMessageListQuery(person?._id)
+  const { data: getMessageList } = useGetMessageListQuery(person?._id) 
+  const [createFavorites] = useCreateFavoritesMutation()  
+  const [open , setOpen] = useState(false)
   const [messageList, setMessageList] = useState();
   const { socket, user } = useContext(UserContext);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const [form] = Form.useForm();
+  const [form] = Form.useForm(); 
+ console.log(person?.participants[0]?._id); 
+
+ const handleFavorite = async() => {
+
+  const data = {
+      favoriteUserId : person?.participants[0]?._id
+  }
+
+  await createFavorites(data).then((res)=>{
+      if(res?.data?.success){ 
+          message.success(res?.data?.message)
+      }
+  })
+}
+
+  const menuItems = [
+    { label: <p className="text-[15px] font-medium hover:text-primary text-[#A3A3A3]" onClick={() => router.push(`/details/${person?.participants[0]?._id}`)}> View Profile </p> , key: "0" },
+    { label: <p className="text-[15px] font-medium hover:text-primary text-[#A3A3A3]" onClick={() => handleFavorite()}> Add to Favorites </p> , key: "1" },
+    { label: <p className="text-[15px] font-medium hover:text-primary text-[#A3A3A3]" onClick={() => setOpen(true)}> Report </p>, key: "4" },
+  ].map(item => ({
+    label: item.label,
+    key: item.key,
+  }));
 
   useEffect(() => {
     if (getMessageList) {
@@ -125,7 +138,7 @@ const ChatClient = () => {
     if (image && messageInput) {
       messageType = "both";
     } else if (image) {
-      messageType = "file";
+      messageType = "image";
     } else if (messageInput) {
       messageType = "text";
     }
@@ -242,10 +255,11 @@ const ChatClient = () => {
                     >
                       {value?.messageType === "image" && (
                         <div
-                          className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3 bg-[#E5E5E5] rounded-t-xl ${user?._id === value?.sender ? "rounded-bl-xl" : "rounded-br-xl"}`}
+                          className={`lg:w-3/5 w-2/3 lg:px-4 px-2 py-3  rounded-t-xl
+                             ${user?._id === value?.sender ? "rounded-bl-xl bg-[#E6F2F6] " : "rounded-br-xl bg-[#E5E5E5]"}`}
                         >
                           <img
-                            style={{ width: 140, height: 140, borderRadius: 8 }}
+                            style={{ width: "100%", height: 140, borderRadius: 8 }}
                             src={value.image?.startsWith("http") ? value?.image : `${imageUrl}${value?.image}`}
                             alt=""
                           />
@@ -349,7 +363,8 @@ const ChatClient = () => {
           }
 
         </div>
-      </div>
+      </div> 
+      <ReportModal open={open} setOpen={setOpen} id={person?.participants[0]?._id} />
     </div>
   );
 };

@@ -9,15 +9,16 @@ import React, { useState } from 'react';
 import { BiLeftArrowAlt } from 'react-icons/bi';
 import { FiSend } from 'react-icons/fi';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
-import { IoMdKey } from 'react-icons/io';
 import { LuHeart } from 'react-icons/lu';
 import { useGetPersonDetailsQuery } from '@/redux/features/details/detailsSlice';
 import { useParams, useRouter } from 'next/navigation';
 import { imageUrl } from '@/redux/base/baseApi';
 import { useCreateInitialChatMutation, useSendMessageMutation } from '@/redux/features/chat/chatSlice';
+import ReportModal from './ReportModal';
 
 const PersonDetails = () => {
-  const [isMessage, setIsMessage] = useState(false)
+  const [isMessage, setIsMessage] = useState(false) 
+  const [open , setOpen] = useState(false)
   const { personId } = useParams()
   const { data } = useGetPersonDetailsQuery(personId)
   const personDetails = data
@@ -28,16 +29,16 @@ const PersonDetails = () => {
   console.log(personDetails);
 
   const items = [
+    // {
+    //   label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3] w-[100px] '>Hide</p>,
+    //   key: '0',
+    // },
+    // {
+    //   label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3]'>Block</p>,
+    //   key: '1',
+    // },
     {
-      label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3] w-[100px] '>Hide</p>,
-      key: '0',
-    },
-    {
-      label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3]'>Block</p>,
-      key: '1',
-    },
-    {
-      label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3]'>Report</p>,
+      label: <p className='text-[15px] font-medium  hover:text-primary text-[#A3A3A3]' onClick={() => setOpen(true)}>Report</p>,
       key: '2',
     },
 
@@ -63,8 +64,8 @@ const PersonDetails = () => {
   ];
 
 
-  const handleMessage = async () => {
-
+  const handleMessage = async () => { 
+  
     await createInitialChat(personDetails?._id).then((res) => {
       console.log(res);
       if (res?.data?.success) {
@@ -129,7 +130,7 @@ const PersonDetails = () => {
               </div>
 
               <p className=' w-10 h-10 bg-[#EBEBEB] cursor-pointer flex justify-center items-center text-red-500 rounded-full '><LuHeart size={20} /></p>
-              <p className=' w-10 h-10 bg-[#EBEBEB] cursor-pointer flex justify-center items-center text-primary rounded-full '><IoMdKey size={20} /></p>
+            
 
               <Dropdown
                 menu={{ items }} className=''
@@ -170,7 +171,8 @@ const PersonDetails = () => {
           </div>
 
         </div>
-      </div>
+      </div> 
+      <ReportModal open={open} setOpen={setOpen} id={personDetails?._id} />
     </div>
   );
 };

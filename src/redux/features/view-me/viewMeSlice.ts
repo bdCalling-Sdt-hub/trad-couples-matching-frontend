@@ -4,7 +4,8 @@ const viewMeSlice = baseApi.injectEndpoints({
     endpoints: (builder) => ({   
          
         getViewMe: builder.query({
-            query: () => "/viewMe",
+            query: () => "/viewMe", 
+            providesTags: ["favorites"]
         })
     }) 
 }) 

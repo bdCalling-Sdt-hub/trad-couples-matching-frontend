@@ -9,7 +9,9 @@ const chatSlice = baseApi.injectEndpoints({
                     method: "POST",
                     url: `/chat/${id}`,                
                 }
-            },
+            }, 
+
+            invalidatesTags: ["chats"]
         }),
 
         getChatList: builder.query({ 
@@ -19,7 +21,8 @@ const chatSlice = baseApi.injectEndpoints({
                 return {
                     url: `/chat?${params.toString()}`,
                 }
-            }
+            } , 
+            providesTags: ["chats"]
         }),
 
         sendMessage: builder.mutation({
@@ -29,7 +32,7 @@ const chatSlice = baseApi.injectEndpoints({
                     url: "/message",
                     body: data,
                 }
-            },
+            }, 
         }),
 
         getMessageList: builder.query({
@@ -38,7 +41,7 @@ const chatSlice = baseApi.injectEndpoints({
                     url: `/message/${id}`,
 
                 }
-            }
+            } ,   
         }),
 
 

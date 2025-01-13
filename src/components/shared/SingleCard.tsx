@@ -32,9 +32,8 @@ const SingleCard = ({ value , refetch }: any) => {
         const data = {
             favoriteUserId : userId
         }
-        console.log(data);
+
         await createFavorites(data).then((res)=>{
-            console.log(res); 
             if(res?.data?.success){ 
                 message.success(res?.data?.message)
                 refetch()
@@ -46,7 +45,6 @@ const SingleCard = ({ value , refetch }: any) => {
         e.stopPropagation();
         e.preventDefault(); 
         await createInitialChat(userId).then((res) => { 
-            console.log(res); 
             if(res?.data?.success){ 
                 router.push("/chat")
             }

@@ -7,7 +7,6 @@ import { imageUrl } from '@/redux/base/baseApi';
 const ViewMe = () => {
   const { data, refetch } = useGetViewMeQuery(undefined)
   const viewData = data?.data
-  console.log(viewData);
 
   const profiles = viewData?.map((person: { view: { image: string, name: string, _id: string }, age: number, country: string , isFavorite: boolean }) => ({
     id: person?.view?._id,

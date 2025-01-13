@@ -13,8 +13,15 @@ const detailsSlice = baseApi.injectEndpoints({
                 return values
             }
         }), 
-
+ 
+        reportUser: builder.mutation({
+            query: (data) => ({
+                method: "POST",
+                url: "/report",
+                body: data,
+            }),
+        }),
     }) 
 }) 
 
-export const {useGetPersonDetailsQuery} = detailsSlice
+export const {useGetPersonDetailsQuery , useReportUserMutation} = detailsSlice

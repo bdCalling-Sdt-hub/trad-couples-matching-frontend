@@ -11,13 +11,25 @@ import Link from 'next/link';
 import SmallButton from '@/components/shared/SmallButton';
 // import { MdOutlineKeyboardArrowRight } from 'react-icons/md'; 
 import { GoDot, GoDotFill } from 'react-icons/go';
-import { Checkbox, Form } from 'antd';
+import { Checkbox, Form, message } from 'antd';
 import TextInput from '@/components/shared/TextInput';
+import { useCreateSubscriberMutation } from '@/redux/features/subscriber/subscriberSlice';
+import { useRouter } from 'next/navigation';
 const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] });
 
 
 
-const LandingCards = ({ fourthSectionRef}:any) => { 
+const LandingCards = ({ fourthSectionRef}:any) => {  
+ const [createSubscriber] =  useCreateSubscriberMutation() 
+ const router = useRouter()
+    const onFinish = async(values: any) => {       
+        await createSubscriber(values).then((res) => { 
+            if(res?.data?.success){
+                message.success(res?.data?.message) 
+                router.push("/home")
+            }
+        })
+     };
 
     return (
         <div className={`${inter.className}`}> 
@@ -99,22 +111,17 @@ const LandingCards = ({ fourthSectionRef}:any) => {
         <div className=' container grid grid-cols-12  items-center lg:pb-32 pb-12 gap-4  ' ref={fourthSectionRef}>
 
     <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 order-1 lg:text-start text-center '>
-        {/* <Heading className=' text-[22px] py-5 font-bold '>Find Your Match – Free 1-Month Subscription for Early Access!
-        </Heading> */}
         <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mb-4  '>Our site officially launches in December. Subscribe now to receive a free or discounted profile and secure your place among the first members.</p>
 
         <div>
-            <Form layout="vertical" className=' w-full'>
+            <Form layout="vertical" className=' w-full' onFinish={onFinish}>
                 <TextInput name='name' label='Email' placeholder="Full Name" />
                 <TextInput name='email' label='Email' placeholder="Email Address" />
-                <TextInput name='country' label='Email' placeholder="Country" />
-
-                <Link href="/home" className=' ' >
+                <TextInput name='country' label='Email' placeholder="Country" />            
                     <SmallButton className={`mt-5  lg:h-[60px] h-[50px]  ${inter.className}`}>
                         Claim Your Free Month
 
                     </SmallButton>
-                </Link>
 
                 <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mt-4  '>Your privacy is our priority. We’ll keep your information secure and private.Standard subscription fees will start from $20 per month after launch.</p>
 
@@ -174,17 +181,14 @@ const LandingCards = ({ fourthSectionRef}:any) => {
                         <p className=' text-[#6B6B6B] font-[400] lg:text-[18px] text-[14px] leading-[24px] mb-4  '>Subscribe now to receive a free or discounted profile and secure your place among the first members.</p>
 
                         <div>
-                            <Form layout="vertical" className=' w-full'>
+                            <Form layout="vertical" className=' w-full' onFinish={onFinish}>
                                 <TextInput name='name' label='Email' placeholder="Full Name" />
                                 <TextInput name='email' label='Email' placeholder="Email Address" />
-
-
-                                <Link href="/home" className=' ' >
                                     <SmallButton className={`mt-5  lg:h-[60px] h-[50px]  ${inter.className}`}>
                                         Subscribe Now
 
                                     </SmallButton>
-                                </Link>
+                            
                             </Form>
                         </div> 
                         <p className="text-[#6B6B6B] font-[500] lg:text-[18px] text-[14px] leading-[24px] my-14 italic justify-self-start">

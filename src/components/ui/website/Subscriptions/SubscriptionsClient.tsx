@@ -1,59 +1,31 @@
 "use client";
 
+import { useGetAllPackagesQuery } from "@/redux/features/package/packageSlice";
 import React  from "react";
-import { FaCheck } from "react-icons/fa6";
-
-const data = [
-  {
-    type: "Elite",
-    perCredit: "33",
-    credits: 1000,
-    description: [
-      "Start 111 conversations",
-      "Highlight your profile for 30 days FREE",
-    ],
-    price: "329.00",
-  },
-  {
-    type: "Classic",
-    perCredit: "40",
-    credits: 1000,
-    description: [
-      "Start 111 conversations",
-      "Highlight your profile for 30 days FREE",
-    ],
-    price: "329.00",
-  },
-  {
-    type: "Basic",
-    perCredit: "69",
-    credits: 1000,
-    description: [
-      "Start 111 conversations",
-      "Highlight your profile for 30 days FREE",
-    ],
-    price: "329.00",
-  },
-];
+import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 const SubscriptionsClient = () => {
-
-
-
+ 
+  const {data} = useGetAllPackagesQuery(undefined)
+ console.log(data);
+const packages = data?.data
 
   return (
-    <div className="container flex items-center justify-center h-full lg:pt-0 pt-5 lg:px-32 px-10 mb-5">
-      <div className="h-[80vh] w-full  grid lg:grid-cols-3 grid-cols-1  items-center gap-8">
-        {data.map((value, index) => (
-          <div key={index} className={` border-2 border-gray-300 transition  hover:scale-105 duration-300 ${
-            index === 0
-              ? "hover:border-[#CC2B52]"
-              : index === 1
-              ? "hover:border-blue-700"
-              : "hover:border-primary"
-          } p-6 rounded-xl`}>
+    <div className="container  lg:pt-0 pt-5 lg:px-24 px-10 mb-5 mt-10 max-h-screen flex items-center justify-center"> 
+      <div className=" w-full h-[70vh] grid lg:grid-cols-2 grid-cols-1 items-center gap-8">
+        {packages?.map((pkg:{name:string,features:string[],costOptions:{name:string,amount:number,duration:string,paymentLink:string}[],_id:string}, index:number) => (
+          <div
+            key={pkg._id}
+            className={`border-2 border-gray-300 h-[66vh]  ${
+              index === 0
+                ? "hover:border-[#CC2B52]"
+                : index === 1
+                ? "hover:border-blue-700"
+                : "hover:border-primary"
+            } p-6 rounded-xl`}
+          >
             <p
-              className={` py-4 font-bold uppercase text-[20px] ${
+              className={`py-4 font-bold uppercase text-[20px] ${
                 index === 0
                   ? "text-[#CC2B52]"
                   : index === 1
@@ -61,41 +33,62 @@ const SubscriptionsClient = () => {
                   : "text-primary"
               }`}
             >
-          
-              {value?.type}
+              {pkg.name}
             </p>
-            <p className="font-bold text-[16px] pb-3 ">
-      
-              <span className="text-4xl"> {value?.perCredit}$ </span>{" "}
-              <span>per month </span>
-            </p>
-            <div className=" border-t border-gray-500 py-4 ">
-              {value?.description?.map((value, index) => (
-                <div key={index} className="  flex items-center gap-3 pb-3">
-                  <p>
-                    <FaCheck size={22} />
-                  </p>
-                  <p> {value}</p>
+            <div className="border-t border-gray-300 py-4">
+              {pkg.features.map((feature, featureIndex) => (
+                <div
+                  key={featureIndex}
+                  className="flex items-center gap-3 pb-3"
+                > 
+                <p>  <VscDebugBreakpointLog size={20} /></p>
+                 
+                  <p className="text-[14px]">{feature}</p>
                 </div>
               ))}
             </div>
 
-            <div className=" flex items-end justify-end">
-              <button
-                className={` w-[130px] h-[55px] border-2  rounded-full font-bold text-[18px] mt-5  ${
-                  index === 0
-                    ? "border-[#CC2B52]"
-                    : index === 1
-                    ? "border-blue-700"
-                    : "border-primary"
-                } `}
-              >
-                Buy Now
-              </button>
-            </div>
-          </div>
+            {/* Nested Cards for Cost Options */}
+            {pkg.costOptions.length > 0 && (
+              <div className="mt-5 grid grid-cols-3 gap-2">
+                {pkg.costOptions.map((option:{name:string,amount:number,duration:string,paymentLink:string  } , index:number) => (
+                  <div
+                    key={index}
+                    className="border-2 border-gray-200 hover:border-primary rounded-lg p-4 mb-4 shadow-sm"
+                  >
+                    <p className="font-bold text-[14px] flex flex-col">
+                    <span className="text-gray-700">  {option.name}  </span>  
+                      <span className="text-blue-700"> ${option.amount} </span> 
+                    </p>
+                    <p className="text-sm text-gray-600">{option.duration}</p>
+                    <a
+                      href={option.paymentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline text-sm mt-2 block"
+                    >
+                      Buy Now
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )} 
+
+            {
+pkg.name === "Basic" && 
+ <div className="flex items-end justify-start">
+  <button
+    className={` text-primary underline-offset-2  font-medium underline decoration-blue-600  text-[16px] mt-5 `}
+  >
+ Accessible with our Basic subscription plan.
+  </button>
+</div> 
+            }
+            </div> 
+
         ))}
       </div>
+   
     </div>
   );
 };

@@ -8,14 +8,16 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Montserrat } from "next/font/google";
-import profile1 from "@/assets/profile12.svg";
 import { LuLogOut } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
-import { SiDiscover } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { BadgeInfo, Eye, } from "lucide-react";
 import { PiHeartDuotone, PiPackageDuotone } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
+import { useProfileQuery } from "@/redux/features/auth/authApi";
+import { imageUrl } from "@/redux/base/baseApi";
+import { useGetBioQuery } from "@/redux/features/profile/profileSlice";
+import { BiWorld } from "react-icons/bi";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -29,13 +31,16 @@ const WithLoginNavbar = ({
 }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter(); 
-  const pathname = usePathname()
-
+  const pathname = usePathname() 
+  const {data} = useProfileQuery(undefined)  
+  const {data:bio} = useGetBioQuery(undefined)
+const userInfo =  data?.data  
+const bioInfo = bio?.data
   const user = {
-    image: profile1,
-    name: "Mariam Star",
-    age: "25",
-    location: "New York, USA",
+    image: userInfo?.image?.startsWith("http") ? userInfo?.image : `${imageUrl}${userInfo?.image}`,
+    name: userInfo?.name,
+    age: bioInfo?.age,
+    location: bioInfo?.country,
   };
 
   const showDrawer = () => {
@@ -75,7 +80,7 @@ const WithLoginNavbar = ({
     },
     {
       icon: (
-          <SiDiscover size={22} color="#4E4E4E" />
+          <BiWorld size={22} color="#4E4E4E" />
       ),
       title: "Discover",
       path: "/discover",

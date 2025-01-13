@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
 import { Montserrat } from 'next/font/google'
-import { useCreateFavoriteMutation } from '@/redux/features/favorite/favoriteSlice';
+import { useCreateFavoritesMutation } from '@/redux/features/favorite/favoriteSlice';
 import { message } from 'antd';
 import { useCreateInitialChatMutation } from '@/redux/features/chat/chatSlice';
 
@@ -17,7 +17,7 @@ const montserrat = Montserrat({ weight: ['400', '500', '600', '700'], subsets: [
 const SingleCard = ({ value , refetch }: any) => {
     const router = useRouter()
     const [userId, setUserId] = useState<number | string>(value?.id) 
-    const [createFavorite] = useCreateFavoriteMutation() 
+    const [createFavorites] = useCreateFavoritesMutation() 
     const [createInitialChat] = useCreateInitialChatMutation()
 
     const handleDetails = (id: any) => {
@@ -33,7 +33,7 @@ const SingleCard = ({ value , refetch }: any) => {
             favoriteUserId : userId
         }
         console.log(data);
-        await createFavorite(data).then((res)=>{
+        await createFavorites(data).then((res)=>{
             console.log(res); 
             if(res?.data?.success){ 
                 message.success(res?.data?.message)

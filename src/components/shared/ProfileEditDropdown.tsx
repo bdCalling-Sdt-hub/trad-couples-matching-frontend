@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 interface propsType {
     name: string
     label: string|number
-    options: Array<{ value: string | number; label: string | number; }>
+    options: Array<{ value: string | number; label: string | number|JSX.Element;  }>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: any
 }

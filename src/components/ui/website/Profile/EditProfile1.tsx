@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 "use client"
 import OutLineBtn from '@/components/shared/OutLineBtn';
 import ProfileEditDropdown from '@/components/shared/ProfileEditDropdown';

@@ -4,7 +4,6 @@ import { GoDotFill } from 'react-icons/go';
 
 const ProfileMyChoice = () => {   
     const {data:allQuestion} = useGetQuestionnaireQuery(undefined)  
-    console.log(allQuestion);
  
     return (
         <div>

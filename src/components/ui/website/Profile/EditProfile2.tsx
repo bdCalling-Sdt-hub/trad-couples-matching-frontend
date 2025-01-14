@@ -38,8 +38,6 @@ const EditProfile2 = () => {
   const questions = questionData?.data; 
 
 
-  console.log(questions); 
-
  useEffect(() => {
     form.setFieldsValue({
             haveHome: questions?.haveAHome || '',

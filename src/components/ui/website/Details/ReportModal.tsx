@@ -17,7 +17,7 @@ const ReportModal = ({ open, setOpen , id }:{open:boolean , setOpen:(open:boolea
           } 
 
           await reportUser(data).then((res) => { 
-            console.log(res);
+  
             if(res?.data?.success){
               message.success(res?.data?.message) 
               handleClose()

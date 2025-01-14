@@ -8,10 +8,8 @@ import { imageUrl } from '@/redux/base/baseApi';
 
 const Discover = () => {  
     const {data , refetch} = useGetAllDiscoverQuery(undefined) 
-
         const discoverData = data?.data
-        console.log(discoverData);   
-    
+
         const profiles = discoverData?.peoples?.map((person: { user: { image: string, name: string, _id: string }, age: number, country: string , isFavorite: boolean }) => ({
             id: person?.user?._id,
             image: person?.user?.image?.startsWith("http") ? person?.user?.image : `${imageUrl}${person?.user?.image}`,

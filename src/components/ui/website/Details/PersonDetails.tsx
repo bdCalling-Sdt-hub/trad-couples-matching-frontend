@@ -26,7 +26,7 @@ const PersonDetails = () => {
   const [sendMessage] = useSendMessageMutation()
   const router = useRouter() 
   const [chatId , setChatId] = useState("")
-  console.log(personDetails);
+
 
   const items = [
     // {
@@ -67,7 +67,7 @@ const PersonDetails = () => {
   const handleMessage = async () => { 
   
     await createInitialChat(personDetails?._id).then((res) => {
-      console.log(res);
+
       if (res?.data?.success) {
         setIsMessage(!isMessage) 
         setChatId(res?.data?.data?._id)
@@ -77,7 +77,7 @@ const PersonDetails = () => {
 
 
   const handleSubmitMessage = async (values: { message: string }) => {
-    console.log(values);
+  
   
     const formData = new FormData();
     formData.append("text", values.message);

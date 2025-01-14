@@ -55,9 +55,7 @@ const LoginClient = () => {
 
 
   const onFinish = async (values: loginProps) => {
-    await login(values).then((res) => {
-      console.log(res);
-    })
+    await login(values)
   };
 
 

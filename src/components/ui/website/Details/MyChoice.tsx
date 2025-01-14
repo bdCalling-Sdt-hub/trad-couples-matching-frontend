@@ -3,7 +3,6 @@ import { GoDotFill } from 'react-icons/go';
 
 const MyChoice = ({choices}: any) => {  
 
-    console.log(choices);
     return (
         <div>
         <div>

@@ -40,11 +40,7 @@ const ProfileDetails = () => {
         if (file) {
             setProfileFile(file); 
             formData.append("image", file);
-            await updateProfile(formData).then((res) => {
-                if (res?.data?.success) {
-                    console.log(res);
-                }
-            });
+            await updateProfile(formData)
         }
     };
 

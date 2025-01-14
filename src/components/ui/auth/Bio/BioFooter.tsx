@@ -46,7 +46,7 @@ const BioFooter = ({current ,setCurrent, steps , formData}:propsType) => {
     const handleSubmit = async() => {
        
         await createBioQuestions(formData).then((res) => { 
-          
+        
             if (res?.data?.success) {
                 Swal.fire({
                   text: res?.data?.message,

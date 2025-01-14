@@ -57,7 +57,6 @@ const ChatClient = () => {
   const { socket, user } = useContext(UserContext);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [form] = Form.useForm(); 
- console.log(person?.participants[0]?._id); 
 
  const handleFavorite = async() => {
 

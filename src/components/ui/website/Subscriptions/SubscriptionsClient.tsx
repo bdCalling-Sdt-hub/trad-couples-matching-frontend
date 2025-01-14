@@ -5,9 +5,8 @@ import React  from "react";
 import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 const SubscriptionsClient = () => {
- 
   const {data} = useGetAllPackagesQuery(undefined)
- console.log(data);
+
 const packages = data?.data
 
   return (

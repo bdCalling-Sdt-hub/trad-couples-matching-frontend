@@ -94,8 +94,7 @@ const CustomPhotoEditor = () => {
             const formData = new FormData();
             formData.append("image", file);
             const response = await CreateProfilePicture(formData).unwrap();
-            console.log("New image uploaded successfully:", response);
-
+         
 
             setImageIds((prev) =>
               prev.map((id, idx) =>

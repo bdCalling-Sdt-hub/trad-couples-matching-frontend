@@ -20,7 +20,7 @@ const Blogs = () => {
       <Heading className='mb-3'> Blogs for you</Heading>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 pb-[100px]">
-        {blogsData?.map((news: { _id: string; image: string; title: string }, index: number) => {
+        {blogsData?.blogs?.map((news: { _id: string; image: string; title: string }, index: number) => {
           return (
             <div
               key={index}

@@ -10,7 +10,6 @@ const BlogDetails = () => {
   const {blogId} = useParams();  
   const {data} = useGetBlogQuery(blogId); 
   const blogData = data?.data;
-  console.log(blogData);
     return (
         <div className="container my-10">
       <div className="w-full h-[456px] relative">

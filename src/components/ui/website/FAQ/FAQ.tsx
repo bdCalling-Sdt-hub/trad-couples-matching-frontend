@@ -9,11 +9,10 @@ import { useGetAllFaqsQuery } from '@/redux/features/faq/faqSlice';
 const FAQ = () => {  
     const {data} = useGetAllFaqsQuery(undefined) 
     const faqData = data?.data;  
-    console.log(faqData);
     const { token } = theme.useToken(); 
 
     const getItems = () =>
-      faqData?.map((faq:{question:string,answer:string,_id:string}) => ({
+      faqData?.faqs?.map((faq:{question:string,answer:string,_id:string}) => ({
         key: faq._id,
         label: (
           <p

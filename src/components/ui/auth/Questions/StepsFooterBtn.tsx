@@ -47,7 +47,6 @@ const StepsFooterBtn = ({current ,setCurrent, steps , formData}:propsType) => {
        const handleSubmit = async() => {
            
             await createOthersQuestions(formData).then((res) => { 
-              console.log(res);
                 if (res?.data?.success) {
                     Swal.fire({
                       text: res?.data?.message,

@@ -10,7 +10,7 @@ const questionsSlice = baseApi.injectEndpoints({
                     method: "POST",
                     body: data,
                 }
-            },
+            }, 
         }), 
 
         createOthersQuestions: builder.mutation({

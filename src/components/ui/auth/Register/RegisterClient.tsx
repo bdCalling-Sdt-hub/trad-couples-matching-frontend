@@ -94,7 +94,7 @@ const RegisterClient = () => {
           </p>
 
 
-          <Form onFinish={onFinish} layout="vertical" className=' w-full'>
+          <Form onFinish={onFinish} layout="vertical" className=' w-full' initialValues={{ remember: true  , gender: "Male"}}>
 
             <TextInput name='names' label='Name' placeholder="Your Name" />
 
@@ -114,7 +114,7 @@ const RegisterClient = () => {
               }}
             >
               <Form.Item name='gender' style={{ background: "transparent" }} >
-                <Select defaultValue="Male" options={option}
+                <Select  options={option}
                   style={{
                     height: "56px",
                     border: "1px solid #BABABA",

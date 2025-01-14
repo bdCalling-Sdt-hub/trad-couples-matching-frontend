@@ -13,7 +13,7 @@ const inter = Inter({ weight: ['400', '500', '600', '700'], subsets: ['latin'] }
 
 const FAQSection = () => {   
   const {data} = useGetAllFaqsQuery(undefined) 
-  const faqData = data?.data; 
+  const faqData = data?.data?.faqs; 
 
   const getItems = () =>
     faqData?.slice(0, 4)?.map((faq:{question:string,answer:string,_id:string}) => ({

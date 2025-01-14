@@ -32,8 +32,6 @@ const BioQuestions = () => {
         occupation: null,
       });
      
-
-      console.log(formData);
       const handleChange = (key: string, value: any) => {
         setFormData((prev) => ({ ...prev, [key]: value }));
       }; 

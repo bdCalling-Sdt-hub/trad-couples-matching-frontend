@@ -5,7 +5,7 @@ const searchSlice = baseApi.injectEndpoints({
 
         getAllPersons: builder.query({
             query: (params) =>{ 
-                console.log(params);
+             
                 return{
                     url: "/bio/find-people", 
                     params

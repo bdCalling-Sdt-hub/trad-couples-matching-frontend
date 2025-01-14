@@ -16,7 +16,7 @@ const Questions = () => {
     const [current, setCurrent] = useState(0);   
     const {data:profile} = useProfileQuery(undefined)  
     const gender = profile?.data?.gender
-    console.log(profile); 
+
 
     const [formData, setFormData] = useState({ 
         liveAlone: "",
@@ -44,8 +44,6 @@ const Questions = () => {
         setFormData((prev) => ({ ...prev, [key]: value }));
       };   
 
-      console.log(formData);
-
 
     const steps = [ 
        
@@ -65,7 +63,7 @@ const Questions = () => {
             </div>
         },
         {
-            title: "Do You Believe Jesse Christ Is The Head Of The House And Then The Man ?",
+            title: "Do You Believe Jesus Christ Is The Head Of The House And Then The Man ?",
             content: <div className='w-full '>
                 <QuestionDropdown name='believeJesusIsHead' placeholder=''
                     options={beliefInChrist} onChange={(value) => handleChange("believeJesusIsHead", value)} />

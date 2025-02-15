@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { ConfigProvider, Tabs } from "antd";
 import Image from "next/image";
@@ -17,8 +18,9 @@ const ProfileDetails = () => {
     const bioData = getBio?.data
     const userProfile = profile?.data 
     const [profileFile, setProfileFile] = useState<File | null>(null);
-    const [profileUrl, setProfileUrl] = useState<string | null>(); 
-    const [updateProfile] = useUpdateProfileMutation()
+    const [profileUrl, setProfileUrl] = useState<string | undefined>(); 
+    const [updateProfile] = useUpdateProfileMutation() 
+   
 
  useEffect(() => {
      if (userProfile) {
@@ -84,7 +86,7 @@ const ProfileDetails = () => {
             <div className='container flex lg:flex flex-wrap justify-between'>
                 <div className='flex flex-col lg:flex-row lg:gap-2 gap-0'>
                     <div className="z-10 relative">
-                        <Image src={profileUrl || ""} alt='' height={450} width={280} style={{ borderRadius: "20px", height: "250px", width: "230px" , objectFit:"cover"}} className='-mt-[125px] border-2 border-white z-10' />
+                        <img src={profileUrl} alt='' style={{ borderRadius: "20px", height: "250px", width: "230px" , objectFit:"cover"}} className='-mt-[125px] border-2 border-white z-10' />
                         <label
                             htmlFor="imageUploadProfile"
                             style={{

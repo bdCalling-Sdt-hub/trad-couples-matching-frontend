@@ -25,7 +25,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         const handleConnection = () => {
-            console.log("Connected to socket server");
+            // console.log("Connected to socket server"); 
         };
 
         socket.on("connect", handleConnection);

@@ -76,7 +76,7 @@ const OtpVerifyClient = () => {
         }).then(() => {
 
           if (userType === "registerUser") {
-
+           
             if (data) {
               SetLocalStorage("tradeToken", res?.data?.data?.createToken);
               router.push("/bio-question") 
@@ -155,7 +155,7 @@ const OtpVerifyClient = () => {
 
           </Form>
 
-          <p className='py-8 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResendEmail} className='text-[#00445B] font-semibold '>Resend</span></p>
+          <p className='py-8 text-[#6B6B6B] text-center'>You have not received the email? <span onClick={handleResendEmail} className='text-[#00445B] font-semibold cursor-pointer '>Resend</span></p>
         </div>
 
 

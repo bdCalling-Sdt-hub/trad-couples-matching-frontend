@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import {Form, Progress } from 'antd';
+import {ConfigProvider, Form, Progress, Select } from 'antd';
 
 import SectionHeader from './SectionHeader';
 import StepsFooterBtn from './StepsFooterBtn';
@@ -44,7 +44,7 @@ const Questions = () => {
         setFormData((prev) => ({ ...prev, [key]: value }));
       };   
 
-
+console.log(formData);
     const steps = [ 
        
    
@@ -143,9 +143,26 @@ const Questions = () => {
         },
         {
             title: "What Are Your Interests /Shorts/Hobbies ?",
-            content: <div className='w-full '>
-                <QuestionDropdown name='interestsHobbies' placeholder='interests /shorts/hobbies'
-                    options={interests} onChange={(value) => handleChange("interestsHobbies", value)} />
+            content: <div className='w-full '> 
+             <ConfigProvider
+      theme={{
+        components: {
+          Select: {
+            activeBorderColor: "#BABABA",
+            hoverBorderColor: "#BABABA"
+          },
+        },
+      }}
+    >
+
+      <Form.Item
+       name='interestsHobbies' className=' lg:w-1/3 w-full '
+      >
+        <Select mode="multiple" placeholder='interests /shorts/hobbies' options={interests} style={{ height: "60px" ,  }}    onChange={(value) => handleChange("interestsHobbies", value)}  />
+
+      </Form.Item>
+
+    </ConfigProvider> 
             </div>
         },
         {

@@ -179,9 +179,7 @@ export const maritalStatus = [
     { value: "Single", label: "Single" },
     { value: "Divorced", label: "Divorced" },
     { value: "Widowed", label: "Widowed" },
-    { value: "Separated", label: "Separated" } ,
-    { value: "Annulled", label: "Annulled" } ,
-    { value: "Other", label: "Other" }
+    { value: "Separated", label: "Separated" } 
 ];
 
 export const relocationWillingness = [
@@ -218,7 +216,7 @@ export const occupation = [
     { value: "Student", label: "Student" },
     { value: "Self-Employed / Entrepreneur", label: "Self-Employed / Entrepreneur" },
     { value: "Digital Nomad", label: "Digital Nomad" },
-    { value: "Other", label: "Other" }
+    // { value: "Other", label: "Other" } 
 ];
 
 export const homeOwnership = [
@@ -694,10 +692,7 @@ export const province = [
 
 export const custodyStatus = [
     { value: "No", label: "No" },
-    { value: "Yes, Full-Time Custody", label: "Yes, Full-Time Custody" },
-    { value: "Yes, Part-Time Custody", label: "Yes, Part-Time Custody" },
-    { value: "Yes, Grown Children", label: "Yes, Grown Children" },
-    { value: "Prefer Not to Say", label: "Prefer Not to Say" }
+    { value: "Yes", label: "Yes" },
 ]; 
 
 export const christianityOptions = [

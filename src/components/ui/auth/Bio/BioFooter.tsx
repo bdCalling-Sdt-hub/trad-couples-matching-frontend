@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client"
 import { useCreateBioQuestionsMutation } from '@/redux/features/questions/questionsSlice';
 import { useRouter } from 'next/navigation';
@@ -13,11 +14,9 @@ interface propsType{
     formData:{
         aboutMe: string|null,
         age: string|null,
-        dob: string|null,
         height: string|null,
         bodyShape: string|null,
         educationOn: string|null,
-        educationFrom: string|null,
         ethnicity: string|null,
         country: string|null,
         region: string|null,
@@ -46,7 +45,7 @@ const BioFooter = ({current ,setCurrent, steps , formData}:propsType) => {
     const handleSubmit = async() => {
        
         await createBioQuestions(formData).then((res) => { 
-        
+         console.log(res);
             if (res?.data?.success) {
                 Swal.fire({
                   text: res?.data?.message,
@@ -58,8 +57,9 @@ const BioFooter = ({current ,setCurrent, steps , formData}:propsType) => {
                 })
               } else {
                 Swal.fire({
-                  title: "Oops",
-                  text: res?.data?.message,
+                  title: "Oops", 
+                  //@ts-ignore
+                  text: res?.error?.data?.message,
                   icon: "error",
                   timer: 1500,
                   showConfirmButton: false,

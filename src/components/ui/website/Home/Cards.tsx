@@ -14,7 +14,7 @@ const Cards = () => {
       {/* 1st section   */}
       <div className="bg-gray-100">
     
-            <div className=' container grid grid-cols-12  items-center gap-4 lg:pt-24 pt-10  '>
+            <div className=' container grid grid-cols-12  items-center gap-4 lg:py-20 py-10  '>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center lg:w-[75%] w-[100%] mb-3 lg:mb-0  lg:-order-1 -order-1 lg:text-start text-center '>
                     <Heading className='py-5 font-bold text-[22px] ' > Welcome to Trad Couples </Heading>
@@ -23,7 +23,7 @@ const Cards = () => {
                 </div>
 
                 <div className=' lg:col-span-6 col-span-12 justify-self-center'>
-                    <img src="/welcome.png" alt='' height={500} width={500} style={{boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"  }} className='rounded-t-[50px] ' />
+                    <img src="/couples.png" alt='' height={600} width={600}  className=' ' />
                 </div>
 
 

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsPersonVcard } from 'react-icons/bs';
@@ -24,7 +23,7 @@ const AboutMe = ({bio}:any) => {
         {
             icon: <p className='text-white '><MdOutlineDateRange size={20}/></p>, 
              title:"Age" ,
-             value: `${bioData?.age} , ${moment(bioData?.dob).format("DD MMM YYYY")} `
+             value: `${bioData?.age}`
         } , 
         
         {
@@ -48,7 +47,7 @@ const AboutMe = ({bio}:any) => {
         {
             icon: <p className='text-white '><MdCastForEducation size={20}/></p>, 
              title:"Education" ,
-             value: `${bioData?.educationOn} , ${bioData?.educationFrom}`
+             value: `${bioData?.educationOn}`
         } , 
         
         {

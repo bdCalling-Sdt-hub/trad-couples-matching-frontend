@@ -5,7 +5,7 @@ import OutLineBtn from '@/components/shared/OutLineBtn';
 import ProfileEditDropdown from '@/components/shared/ProfileEditDropdown';
 import SmallButton from '@/components/shared/SmallButton';
 import {  useGetBioQuery, useUpdateBioMutation } from '@/redux/features/profile/profileSlice';
-import { ConfigProvider, DatePicker, Form, Input } from 'antd';
+import {Form, Input } from 'antd';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
@@ -17,8 +17,7 @@ import { GiBodyHeight } from 'react-icons/gi';
 import { IoIosBody } from 'react-icons/io';
 import { MdCastForEducation } from 'react-icons/md';
 import { SiEthers } from 'react-icons/si';
-import { height, bodyShape, educationOn, ethnicity, country, province, hairColor, eyeColor, occupation, universityFrom } from "@/components/shared/Option"
-import moment from 'moment';
+import { height, bodyShape, educationOn, ethnicity, country, province, hairColor, eyeColor, occupation } from "@/components/shared/Option"
 import Swal from 'sweetalert2';
 
 
@@ -32,7 +31,6 @@ const EditProfile1 = () => {
     useEffect(() => {
         if (bioData) {
             form.setFieldsValue({
-                dob: bioData.dob ? moment(bioData.dob, 'YYYY-MM-DD') : null,
                 maritalStatus: bioData.maritalStatus,
                 age: bioData.age,
                 country: bioData.country,
@@ -42,7 +40,6 @@ const EditProfile1 = () => {
                 ethnicity: bioData.ethnicity,
                 hairColor: bioData.hairColor,
                 educationOn: bioData.educationOn,
-                educationFrom: bioData.educationFrom,
                 eyeColor: bioData.eyeColor,
                 occupation: bioData.occupation,
                 aboutMe: bioData.aboutMe,
@@ -88,30 +85,7 @@ const EditProfile1 = () => {
 
             <div className='container'>
                 <Form layout='vertical' form={form} onFinish={onFinish}>
-                    <div className=' grid lg:grid-cols-2 grid-cols-1 gap-x-16 '>
-
-                        {/* date of birth  */}
-                        <ConfigProvider
-                            theme={{
-                                components: {
-                                    DatePicker: {
-                                        activeBorderColor: "#BABABA",
-                                        hoverBorderColor: "#BABABA"
-                                    },
-                                },
-                            }}
-                        >
-                            <Form.Item
-                                name="dob"
-                                label={<div className='flex items-center gap-2 text-start'>
-                                    <div className=' flex justify-center items-center bg-primary h-7 w-7 rounded-full  '> <p className='text-white text-lg'><FaRegCalendarAlt /></p></div>
-                                    <p className='text-[#4E4E4E]  text-[15px] font-medium '>Date of Birth</p>
-                                </div>}
-                            >
-                                <DatePicker style={{ height: "45px", width: "100%" }} />
-                            </Form.Item>
-                        </ConfigProvider>
-
+                    <div className=' grid lg:grid-cols-2 grid-cols-1 gap-x-16 '>            
                         {/* age  */}
                         <Form.Item name="age" label={<div className='flex items-center gap-2 text-start'>
                             <div className=' flex justify-center items-center bg-primary h-7 w-7 rounded-full  '> <p className='text-white text-lg'><FaRegCalendarAlt /></p></div>
@@ -143,11 +117,6 @@ const EditProfile1 = () => {
                             <div className='w-1/3'>
                                 <ProfileEditDropdown name='educationOn' label="Education" options={educationOn} icon={<MdCastForEducation />} />
                             </div>
-
-                            <div className='w-2/3'>
-                                <ProfileEditDropdown name='educationFrom' label="" options={universityFrom} icon={""} />
-                            </div>
-
                         </div>
 
                         <ProfileEditDropdown name='eyeColor' label="Eye Color" options={eyeColor} icon={<FaRegEye />} />

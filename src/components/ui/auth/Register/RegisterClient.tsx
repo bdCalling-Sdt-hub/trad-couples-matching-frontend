@@ -126,7 +126,7 @@ const RegisterClient = () => {
 
 
             <TextInput name='email' label='Email' placeholder="Enter Your Email" />
-            <TextInput name='contact' label='Contact' placeholder="Enter Your contact" />
+            {/* <TextInput name='contact' label='Contact' placeholder="Enter Your contact" /> */}
             <PasswordInput name='password' label="Password" placeholder='Enter Your Password' />
 
             <ConfigProvider

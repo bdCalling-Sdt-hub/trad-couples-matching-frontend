@@ -1,4 +1,4 @@
-import moment from 'moment';
+
 import React from 'react';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsPersonVcard } from 'react-icons/bs';
@@ -8,18 +8,16 @@ import { GiBodyHeight } from 'react-icons/gi';
 import { GoHeartFill } from 'react-icons/go';
 import { IoIosBody } from 'react-icons/io';
 import { IoPersonSharp } from 'react-icons/io5';
-import { MdCastForEducation, MdOutlineDateRange, MdOutlineTempleHindu } from 'react-icons/md';
+import { MdOutlineDateRange, MdOutlineTempleHindu } from 'react-icons/md';
 import { SiEthers } from 'react-icons/si';  
 
 interface bioDataType { 
     _id: string
     aboutMe: string
     age: string
-    dob: string
     height: string
     bodyShape: string
     educationOn: string
-    educationFrom: string
     ethnicity: string
     country: string
     region: string
@@ -48,7 +46,7 @@ const ProfileAboutSection = ({bioData , userProfile}:{bioData:bioDataType , user
         {
             icon: <p className='text-white '><MdOutlineDateRange size={20}/></p>, 
              title:"Age" ,
-             value: `${bioData?.age} , ${moment(bioData?.dob).format("DD MMM YYYY")} `
+             value: `${bioData?.age}  `
         } , 
         
         {
@@ -68,13 +66,7 @@ const ProfileAboutSection = ({bioData , userProfile}:{bioData:bioDataType , user
              title:"Ethnicity" ,
              value: bioData?.ethnicity
         } , 
-        
-        {
-            icon: <p className='text-white '><MdCastForEducation size={20}/></p>, 
-             title:"Education" ,
-             value: `${bioData?.educationOn} , ${bioData?.educationFrom}`
-        } , 
-        
+    
         {
             icon: <p className='text-white '><BsPersonVcard size={20}/></p>, 
              title:"Occupation" ,

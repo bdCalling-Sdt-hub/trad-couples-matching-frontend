@@ -19,7 +19,7 @@ const Banner = () => {
                 <button className='text-primary font-semibold px-5 py-2  text-[16px] tracking-wider rounded-lg border-2 border-primary hover:bg-primary  hover:text-white'>Login</button>
                 </Link>
             </div>
-       
+        
 
             <div className="container relative z-10 flex flex-col  gap-0 lg:justify-center items-center lg:items-start text-center text-white lg:-mt-20 pt-3 lg:bg-transparent bg-black lg:h-full h-32">
              
@@ -37,8 +37,13 @@ const Banner = () => {
                         <span>Start your journey</span>
                         <span><MdOutlineKeyboardArrowRight size={22} /></span>
                     </SmallButton> 
-                </Link>
-            </div> 
+                </Link> 
+
+                <p className='  text-white lg:block  absolute bottom-8 hidden   lg:text-[22px] text-[14px] leading-[24px]   ps-2 font-bold  '>FAITH. FAMILY. FREEDOM.</p> 
+
+            </div>  
+
+        
 
             <div className=' absolute bottom-16   lg:hidden flex flex-col  gap-1 w-full'> 
                 <Link href="/login" className='w-full flex justify-center items-center' >

@@ -44,7 +44,6 @@ const Questions = () => {
         setFormData((prev) => ({ ...prev, [key]: value }));
       };   
 
-console.log(formData);
     const steps = [ 
        
    

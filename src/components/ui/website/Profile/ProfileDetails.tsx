@@ -69,7 +69,7 @@ const ProfileDetails = () => {
             {/* Cover photo */}
             <div className="lg:h-[200px] h-[250px] relative z-0">
                 <Image
-                    src="/about.svg"
+                    src="/Banner.jpg"
                     alt="host-profile"
                     width={1000}
                     height={1000}
@@ -77,7 +77,8 @@ const ProfileDetails = () => {
                         height: "100%",
                         width: "100%",
                         zIndex: 0,
-                        objectFit: "cover",
+                        objectFit: "cover", 
+                        backgroundPosition: "top",
                     }}
                 />
             </div>
